@@ -1,3 +1,5 @@
+
+
 {% liquid
   assign product_resource = closest.product
   if request.visual_preview_mode and product_resource == blank
@@ -6,7 +8,9 @@
 -%}
 
 {% unless product_resource == blank %}
-  {% render 'variant-main-picker', product_resource: product_resource, section: section, product: product %}
+  {% unless product_resource.handle == 'custom-patch-1' %}
+    {% render 'variant-main-picker', product_resource: product_resource, section: section, product: product %}
+  {% endunless %}
 {% endunless %}
 
 {% schema %}

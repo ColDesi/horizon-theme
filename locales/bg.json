@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "blocks": {
     "load_video": "Зареждане на видео: {{ description }}",
@@ -73,8 +82,7 @@
     "featured_product": "Представен продукт",
     "search_suggestions_available": "Налични са предложения за търсене за „{{ query }}“",
     "price_filter_low": "Ниска цена",
-    "price_filter_high": "Висока цена",
-    "view_disclosure_information_for_product": "Преглед на оповестената информация за {{ product_title }}"
+    "price_filter_high": "Висока цена"
   },
   "actions": {
     "add_to_cart": "Добавяне към количката",
@@ -273,8 +281,7 @@
       "one": "1 артикул е добавен в количката",
       "other": "{{ count }} артикула са добавени в количката"
     },
-    "quick_order_list": "Бърз списък с поръчки",
-    "product_disclosures": "Оповестявания за продукта"
+    "quick_order_list": "Бърз списък с поръчки"
   },
   "gift_cards": {
     "issued": {

@@ -1,0 +1,138 @@
+{%- comment -%}
+  Patch Maker — single sign-on link for logged-in Shopify customers.
+
+  WHAT IT DOES
+    Mints a short-lived HMAC-SHA256 signed token from the storefront
+    and renders a link to the Patch Maker's /sso route. The token
+    carries the customer's id + email + expiry; the app verifies it
+    against the same shared SHOPIFY_SSO_SECRET and starts a session
+    so the customer's uploaded shapes / materials follow them.
+
+    No token == bounce to the storefront login page (so unfamiliar
+    customers don't see a half-broken "Sign in" button).
+
+  CONFIGURE THESE TWO VALUES BEFORE USE
+    - patch_maker_url   Public origin of your Patch Maker deploy.
+                        No trailing slash. Example:
+                        https://anypatch.coldesi.com
+    - sso_secret        The SAME random string set as
+                        SHOPIFY_SSO_SECRET on the Patch Maker host.
+                        TREAT THIS LIKE A PASSWORD — anyone with it
+                        can mint tokens for any customer. Use at
+                        least 32 random bytes; rotate if leaked.
+
+    Both values are HARDCODED into the snippet on purpose. Liquid
+    has no concept of "private settings", so any value here ends up
+    in the rendered HTML the moment the theme runs. The HMAC secret
+    itself is consumed by the `hmac_sha256` filter and is NOT echoed
+    into the markup — only the signed token is. Keep the snippet
+    file out of any public theme repo.
+
+  WHERE TO RENDER
+    Anywhere a logged-in customer might want to design a patch:
+      - top nav: "Design a custom patch" link
+      - account page: "My uploaded shapes & materials"
+      - product page (in addition to the cart-flow button)
+
+      {%- render 'sso_link',
+            label: 'Design a custom patch',
+            next:  '/' -%}
+
+    `label` is the link text (defaults to "Design your patch").
+    `next` is the path inside the Patch Maker to land on after
+    SSO redeem; must start with `/` for safety (the server
+    refuses any other value).
+
+  SECURITY NOTES
+    - Tokens are valid for 5 minutes — short enough that a leaked
+      URL is mostly harmless, long enough for one redirect hop.
+    - The token includes the customer's email but NEVER any
+      password, address, or order data. The Patch Maker uses it
+      only for display + scoping uploads.
+    - If a customer is not logged in, we render a link to the
+      storefront login page with a redirect param so they come
+      back here after signing in — the snippet then mints the
+      token on the next request.
+{%- endcomment -%}
+
+{%- assign patch_maker_url = 'https://pm.octopatches.com' -%}
+{%- assign sso_secret = '84e309e6e7c52f8289354dd9961ba4261cb3c4a839470fa7fe15c2c80cf96a35' -%}
+
+{%- assign sso_label = label | default: 'Design your patch' -%}
+{%- assign sso_next  = next  | default: '/' -%}
+
+{%- if customer -%}
+  {%- comment -%}
+    Build the payload bytes EXACTLY the way shopify.make_sso_token()
+    does on the Python side: sort keys, no whitespace, id as string.
+    Liquid's `json` filter handles email escaping (quotes, control
+    chars). Do not insert spaces — they'd change the HMAC input.
+
+    Token lifetime: 5 minutes. Matches the Python default
+    (make_sso_token's ttl_seconds=300) and is long enough for the
+    redirect hop without giving a leaked URL a long replay window.
+  {%- endcomment -%}
+  {%- assign now_ts = 'now' | date: '%s' | plus: 0 -%}
+  {%- assign exp_ts = now_ts | plus: 300 -%}
+  {%- capture sso_body -%}{"email":{{ customer.email | downcase | json }},"exp":{{ exp_ts }},"id":"{{ customer.id }}"}{%- endcapture -%}
+
+  {%- comment -%}
+    base64url-encode the body. Shopify's base64_encode uses standard
+    +/ alphabet with padding; the Patch Maker decoder accepts both
+    standard AND url-safe encodings, so the replace-and-strip below
+    is a polish step (no plus / slash in URLs) rather than a hard
+    requirement. Padding strip is safe either way: the decoder
+    re-pads internally.
+  {%- endcomment -%}
+  {%- assign sso_body_b64 = sso_body
+        | base64_encode
+        | replace: '+', '-'
+        | replace: '/', '_'
+        | replace: '=', '' -%}
+
+  {%- comment -%}
+    hmac_sha256 returns the digest as lowercase hex. The Patch
+    Maker decoder accepts EITHER hex or base64url for the sig
+    field, so we ship the hex here (no further conversion needed).
+  {%- endcomment -%}
+  {%- assign sso_sig_hex = sso_body | hmac_sha256: sso_secret -%}
+
+  {%- assign sso_token = sso_body_b64 | append: '.' | append: sso_sig_hex -%}
+  {%- assign sso_next_encoded = sso_next | url_encode -%}
+  {%- assign sso_href = patch_maker_url
+      | append: '/sso?token='
+      | append: sso_token
+      | append: '&next='
+      | append: sso_next_encoded -%}
+
+  <a class="patch-maker-sso" href="{{ sso_href }}" rel="noopener">
+    {{ sso_label }}
+  </a>
+{%- else -%}
+  {%- comment -%}
+    Logged-out fallback: nudge them to sign in first. Set
+    return_to so the customer lands back on this page (where the
+    snippet will then mint the token).
+  {%- endcomment -%}
+  <a class="patch-maker-sso patch-maker-sso--signin"
+     href="{{ routes.account_login_url }}?return_to={{ request.path | url_encode }}">
+    Sign in to {{ sso_label | downcase }}
+  </a>
+{%- endif -%}
+
+<style>
+  .patch-maker-sso {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1f2937;
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: background 120ms ease-in-out;
+  }
+  .patch-maker-sso:hover { background: #111827; }
+  .patch-maker-sso--signin { background: #6b7280; }
+  .patch-maker-sso--signin:hover { background: #4b5563; }
+</style>

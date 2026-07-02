@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "blocks": {
     "load_video": "Naloži videoposnetek: {{ description }}",
@@ -75,8 +84,7 @@
     "featured_product": "Izpostavljen izdelek",
     "search_suggestions_available": "Predlogi za iskanje, ki so na voljo za »{{ query }}«",
     "price_filter_low": "Nizka cena",
-    "price_filter_high": "Visoka cena",
-    "view_disclosure_information_for_product": "Ogled informacij o razkritjih za {{ product_title }}"
+    "price_filter_high": "Visoka cena"
   },
   "actions": {
     "add_to_cart": "Dodaj v košarico",
@@ -285,8 +293,7 @@
       "few": "Toliko izdelkov je dodanih v košarico: {{ count }}",
       "two": "Toliko izdelkov je dodanih v košarico: {{ count }}"
     },
-    "quick_order_list": "Seznam za hitro naročanje",
-    "product_disclosures": "Razkritja o izdelku"
+    "quick_order_list": "Seznam za hitro naročanje"
   },
   "gift_cards": {
     "issued": {

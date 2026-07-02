@@ -1,3 +1,4 @@
+
 {% render 'theme-drawer-styles' %}
 {% liquid
   assign block_settings = block.settings
@@ -109,7 +110,9 @@
             </div>
           {%- endif -%}
 
-          {% content_for 'block', type: 'quantity', id: 'quantity' %}
+          {%- unless product.handle == 'custom-patch-1' -%}
+            {% content_for 'block', type: 'quantity', id: 'quantity' %}
+          {%- endunless -%}
 
           {%- if has_quantity_rules -%}
             <div
@@ -220,6 +223,23 @@
               </div>
             </volume-pricing>
           {%- endif -%}
+
+          {%- if product.handle == 'custom-patch-1' -%}
+            <div class="patch-size-pricing">
+              <h3>Patch size pricing</h3>
+              <ul>
+                {%- for variant in product.variants -%}
+                  <li>
+                    <strong>{{ variant.title }}</strong>
+                    <span>{{ variant.price | money }}</span>
+                  </li>
+                {%- endfor -%}
+              </ul>
+              <p>Choose your exact patch size in the builder. The correct price is applied when you add it to cart.</p>
+            </div>
+          {%- endif -%}
+          
+          {%- unless product.handle == 'custom-patch-1' -%}
           {% content_for 'block',
             type: 'add-to-cart',
             id: 'add-to-cart',
@@ -233,6 +253,7 @@
             can_add_to_cart: can_add_to_cart,
             form_obj: form
           %}
+{%- endunless -%}
         </div>
         {%- if block_settings.gift_card_form and product.gift_card? -%}
           </span>

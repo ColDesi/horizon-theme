@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "names": {
     "404": "404",
@@ -190,8 +199,7 @@
     "product_sku": "存貨單位 (SKU)",
     "layered_slideshow": "分層輪播",
     "drawer": "抽屜",
-    "cart_drawer": "購物車",
-    "disclosures": "資訊揭露"
+    "cart_drawer": "購物車"
   },
   "settings": {
     "alignment": "對齊",
@@ -604,9 +612,7 @@
     "bottom_border_color": "底部邊框顏色",
     "button_style": "按鈕樣式",
     "input_style": "輸入欄位樣式",
-    "selected_button_style": "選取的按鈕樣式",
-    "open_by_default": "預設為開啟",
-    "title_preset": "標題預設設定"
+    "selected_button_style": "選取的按鈕樣式"
   },
   "options": {
     "apple": "Apple",
@@ -1008,8 +1014,6 @@
     "local_pickup_description": "設定網路商店本地取貨後，顯示附近的取貨地點。[深入瞭解](https://help.shopify.com/en/manual/fulfillment/setup/delivery-methods/pickup-in-store)",
     "local_pickup": "本地取貨",
     "gift_card_products": "禮品卡產品",
-    "disclosures": "資訊揭露",
-    "disclosures_metafield_content": "此商品必備的安全警告與法規資訊揭露。",
     "page_text_color_contrast_info": "具備自訂背景顏色的區段，只有在色彩對比度足夠時才會使用此文字顏色。"
   },
   "html_defaults": {
@@ -1104,8 +1108,7 @@
     "shop_the_look": "<h2>購買整套</h2>",
     "bestsellers": "熱銷商品",
     "featured_collection": "精選商品系列",
-    "new_arrivals": "新品上市",
-    "disclosures": "資訊揭露"
+    "new_arrivals": "新品上市"
   },
   "info": {
     "carousel_layout_on_mobile": "在行動裝置上一律使用輪播",

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "names": {
     "404": "404",
@@ -190,8 +199,7 @@
     "product_sku": "SKU",
     "layered_slideshow": "Katmanlı slayt gösterisi",
     "drawer": "Çekmece",
-    "cart_drawer": "Sepet çekmecesi",
-    "disclosures": "Bildirimler"
+    "cart_drawer": "Sepet çekmecesi"
   },
   "settings": {
     "autoplay": "Otomatik oynatma",
@@ -604,9 +612,7 @@
     "bottom_row_text": "Alt satır metni",
     "button_style": "Düğme stili",
     "input_style": "Giriş stili",
-    "selected_button_style": "Seçili düğme stili",
-    "open_by_default": "Varsayılan olarak açık",
-    "title_preset": "Başlık ön ayarı"
+    "selected_button_style": "Seçili düğme stili"
   },
   "options": {
     "apple": "Apple",
@@ -1008,8 +1014,6 @@
     "local_pickup_description": "Online mağaza yerel teslim alma ayarlandığında yakındaki teslim alma konumlarını gösterin. [Daha fazla bilgi](https://help.shopify.com/en/manual/fulfillment/setup/delivery-methods/pickup-in-store)",
     "local_pickup": "Yerel teslim alma",
     "gift_card_products": "Hediye kartı ürünleri",
-    "disclosures": "Bildirimler",
-    "disclosures_metafield_content": "Bu ürün için zorunlu güvenlik uyarıları ve yasal bildirimler.",
     "page_text_color_contrast_info": "Özel arka plan rengine sahip bölümler, bu metin rengini yalnızca yeterli renk kontrastı olduğunda kullanır."
   },
   "html_defaults": {
@@ -1104,8 +1108,7 @@
     "shop_the_look": "<h2>Görüntüleneni satın al</h2>",
     "bestsellers": "Çok satanlar",
     "featured_collection": "Öne çıkan koleksiyon",
-    "new_arrivals": "Yeni gelenler",
-    "disclosures": "Bildirimler"
+    "new_arrivals": "Yeni gelenler"
   },
   "info": {
     "video_alt_text": "Yardımcı teknoloji kullanıcıları için videoyu açıklayın",

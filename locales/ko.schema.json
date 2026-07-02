@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "names": {
     "404": "404",
@@ -190,8 +199,7 @@
     "product_sku": "SKU(재고 관리 코드)",
     "layered_slideshow": "레이어드 슬라이드 쇼",
     "drawer": "드로어",
-    "cart_drawer": "카트 서랍",
-    "disclosures": "고지 사항"
+    "cart_drawer": "카트 서랍"
   },
   "settings": {
     "autoplay": "자동 재생",
@@ -604,9 +612,7 @@
     "bottom_row_text": "하단 행 텍스트",
     "button_style": "버튼 스타일",
     "input_style": "입력 스타일",
-    "selected_button_style": "선택한 버튼 스타일",
-    "open_by_default": "기본으로 열기",
-    "title_preset": "제목 사전 설정"
+    "selected_button_style": "선택한 버튼 스타일"
   },
   "options": {
     "apple": "Apple",
@@ -1008,8 +1014,6 @@
     "local_pickup_description": "온라인 스토어 현지 픽업이 설정된 경우 가까운 픽업 위치를 표시합니다. [자세히 알아보기](https://help.shopify.com/en/manual/fulfillment/setup/delivery-methods/pickup-in-store)",
     "local_pickup": "현지 픽업",
     "gift_card_products": "기프트 카드 제품",
-    "disclosures": "고지 사항",
-    "disclosures_metafield_content": "이 제품에 필수적인 안전 경고 및 규제 관련 고지 사항입니다.",
     "page_text_color_contrast_info": "사용자 지정 배경 색상이 있는 섹션은 색상 대비가 충분한 경우에만 이 텍스트 색상을 사용합니다."
   },
   "html_defaults": {
@@ -1104,8 +1108,7 @@
     "shop_the_look": "<h2>전체 스타일 구매하기</h2>",
     "bestsellers": "베스트셀러",
     "featured_collection": "추천 컬렉션",
-    "new_arrivals": "신상품",
-    "disclosures": "고지 사항"
+    "new_arrivals": "신상품"
   },
   "info": {
     "carousel_layout_on_mobile": "모바일에서는 항상 캐러셀이 사용됩니다.",

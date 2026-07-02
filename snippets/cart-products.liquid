@@ -41,8 +41,6 @@
   fetchpriority="low"
 ></script>
 
-{% render 'text-component-shimmer-styles' %}
-
 <div
   {{ block.shopify_attributes }}
   class="cart-items__wrapper{% if context == 'drawer' and cart.empty? or force_empty %} cart-items__wrapper--drawer-empty{% endif %}"
@@ -173,9 +171,24 @@
                       class="cart-items__media-container"
                       style="--ratio:{{ ratio }};"
                     >
-                      {%- liquid
-                        echo item.image | image_url: width: 250 | image_tag: class: 'cart-items__media-image border-style', style: border_override
-                      -%}
+                      {%- assign patch_preview_url = item.properties._preview_url -%}
+
+                      {%- if patch_preview_url != blank -%}
+                        <img
+                          src="{{ patch_preview_url | escape }}"
+                          alt="{{ item.title | escape }}"
+                          class="cart-items__media-image border-style"
+                          style="{{ border_override }}"
+                          loading="lazy"
+                          width="250"
+                          height="250"
+                          onerror="this.onerror=null;this.src='{{ item.image | image_url: width: 250 }}';"
+                        >
+                      {%- else -%}
+                        {%- liquid
+                          echo item.image | image_url: width: 250 | image_tag: class: 'cart-items__media-image border-style', style: border_override
+                        -%}
+                      {%- endif -%}
                     </a>
                   {%- endif %}
                 </td>
@@ -185,13 +198,7 @@
                   headers="productInformation"
                 >
                   <div class="cart-items__product-info">
-                    {%- liquid
-                      assign cart_disclosure_unique_id = 'page-' | append: item.index
-                      if context == 'drawer'
-                        assign cart_disclosure_unique_id = 'drawer-' | append: item.index
-                      endif
-                    -%}
-                    <div class="cart-items__title-row">
+                    <p>
                       <a
                         href="{{ item.url }}"
                         class="cart-items__title"
@@ -201,12 +208,7 @@
                       >
                         {{- item.product.title -}}
                       </a>
-                      {% render 'cart-disclosure-tooltip',
-                        product: item.product,
-                        unique_id: cart_disclosure_unique_id,
-                        mode: 'trigger'
-                      %}
-                    </div>
+                    </p>
                     {% if item.product.vendor and block_settings.vendor %}
                       <p>
                         {{ item.product.vendor }}
@@ -407,19 +409,6 @@
             {% endfor %}
           </tbody>
         </table>
-        {% for item in cart.items %}
-          {%- liquid
-            assign cart_disclosure_unique_id = 'page-' | append: item.index
-            if context == 'drawer'
-              assign cart_disclosure_unique_id = 'drawer-' | append: item.index
-            endif
-          -%}
-          {% render 'cart-disclosure-tooltip',
-            product: item.product,
-            unique_id: cart_disclosure_unique_id,
-            mode: 'dialog'
-          %}
-        {% endfor %}
       </div>
     </form>
   {%- endif -%}
@@ -480,16 +469,6 @@
     align-items: start;
     padding-bottom: var(--cart-items-gap);
     margin-bottom: var(--margin-lg);
-  }
-
-  .cart-items__details {
-    grid-area: details;
-    min-width: 0;
-    color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
-  }
-
-  .cart-items__product-info {
-    min-width: 0;
   }
 
   /* Cart drawer: separate grid areas for variants and unit price */
@@ -605,6 +584,11 @@
     margin-bottom: 0;
   }
 
+  .cart-items__details {
+    grid-area: details;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+  }
+
   .cart-items__details > * + *,
   .cart-items__bundle li {
     margin-block-start: var(--margin-3xs);
@@ -618,22 +602,12 @@
     text-decoration: none;
   }
 
-  .cart-items__title-row {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--gap-xs);
-    max-width: 100%;
-    min-width: 0;
-  }
-
   .cart-items__title {
     font-size: var(--font-size--md);
     color: var(--color-foreground);
     text-transform: var(--product-title-case);
     display: block;
-    margin-block-start: 0;
-    min-width: 0;
-    overflow-wrap: break-word;
+    margin-block-start: calc((var(--font-size--md) - 1lh) / 2);
   }
 
   .cart-items__variants {

@@ -41,25 +41,6 @@ export function supportsViewTransitions() {
 }
 
 /**
- * Detect Facebook / Instagram in-app browsers (Meta WebView).
- *
- * Reports of Meta's in-app browsers (Facebook, Instagram) that fail to paint during
- * cross-document (MPA) View Transitions implementation that can freeze or
- * white-screen the storefront on navigation. June 2026 testing.
- * Remove check if every resolved.
- *
- * Note: the IIFE in view-transitions.js has an inline copy of this logic (it
- * runs before modules load) — keep the two in sync.
- * @param {string} [userAgent=navigator.userAgent] - User-agent string to test.
- *   Defaults to the live `navigator.userAgent`; pass an explicit value to keep
- *   the function pure and testable without overriding the browser UA.
- * @returns {boolean} True if running inside a Facebook/Instagram in-app browser.
- */
-export function isMetaInAppBrowser(userAgent = navigator.userAgent) {
-  return /\b(FBAN|FBAV|FB_IAB|FBIOS|Instagram)\b/i.test(userAgent || '');
-}
-
-/**
  * The current view transition
  * @type {{ current: Promise<void> | undefined }}
  */
@@ -112,7 +93,7 @@ const viewTransitionTypes = {
  */
 export function startViewTransition(callback, types) {
   // Check if the API is supported and transitions are desired
-  if (!supportsViewTransitions() || isLowPowerDevice() || prefersReducedMotion() || isMetaInAppBrowser()) {
+  if (!supportsViewTransitions() || isLowPowerDevice() || prefersReducedMotion()) {
     return Promise.resolve(callback());
   }
 
@@ -323,57 +304,6 @@ export function onAnimationEnd(elements, callback, options = { subtree: true }) 
   }, /** @type {Promise<Animation>[]} */ ([]));
 
   return Promise.allSettled(animationPromises).then(callback);
-}
-
-/** @type {Set<Element>} */
-const scrollLockOwners = new Set();
-
-/** @type {MutationObserver | undefined} */
-let scrollLockObserver;
-
-function pruneDisconnectedScrollLockOwners() {
-  for (const owner of scrollLockOwners) {
-    if (!owner.isConnected) {
-      scrollLockOwners.delete(owner);
-    }
-  }
-}
-
-function syncScrollLock() {
-  pruneDisconnectedScrollLockOwners();
-
-  if (scrollLockOwners.size > 0) {
-    document.documentElement.setAttribute('scroll-lock', '');
-
-    if (!scrollLockObserver) {
-      scrollLockObserver = new MutationObserver(syncScrollLock);
-      scrollLockObserver.observe(document.documentElement, { childList: true, subtree: true });
-    }
-
-    return;
-  }
-
-  document.documentElement.removeAttribute('scroll-lock');
-  scrollLockObserver?.disconnect();
-  scrollLockObserver = undefined;
-}
-
-/**
- * Locks root scrolling for an owning element.
- * @param {Element} owner - The element that owns the scroll lock.
- */
-export function lockScroll(owner) {
-  scrollLockOwners.add(owner);
-  syncScrollLock();
-}
-
-/**
- * Unlocks root scrolling for an owning element.
- * @param {Element} owner - The element that owns the scroll lock.
- */
-export function unlockScroll(owner) {
-  scrollLockOwners.delete(owner);
-  syncScrollLock();
 }
 
 /**

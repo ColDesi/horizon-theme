@@ -1,0 +1,132 @@
+{%- comment -%}
+  Patch Maker — "Design yours" button for the Shopify storefront.
+
+  WHAT IT DOES
+    Replaces the standard "Add to cart" form on the Custom Patch
+    product page with a button that opens the standalone Patch Maker
+    app, passing the customer's currently-selected variant id. The
+    Patch Maker handles the cart submit (see app.py:save_design),
+    so this snippet's only job is to hand off cleanly.
+
+  CONFIGURE THESE TWO VALUES BEFORE USE
+    - patch_maker_url      Public origin of your Patch Maker deploy.
+                           No trailing slash. Example:
+                           https://anypatch.coldesi.com
+    - product_handle_match Comma-separated product handles this
+                           button should appear on. The snippet
+                           bails for other products so it's safe to
+                           include on every product page.
+
+  USAGE
+    Render from your product template (templates/product.json or
+    sections/main-product.liquid):
+
+      {%- render 'design_button',
+            product: product,
+            variant: product.selected_or_first_available_variant -%}
+
+    Place it either INSIDE the product form (it removes the default
+    Add to cart button) or OUTSIDE if you prefer to keep both flows.
+
+  WHY A NEW TAB, NOT AN IFRAME
+    The Patch Maker canvas is heavy (3D preview + materials) and
+    iframe sandboxing varies by theme. New-tab gives the customer
+    full real estate and avoids messaging back across origins.
+{%- endcomment -%}
+
+{%- assign patch_maker_url = 'https://pm.octopatches.com' -%}
+{%- assign product_handle_match = 'custom-patch-1' -%}
+
+{%- comment -%} Only render on opted-in products. {%- endcomment -%}
+{%- assign handles = product_handle_match | split: ',' -%}
+{%- assign show_button = false -%}
+{%- for h in handles -%}
+  {%- assign hh = h | strip -%}
+  {%- if product.handle == hh -%}
+    {%- assign show_button = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if show_button -%}
+  {%- assign chosen = variant
+        | default: product.selected_or_first_available_variant -%}
+  {%- assign launch_url = patch_maker_url
+        | append: '/?variant='
+        | append: chosen.id
+        | append: '&product='
+        | append: product.handle -%}
+
+  <div class="patch-maker-cta" data-variant-id="{{ chosen.id }}">
+    <a href="{{ launch_url }}" target="_blank" rel="noopener"
+       class="patch-maker-cta__button">
+      Design your patch
+    </a>
+    <p class="patch-maker-cta__note">
+      Opens our patch designer in a new tab. Add to cart from there.
+    </p>
+  </div>
+
+  <style>
+    .patch-maker-cta {
+      margin: 16px 0;
+      padding: 18px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .patch-maker-cta__button {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #1f2937;
+      color: #fff !important;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 6px;
+      transition: background 120ms ease-in-out;
+    }
+    .patch-maker-cta__button:hover { background: #111827; }
+    .patch-maker-cta__note {
+      margin: 10px 0 0;
+      font-size: 12px;
+      color: #6b7280;
+    }
+  </style>
+
+  <script>
+    /* Theme variant pickers fire a change event on the form when
+       the customer picks a different size/material. We rewrite the
+       href so the button always points at the currently-selected
+       variant. Safe to no-op when the theme doesn't expose the
+       form (some custom themes use their own JS state). */
+    (function () {
+      var cta = document.currentScript.previousElementSibling;
+      while (cta && !cta.classList.contains('patch-maker-cta')) {
+        cta = cta.previousElementSibling;
+      }
+      if (!cta) return;
+      var anchor = cta.querySelector('.patch-maker-cta__button');
+      var form = cta.closest('form[action*="/cart/add"]');
+      if (!form) return;
+      function pickVariantId() {
+        /* Standard Shopify theme: hidden <input name="id"> holds
+           the selected variant. */
+        var input = form.querySelector('[name="id"]');
+        return input ? input.value : null;
+      }
+      function rebuild() {
+        var vid = pickVariantId();
+        if (!vid) return;
+        var base = {{ patch_maker_url | json }};
+        anchor.href = base + '/?variant=' + encodeURIComponent(vid)
+          + '&product=' + encodeURIComponent({{ product.handle | json }});
+        cta.setAttribute('data-variant-id', vid);
+      }
+      form.addEventListener('change', rebuild);
+      /* Run once in case the theme finished its initial render
+         after our snippet. */
+      rebuild();
+    })();
+  </script>
+{%- endif -%}

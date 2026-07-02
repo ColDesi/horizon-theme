@@ -12,6 +12,10 @@
     "main": {
       "type": "product-information",
       "blocks": {
+        "shop_shop_login_button_app_block_YXqg3C": {
+          "type": "shopify://apps/shop/blocks/shop-login-button-app-block/7cab7c4a-1dfc-4b7e-8e53-31f104f2fa4e",
+          "settings": {}
+        },
         "media-gallery": {
           "type": "_product-media-gallery",
           "static": true,
@@ -20,11 +24,12 @@
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
-            "icons_style": "arrow",
+            "icons_style": "none",
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -53,11 +58,13 @@
             "gap": 28,
             "sticky_details_desktop": true,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 24,
             "padding-block-end": 24,
@@ -84,6 +91,7 @@
                 "height": "fit",
                 "custom_height": 100,
                 "background_media": "none",
+                "background_color": "",
                 "video_position": "cover",
                 "background_image_position": "cover",
                 "toggle_overlay": false,
@@ -93,6 +101,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "link": "",
                 "open_in_new_tab": false,
@@ -103,21 +112,23 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "text_xpVMaM": {
+                "text_xrnftG": {
                   "type": "text",
-                  "name": "t:names.title",
+                  "name": "Product title",
+                  "disabled": true,
                   "settings": {
                     "text": "<h1>{{ closest.product.title }}</h1>",
-                    "width": "fit-content",
+                    "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "h3",
-                    "font": "var(--font-body--family)",
+                    "font": "var(--font-primary--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
+                    "text_color": "",
                     "background": false,
                     "background_color": "#00000026",
                     "corner_radius": 0,
@@ -130,10 +141,11 @@
                 },
                 "price_tVjtKg": {
                   "type": "price",
+                  "disabled": true,
                   "settings": {
                     "show_sale_price_first": true,
-                    "show_installments": true,
-                    "show_tax_info": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
                     "type_preset": "paragraph",
                     "width": "100%",
                     "alignment": "left",
@@ -142,6 +154,7 @@
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
+                    "text_color": "",
                     "padding-block-start": 4,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -151,17 +164,18 @@
                 }
               },
               "block_order": [
-                "text_xpVMaM",
+                "text_xrnftG",
                 "price_tVjtKg"
               ]
             },
             "divider_VJhene": {
               "type": "_divider",
               "name": "t:names.divider",
+              "disabled": true,
               "settings": {
                 "thickness": 1,
                 "corner_radius": "square",
-                "divider_color": "{{ settings.color_palette.color3 }}",
+                "divider_color": "{{ settings.color_palette.color2 }}",
                 "width_percent": 100,
                 "padding-block-start": 0,
                 "padding-block-end": 0
@@ -173,6 +187,15 @@
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": false,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
                 "alignment": "left",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -185,8 +208,23 @@
               "type": "buy-buttons",
               "settings": {
                 "stacking": true,
+                "text_color": "",
                 "show_pickup_availability": false,
                 "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -196,14 +234,24 @@
                 "quantity": {
                   "type": "quantity",
                   "static": true,
-                  "settings": {},
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
                   "blocks": {}
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button"
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
                   },
                   "blocks": {}
                 },
@@ -216,6 +264,14 @@
               },
               "block_order": []
             },
+            "custom_liquid_YiQi7B": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{% if product.variants.size > 0 %}\n<div class=\"patch-volume-pricing\" id=\"patch-volume-pricing\">\n  <div class=\"pvp-header\">\n    <h3>Volume Patch Discounts</h3>\n    <p>\n      Mix and match any patch sizes to unlock volume pricing. Below chart assumes all patches are the same size, but you can mix and match. Discounts are based on your total patch quantity in cart.\n    </p>\n    <p class=\"pvp-example\">\n      Example: 10 Small + 20 XL = 30 total patches, so you qualify for the 25+ discount tier.\n    </p>\n  </div>\n\n  <div class=\"pvp-size-buttons\" role=\"tablist\">\n    {% for variant in product.variants %}\n      <button\n        type=\"button\"\n        class=\"pvp-size-button {% if forloop.first %}active{% endif %}\"\n        data-variant-id=\"{{ variant.id }}\"\n        data-price=\"{{ variant.price | divided_by: 100.0 }}\"\n        data-title=\"{{ variant.title | escape }}\"\n      >\n        {{ variant.title | split: ':' | first }}\n      </button>\n    {% endfor %}\n  </div>\n\n  <div class=\"pvp-selected-size\">\n    Viewing discounts for: <strong id=\"pvp-current-size\">{{ product.variants.first.title }}</strong>\n  </div>\n\n  <table class=\"pvp-table\">\n    <thead>\n      <tr>\n        <th>Total Qty</th>\n        <th>Regular</th>\n        <th>Discount</th>\n        <th>You Pay</th>\n        <th>Save Each</th>\n      </tr>\n    </thead>\n    <tbody id=\"pvp-table-body\"></tbody>\n  </table>\n\n  <p class=\"pvp-note\">\n    Final pricing is applied automatically in cart and checkout.\n  </p>\n</div>\n\n<style>\n  .patch-volume-pricing {\n    border: 1px solid #d8d8d8;\n    border-radius: 10px;\n    padding: 18px;\n    margin-top: 18px;\n    background: #fff;\n    font-size: 14px;\n  }\n\n  .patch-volume-pricing h3 {\n    margin: 0 0 8px;\n    font-size: 22px;\n    line-height: 1.1;\n  }\n\n  .patch-volume-pricing p {\n    margin: 0 0 10px;\n    line-height: 1.4;\n  }\n\n  .pvp-example {\n    font-size: 13px;\n    color: #444;\n  }\n\n  .pvp-size-buttons {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 8px;\n    margin: 14px 0;\n  }\n\n  .pvp-size-button {\n    border: 1px solid #111;\n    background: #fff;\n    color: #111;\n    border-radius: 999px;\n    padding: 8px 12px;\n    cursor: pointer;\n    font-size: 13px;\n  }\n\n  .pvp-size-button.active {\n    background: #111;\n    color: #fff;\n  }\n\n  .pvp-selected-size {\n    margin-bottom: 10px;\n    font-size: 13px;\n  }\n\n  .pvp-table {\n    width: 100%;\n    border-collapse: collapse;\n    font-size: 13px;\n  }\n\n  .pvp-table th,\n  .pvp-table td {\n    border-bottom: 1px solid #e5e5e5;\n    padding: 9px 6px;\n    text-align: right;\n  }\n\n  .pvp-table th:first-child,\n  .pvp-table td:first-child {\n    text-align: left;\n  }\n\n  .pvp-table th {\n    font-weight: 700;\n    color: #111;\n  }\n\n  .pvp-note {\n    margin-top: 12px !important;\n    font-size: 12px;\n    color: #555;\n  }\n\n  @media screen and (max-width: 600px) {\n    .patch-volume-pricing {\n      padding: 14px;\n    }\n\n    .pvp-table {\n      font-size: 12px;\n    }\n\n    .pvp-table th,\n    .pvp-table td {\n      padding: 8px 4px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    const tiers = [\n      { qty: 10, discount: 50 },\n      { qty: 25, discount: 64 },\n      { qty: 50, discount: 68 },\n      { qty: 100, discount: 73 },\n      { qty: 500, discount: 78 },\n      { qty: 1000, discount: 81 },\n      { qty: 5000, discount: 84 }\n    ];\n\n    const buttons = document.querySelectorAll('.pvp-size-button');\n    const tableBody = document.getElementById('pvp-table-body');\n    const currentSize = document.getElementById('pvp-current-size');\n\n    function money(value) {\n      return '$' + Number(value).toFixed(2);\n    }\n\n    function renderTable(button) {\n      const regularPrice = parseFloat(button.dataset.price);\n      const title = button.dataset.title;\n\n      currentSize.textContent = title;\n      tableBody.innerHTML = '';\n\n      tiers.forEach(function (tier) {\n        const discountedPrice = regularPrice * (1 - tier.discount / 100);\n        const savings = regularPrice - discountedPrice;\n\n        const row = document.createElement('tr');\n\n        row.innerHTML = `\n          <td>${tier.qty}+</td>\n          <td>${money(regularPrice)}</td>\n          <td>${tier.discount}% off</td>\n          <td><strong>${money(discountedPrice)}</strong></td>\n          <td>${money(savings)}</td>\n        `;\n\n        tableBody.appendChild(row);\n      });\n    }\n\n    buttons.forEach(function (button) {\n      button.addEventListener('click', function () {\n        buttons.forEach(function (btn) {\n          btn.classList.remove('active');\n        });\n\n        button.classList.add('active');\n        renderTable(button);\n      });\n    });\n\n    if (buttons.length > 0) {\n      renderTable(buttons[0]);\n    }\n  });\n</script>\n{% endif %}"
+              },
+              "blocks": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "Product description",
@@ -226,11 +282,12 @@
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-primary--family)",
-                "font_size": "",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -247,20 +304,13 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "custom_liquid_YiQi7B",
             "text_aEtTtq"
           ]
-        },
-        "disclosures": {
-          "type": "disclosures",
-          "settings": {
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "disclosures"
+        "shop_shop_login_button_app_block_YXqg3C"
       ],
       "settings": {
         "content_width": "content-center-aligned",
@@ -268,6 +318,8 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -279,17 +331,18 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h2>You may also like </h2>",
+            "text": "<h3>You may also like </h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "h4",
             "font": "var(--font-primary--family)",
-            "font_size": "",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -306,9 +359,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 8,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 8,
@@ -324,6 +379,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -339,13 +395,14 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "paragraph",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -370,6 +427,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -403,6 +461,7 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
+        "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
         "padding-block-end": 48
       }

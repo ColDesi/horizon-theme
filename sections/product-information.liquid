@@ -1,3 +1,5 @@
+
+
 <script type="application/ld+json">
   {{ closest.product | structured_data }}
 </script>
@@ -22,7 +24,7 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% if section.settings.enable_sticky_add_to_cart %}
+{% if section.settings.enable_sticky_add_to_cart and closest.product.handle != 'custom-patch-1' %}
   {% liquid
     assign current_variant = product.selected_or_first_available_variant
     # Get the initial quantity based on quantity rules
@@ -165,6 +167,15 @@
   </sticky-add-to-cart>
 {% endif %}
 
+{%- render 'design_button',
+      product: product,
+      variant: product.selected_or_first_available_variant -%}
+
+{%- render 'sso_link',
+  label: 'Open saved patch designs',
+  next: '/my/designs'
+-%}
+
 {% render 'product-information-content',
   product: closest.product,
   section_id: section.id,
@@ -175,6 +186,39 @@
 %}
 
 {% stylesheet %}
+  .patch-size-pricing {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 8px;
+  }
+  .patch-size-pricing h3 {
+  margin: 0 0 .75rem;
+}
+
+.patch-size-pricing ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.patch-size-pricing li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .4rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  }
+
+  .patch-size-pricing li:last-child {
+    border-bottom: 0;
+  }
+
+  .patch-size-pricing p {
+    margin: .75rem 0 0;
+    font-size: .9em;
+    opacity: .75;
+  }
   .sticky-add-to-cart__bar {
     position: fixed;
     bottom: 20px;
@@ -363,9 +407,6 @@
 {
   "name": "t:names.product_information",
   "blocks": [
-    {
-      "type": "@theme"
-    },
     {
       "type": "@app"
     }

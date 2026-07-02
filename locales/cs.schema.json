@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "names": {
     "404": "404",
@@ -190,8 +199,7 @@
     "product_sku": "SKU",
     "layered_slideshow": "Vrstvená prezentace",
     "drawer": "Zásuvka",
-    "cart_drawer": "Výsuvný košík",
-    "disclosures": "Prohlášení"
+    "cart_drawer": "Výsuvný košík"
   },
   "settings": {
     "alignment": "Zarovnání",
@@ -604,9 +612,7 @@
     "bottom_row_text": "Text dolního řádku",
     "button_style": "Styl tlačítka",
     "input_style": "Styl pole",
-    "selected_button_style": "Styl vybraného tlačítka",
-    "open_by_default": "Otevřeno ve výchozím stavu",
-    "title_preset": "Předvolba nadpisu"
+    "selected_button_style": "Styl vybraného tlačítka"
   },
   "options": {
     "apple": "Apple",
@@ -1008,8 +1014,6 @@
     "local_pickup_description": "Zobrazte blízká místa vyzvednutí, když je nastaveno místní vyzvednutí v online obchodu. [Další informace](https://help.shopify.com/en/manual/fulfillment/setup/delivery-methods/pickup-in-store)",
     "local_pickup": "Místní vyzvednutí",
     "gift_card_products": "Produkty dárkové karty",
-    "disclosures": "Prohlášení",
-    "disclosures_metafield_content": "Povinná bezpečnostní varování a zákonná prohlášení pro tento produkt.",
     "page_text_color_contrast_info": "Sekce s vlastní barvou pozadí použijí tuto barvu textu pouze v případě dostatečného barevného kontrastu."
   },
   "html_defaults": {
@@ -1104,8 +1108,7 @@
     "shop_the_look": "<h2>Nakupujte vzhled</h2>",
     "bestsellers": "Nejprodávanější",
     "featured_collection": "Propagovaná kolekce",
-    "new_arrivals": "Novinky",
-    "disclosures": "Prohlášení"
+    "new_arrivals": "Novinky"
   },
   "info": {
     "video_alt_text": "Popište video pro uživatele asistivních technologií",

@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "disabled": true,
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "disabled": true,
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "custom_liquid_gRHAKw": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<section style=\"max-width:1200px;margin:0 auto;padding:40px 20px;font-family:inherit;color:#fff;background:#111;\">\n\n  <!-- HERO -->\n  <div style=\"display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:40px;\">\n    <div>\n      <h1 style=\"font-size:clamp(38px,5vw,64px);line-height:1;margin:0 0 20px;font-weight:800;color:#fff;\">\n        How to Apply Your Patch\n      </h1>\n      <p style=\"font-size:20px;line-height:1.5;margin:0;max-width:650px;color:#d6d6d6;\">\n        Apply your patch with a heat press in about 15 seconds. Follow these simple settings for a clean, durable finish.\n      </p>\n    </div>\n\n    <div style=\"background:#1c1c1c;border-radius:22px;min-height:360px;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;border:1px solid #333;color:#fff;\">\n      <div>\n        <div style=\"font-size:54px;margin-bottom:12px;\">🔥</div>\n        <strong style=\"display:block;font-size:24px;margin-bottom:8px;color:#fff;\">Heat Press Application</strong>\n        <span style=\"font-size:16px;color:#aaa;\">Replace this box with your hero image later</span>\n      </div>\n    </div>\n  </div>\n\n  <!-- SETTINGS BAR -->\n  <div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:30px 0 70px;\">\n    <div style=\"background:#1c1c1c;border:1px solid #333;border-radius:18px;padding:28px;text-align:center;\">\n      <div style=\"font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:#aaa;margin-bottom:8px;\">Temperature</div>\n      <div style=\"font-size:34px;font-weight:800;color:#fff;\">320°F</div>\n    </div>\n\n    <div style=\"background:#1c1c1c;border:1px solid #333;border-radius:18px;padding:28px;text-align:center;\">\n      <div style=\"font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:#aaa;margin-bottom:8px;\">Pressure</div>\n      <div style=\"font-size:34px;font-weight:800;color:#fff;\">Medium</div>\n    </div>\n\n    <div style=\"background:#1c1c1c;border:1px solid #333;border-radius:18px;padding:28px;text-align:center;\">\n      <div style=\"font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:#aaa;margin-bottom:8px;\">Time</div>\n      <div style=\"font-size:34px;font-weight:800;color:#fff;\">15 sec</div>\n    </div>\n  </div>\n\n  <!-- INTRO -->\n  <div style=\"text-align:center;max-width:760px;margin:0 auto 40px;\">\n    <h2 style=\"font-size:clamp(32px,4vw,50px);line-height:1.1;margin:0 0 14px;font-weight:800;color:#fff;\">\n      Apply in 3 Simple Steps\n    </h2>\n    <p style=\"font-size:18px;line-height:1.5;color:#d6d6d6;margin:0;\">\n      No complicated setup. No mystery settings. Just press, lift, and you’re done.\n    </p>\n  </div>\n\n  <!-- STEPS -->\n  <div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:70px;\">\n\n    <div style=\"border:1px solid #333;border-radius:20px;overflow:hidden;background:#181818;\">\n      <div style=\"background:#1c1c1c;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;\">\n        <div>\n          <div style=\"font-size:44px;margin-bottom:10px;\">🌡️</div>\n          <strong style=\"color:#fff;\">Set to 320°F</strong>\n        </div>\n      </div>\n      <div style=\"padding:26px;\">\n        <div style=\"width:42px;height:42px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:16px;\">\n          1\n        </div>\n        <h3 style=\"font-size:26px;line-height:1.2;margin:0 0 12px;font-weight:800;color:#fff;\">Set Your Heat Press</h3>\n        <p style=\"font-size:16px;line-height:1.5;color:#d6d6d6;margin:0;\">\n          Set your heat press to 320°F and allow it to fully heat before applying your patch.\n        </p>\n      </div>\n    </div>\n\n    <div style=\"border:1px solid #333;border-radius:20px;overflow:hidden;background:#181818;\">\n      <div style=\"background:#1c1c1c;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;\">\n        <div>\n          <div style=\"font-size:44px;margin-bottom:10px;\">⏱️</div>\n          <strong style=\"color:#fff;\">Press for 15 Seconds</strong>\n        </div>\n      </div>\n      <div style=\"padding:26px;\">\n        <div style=\"width:42px;height:42px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:16px;\">\n          2\n        </div>\n        <h3 style=\"font-size:26px;line-height:1.2;margin:0 0 12px;font-weight:800;color:#fff;\">Press the Patch</h3>\n        <p style=\"font-size:16px;line-height:1.5;color:#d6d6d6;margin:0;\">\n          Place the patch on the garment and press with medium pressure for 15 seconds.\n        </p>\n      </div>\n    </div>\n\n    <div style=\"border:1px solid #333;border-radius:20px;overflow:hidden;background:#181818;\">\n      <div style=\"background:#1c1c1c;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;\">\n        <div>\n          <div style=\"font-size:44px;margin-bottom:10px;\">✅</div>\n          <strong style=\"color:#fff;\">Lift and Let Cool</strong>\n        </div>\n      </div>\n      <div style=\"padding:26px;\">\n        <div style=\"width:42px;height:42px;border-radius:50%;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:16px;\">\n          3\n        </div>\n        <h3 style=\"font-size:26px;line-height:1.2;margin:0 0 12px;font-weight:800;color:#fff;\">Lift and Finish</h3>\n        <p style=\"font-size:16px;line-height:1.5;color:#d6d6d6;margin:0;\">\n          Lift the press and let the patch cool briefly before stretching, folding, or wearing the item.\n        </p>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- CHECKLIST -->\n  <div style=\"background:#1c1c1c;border:1px solid #333;border-radius:22px;padding:34px;margin-bottom:70px;color:#fff;\">\n    <h2 style=\"font-size:36px;line-height:1.1;margin:0 0 22px;font-weight:800;color:#fff;\">Before You Press</h2>\n    <div style=\"display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;font-size:17px;line-height:1.5;color:#d6d6d6;\">\n      <div>✓ Make sure the garment is flat.</div>\n      <div>✓ Remove wrinkles from the application area.</div>\n      <div>✓ Position the patch exactly where you want it.</div>\n      <div>✓ Confirm the patch is fully under the heat press platen.</div>\n      <div>✓ Use a Teflon sheet or finishing paper if needed.</div>\n      <div>✓ Test on a sample garment when possible.</div>\n    </div>\n  </div>\n\n  <!-- FAQ -->\n  <div style=\"margin-bottom:70px;\">\n    <div style=\"text-align:center;max-width:760px;margin:0 auto 30px;\">\n      <h2 style=\"font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 12px;font-weight:800;color:#fff;\">FAQs</h2>\n      <p style=\"font-size:18px;color:#d6d6d6;margin:0;\">Quick answers for cleaner applications and fewer support tickets.</p>\n    </div>\n\n    <details style=\"border-bottom:1px solid #333;padding:20px 0;color:#fff;\">\n      <summary style=\"font-size:20px;font-weight:800;cursor:pointer;color:#fff;\">Can I use a Teflon sheet or finishing paper on top?</summary>\n      <p style=\"font-size:16px;line-height:1.5;color:#d6d6d6;margin:14px 0 0;\">Yes. You can use a Teflon sheet or finishing paper over the patch while pressing. This can help protect the garment and create a cleaner finish.</p>\n    </details>\n\n    <details style=\"border-bottom:1px solid #333;padding:20px 0;color:#fff;\">\n      <summary style=\"font-size:20px;font-weight:800;cursor:pointer;color:#fff;\">How do I avoid heat press lines?</summary>\n      <p style=\"font-size:16px;line-height:1.5;color:#d6d6d6;margin:14px 0 0;\">Use a Teflon sheet, finishing paper, or a pressing pillow when needed. You can also reduce visible press marks by making sure the garment is smooth and using only the pressure needed for good adhesion.</p>\n    </details>\n\n    <details style=\"border-bottom:1px solid #333;padding:20px 0;color:#fff;\">\n      <summary style=\"font-size:20px;font-weight:800;cursor:pointer;color:#fff;\">My patch did not fully adhere. What should I do?</summary>\n      <p style=\"font-size:16px;line-height:1.5;color:#d6d6d6;margin:14px 0 0;\">Press it again for a few more seconds. You may also need to adjust the temperature up or down by about 10°F depending on the garment, press, and material.</p>\n    </details>\n\n    <details style=\"border-bottom:1px solid #333;padding:20px 0;color:#fff;\">\n      <summary style=\"font-size:20px;font-weight:800;cursor:pointer;color:#fff;\">Can I press patches on any fabric?</summary>\n      <p style=\"font-size:16px;line-height:1.5;color:#d6d6d6;margin:14px 0 0;\">Most heat-friendly garments and accessories work well, but always check the garment’s care label first. Avoid fabrics that cannot handle heat.</p>\n    </details>\n  </div>\n\n  <!-- TROUBLESHOOTING -->\n  <div style=\"margin-bottom:70px;\">\n    <div style=\"text-align:center;max-width:760px;margin:0 auto 30px;\">\n      <h2 style=\"font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 12px;font-weight:800;color:#fff;\">Troubleshooting</h2>\n      <p style=\"font-size:18px;color:#d6d6d6;margin:0;\">Small adjustment, big difference.</p>\n    </div>\n\n    <div style=\"display:grid;grid-template-columns:repeat(2,1fr);gap:18px;\">\n      <div style=\"border:1px solid #333;background:#181818;border-radius:18px;padding:24px;\">\n        <h3 style=\"font-size:22px;margin:0 0 8px;font-weight:800;color:#fff;\">Patch edges are lifting</h3>\n        <p style=\"margin:0;color:#d6d6d6;line-height:1.5;\">Press again for a few more seconds. Check pressure and make sure the full patch is under the platen.</p>\n      </div>\n\n      <div style=\"border:1px solid #333;background:#181818;border-radius:18px;padding:24px;\">\n        <h3 style=\"font-size:22px;margin:0 0 8px;font-weight:800;color:#fff;\">Patch did not adhere</h3>\n        <p style=\"margin:0;color:#d6d6d6;line-height:1.5;\">Increase dwell time or adjust temperature up or down by 10°F and retest.</p>\n      </div>\n\n      <div style=\"border:1px solid #333;background:#181818;border-radius:18px;padding:24px;\">\n        <h3 style=\"font-size:22px;margin:0 0 8px;font-weight:800;color:#fff;\">Heat press lines appear</h3>\n        <p style=\"margin:0;color:#d6d6d6;line-height:1.5;\">Use a Teflon sheet, finishing paper, or pressing pillow to reduce visible platen marks.</p>\n      </div>\n\n      <div style=\"border:1px solid #333;background:#181818;border-radius:18px;padding:24px;\">\n        <h3 style=\"font-size:22px;margin:0 0 8px;font-weight:800;color:#fff;\">Fabric looks shiny</h3>\n        <p style=\"margin:0;color:#d6d6d6;line-height:1.5;\">Lower the pressure or use finishing paper on top. Some fabrics are more heat-sensitive than others.</p>\n      </div>\n    </div>\n  </div>\n\n  <!-- CARE -->\n  <div style=\"background:#1c1c1c;color:#fff;border:1px solid #333;border-radius:24px;padding:38px;\">\n    <h2 style=\"font-size:36px;line-height:1.1;margin:0 0 18px;font-weight:800;color:#fff;\">Make It Last</h2>\n    <ul style=\"margin:0;padding-left:22px;font-size:17px;line-height:1.7;color:#d6d6d6;\">\n      <li>Let the patch cool before handling.</li>\n      <li>Wait before washing when possible.</li>\n      <li>Wash inside out.</li>\n      <li>Avoid high heat in the dryer when possible.</li>\n    </ul>\n  </div>\n\n</section>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_gRHAKw"
+  ]
+}
