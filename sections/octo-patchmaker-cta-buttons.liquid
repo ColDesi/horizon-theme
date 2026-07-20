@@ -1,0 +1,103 @@
+<section class="octo-patchmaker-cta">
+  <div class="octo-patchmaker-cta__inner">
+    {% render 'patchmaker_button',
+      logged_out_text: section.settings.patch_logged_out_text,
+      logged_in_text: section.settings.patch_logged_in_text,
+      next: '/',
+      style: 'primary',
+      alignment: 'center'
+    %}
+
+    {% render 'patchmaker_button',
+      logged_out_text: section.settings.flex_logged_out_text,
+      logged_in_text: section.settings.flex_logged_in_text,
+      next: '/flex',
+      style: 'secondary',
+      alignment: 'center'
+    %}
+  </div>
+</section>
+
+<style>
+  .octo-patchmaker-cta {
+    background: #000000;
+    padding: 18px 20px;
+  }
+
+  .octo-patchmaker-cta__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .octo-patchmaker-cta .patchmaker-button-wrap {
+    margin: 0;
+  }
+
+  .octo-patchmaker-cta .patchmaker-button {
+    min-width: 180px;
+    text-align: center;
+    padding: 15px 28px;
+    border-radius: 7px;
+    font-weight: 800;
+  }
+
+  .octo-patchmaker-cta .patchmaker-button--primary {
+    background: #ff6a13;
+    color: #111111 !important;
+  }
+
+  .octo-patchmaker-cta .patchmaker-button--secondary {
+    background: #ffffff;
+    color: #ff6a13 !important;
+  }
+
+  @media screen and (max-width: 749px) {
+    .octo-patchmaker-cta__inner {
+      gap: 14px;
+    }
+
+    .octo-patchmaker-cta .patchmaker-button {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Patchmaker CTA Buttons",
+  "settings": [
+    {
+      "type": "text",
+      "id": "patch_logged_out_text",
+      "label": "Patches logged-out text",
+      "default": "Design Patches"
+    },
+    {
+      "type": "text",
+      "id": "patch_logged_in_text",
+      "label": "Patches logged-in text",
+      "default": "Design Patches"
+    },
+    {
+      "type": "text",
+      "id": "flex_logged_out_text",
+      "label": "3D Flex logged-out text",
+      "default": "Design 3D Flex"
+    },
+    {
+      "type": "text",
+      "id": "flex_logged_in_text",
+      "label": "3D Flex logged-in text",
+      "default": "Design 3D Flex"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Patchmaker CTA Buttons"
+    }
+  ]
+}
+{% endschema %}

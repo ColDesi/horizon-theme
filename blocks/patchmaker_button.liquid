@@ -1,0 +1,60 @@
+{% render 'patchmaker_button',
+  logged_out_text: block.settings.logged_out_text,
+  logged_in_text: block.settings.logged_in_text,
+  next: block.settings.next,
+  style: block.settings.style,
+  alignment: block.settings.alignment
+%}
+
+{% schema %}
+{
+  "name": "Patchmaker Button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logged_out_text",
+      "label": "Logged-out button text",
+      "default": "Log in and start designing"
+    },
+    {
+      "type": "text",
+      "id": "logged_in_text",
+      "label": "Logged-in button text",
+      "default": "Start designing or edit your saved designs"
+    },
+    {
+      "type": "text",
+      "id": "next",
+      "label": "Logged-in Patchmaker destination",
+      "default": "/my/designs"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Button style",
+      "default": "primary",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "outline", "label": "Outline" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Patchmaker Button"
+    }
+  ]
+}
+{% endschema %}

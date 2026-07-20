@@ -1,0 +1,21 @@
+{%- assign next_target = request.get['next'] | default: '/my/designs' -%}
+
+<div style="display:flex;align-items:center;justify-content:center;min-height:60vh;">
+  <div style="text-align:center;font-family:system-ui;color:#333;">
+    <p style="font-size:15px;color:#666;">Signing you in…</p>
+    {% render 'patchmaker_button',
+      logged_out_text: 'Sign in to continue',
+      logged_in_text: 'Continue to designer',
+      next: next_target,
+      style: 'primary',
+      alignment: 'center'
+    %}
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function () {
+    var btn = document.querySelector('.patchmaker-button');
+    if (btn && btn.href) window.location.replace(btn.href);
+  });
+</script>

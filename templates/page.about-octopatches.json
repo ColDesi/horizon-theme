@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "disabled": true,
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "disabled": true,
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "custom_liquid_gRHAKw": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"octo-about-page\">\n  <style>\n    .octo-about-page {\n      background: #05050a;\n      color: #f7f7f7;\n      font-family: inherit;\n      overflow: hidden;\n    }\n\n    .octo-about-wrap {\n      max-width: 1180px;\n      margin: 0 auto;\n      padding: 70px 20px;\n    }\n\n    .octo-hero {\n      display: grid;\n      grid-template-columns: 1.1fr .9fr;\n      gap: 40px;\n      align-items: center;\n      margin-bottom: 80px;\n    }\n\n    .octo-kicker {\n      color: #ff6a13;\n      font-weight: 800;\n      text-transform: uppercase;\n      letter-spacing: .12em;\n      margin-bottom: 14px;\n      font-size: 14px;\n    }\n\n    .octo-about-page h1,\n    .octo-about-page h2,\n    .octo-about-page h3 {\n      color: #ffffff;\n      line-height: 1.05;\n      margin: 0 0 18px;\n    }\n\n    .octo-about-page h1 {\n      font-size: clamp(42px, 6vw, 78px);\n      max-width: 850px;\n    }\n\n    .octo-about-page h2 {\n      font-size: clamp(30px, 4vw, 52px);\n    }\n\n    .octo-about-page h3 {\n      font-size: clamp(24px, 3vw, 36px);\n      color: #ffb38a;\n    }\n\n    .octo-about-page p {\n      color: #d8d8df;\n      font-size: 18px;\n      line-height: 1.7;\n      margin: 0 0 18px;\n    }\n\n    .octo-hero-img,\n    .octo-img {\n      width: 100%;\n      border-radius: 28px;\n      display: block;\n      box-shadow: 0 24px 70px rgba(0,0,0,.55);\n    }\n\n    .octo-card {\n      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));\n      border: 1px solid rgba(255,255,255,.12);\n      border-radius: 30px;\n      padding: 38px;\n      margin-bottom: 36px;\n      box-shadow: 0 20px 60px rgba(0,0,0,.35);\n    }\n\n    .octo-split {\n      display: grid;\n      grid-template-columns: 1fr 1fr;\n      gap: 36px;\n      align-items: center;\n      margin-bottom: 60px;\n    }\n\n    .octo-list {\n      display: grid;\n      grid-template-columns: repeat(2, 1fr);\n      gap: 14px;\n      margin: 26px 0 0;\n      padding: 0;\n      list-style: none;\n    }\n\n    .octo-list li {\n      background: rgba(255,106,19,.12);\n      border: 1px solid rgba(255,106,19,.3);\n      border-radius: 14px;\n      padding: 13px 16px;\n      color: #fff;\n      font-weight: 700;\n    }\n\n    .octo-finishes {\n      display: grid;\n      grid-template-columns: repeat(3, 1fr);\n      gap: 14px;\n      margin-top: 24px;\n    }\n\n    .octo-finishes span {\n      background: rgba(255,255,255,.08);\n      border: 1px solid rgba(255,255,255,.12);\n      border-radius: 999px;\n      padding: 12px 16px;\n      text-align: center;\n      color: #fff;\n      font-weight: 700;\n    }\n\n    .octo-final {\n      text-align: center;\n      padding: 70px 30px;\n      border-radius: 34px;\n      background:\n        radial-gradient(circle at top, rgba(255,106,19,.28), transparent 40%),\n        linear-gradient(145deg, #15101f, #05050a);\n      border: 1px solid rgba(255,255,255,.14);\n    }\n\n    .octo-final p {\n      max-width: 850px;\n      margin-left: auto;\n      margin-right: auto;\n    }\n\n    @media (max-width: 850px) {\n      .octo-hero,\n      .octo-split {\n        grid-template-columns: 1fr;\n      }\n\n      .octo-card {\n        padding: 26px;\n      }\n\n      .octo-list,\n      .octo-finishes {\n        grid-template-columns: 1fr;\n      }\n\n      .octo-about-wrap {\n        padding: 45px 16px;\n      }\n    }\n  </style>\n\n  <div class=\"octo-about-wrap\">\n\n    <div class=\"octo-hero\">\n      <div>\n        <div class=\"octo-kicker\">About OctoPatches</div>\n        <h1>We Didn’t Want to Build Another Patch Company.</h1>\n        <h3>We Wanted to Rethink What a Patch Could Be.</h3>\n        <p>For years, we’ve worked with businesses, decorators, apparel shops, sports teams, and creators who love custom products.</p>\n        <p>One thing became clear. People love patches.</p>\n        <p>A great patch instantly adds personality, professionalism, and perceived value to hats, jackets, backpacks, uniforms, and apparel.</p>\n      </div>\n\n      <img class=\"octo-hero-img\" src=\"https://cdn.shopify.com/s/files/1/0834/8562/2516/files/bears_patch_jacket_banner.png?v=1781554823\" alt=\"Custom patch on jacket\">\n    </div>\n\n    <div class=\"octo-card\">\n      <h2>The Patch Industry Needed a Fresh Look</h2>\n      <p>If you’ve ever ordered custom patches, you’ve probably run into high minimums, setup fees, long production times, limited options, confusing proofs, or difficult application methods.</p>\n      <p>Many companies only make one type of patch, so you’re forced to work within their limits instead of creating exactly what you want.</p>\n      <p>We thought there had to be a better way.</p>\n    </div>\n\n    <div class=\"octo-split\">\n      <div>\n        <h2>Designing a Patch Should Be Fun, Not Frustrating</h2>\n        <p>Traditionally, ordering a custom patch meant sending artwork, waiting for a proof, requesting revisions, and hoping the final product matched your vision.</p>\n        <p>With OctoPatches, you can build your patch online, experiment with styles and finishes, and see your design come together before placing your order.</p>\n        <p>Creating a patch should be exciting, not stressful.</p>\n      </div>\n      <img class=\"octo-img\" src=\"https://cdn.shopify.com/s/files/1/0834/8562/2516/files/various_patches.png?v=1783361469\" alt=\"Various custom patch styles\">\n    </div>\n\n    <div class=\"octo-split\">\n      <img class=\"octo-img\" src=\"https://cdn.shopify.com/s/files/1/0834/8562/2516/files/leather_-_mountain_man.png?v=1781554824\" alt=\"Leather style custom patch\">\n      <div>\n        <h2>The Look You Want. Without the Tradeoffs.</h2>\n        <p>People love premium material looks like leather-inspired textures, woodgrain, canvas, carbon fiber, brushed metal, camo, and more.</p>\n        <p>Our realistic faux finishes capture the look and character people love while allowing vibrant full-color graphics, consistent quality, and affordable pricing.</p>\n\n        <div class=\"octo-finishes\">\n          <span>Leather Look</span>\n          <span>Woodgrain</span>\n          <span>Canvas</span>\n          <span>Carbon Fiber</span>\n          <span>Brushed Metal</span>\n          <span>Camo</span>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"octo-card\">\n      <h2>Why Choose Between Full Color and Dimension?</h2>\n      <p>Some patches stand out because they’re raised and textured. Others pop because they’re vibrant and full of color.</p>\n      <p>We believed customers shouldn’t have to choose.</p>\n      <p>OctoPatches brings together eye-catching color, realistic textures, and dimensional effects to create patches that stand out from every angle.</p>\n    </div>\n\n    <div class=\"octo-split\">\n      <div>\n        <h2>Applying Your Patch Shouldn’t Be the Hardest Part</h2>\n        <p>Sewing patches is reliable, but it takes time, skill, and equipment. Some products are difficult to sew, and not everyone wants to attach every patch by hand.</p>\n        <p>OctoPatches was designed to be easy to apply while delivering a professional, durable bond customers can count on.</p>\n      </div>\n      <img class=\"octo-img\" src=\"https://cdn.shopify.com/s/files/1/0834/8562/2516/files/octo_making_a_jacket_with_press.png?v=1783367456\" alt=\"Octopus applying a patch with a heat press\">\n    </div>\n\n    <div class=\"octo-card\">\n      <h2>Why We Created OctoPatches</h2>\n      <p>We asked a simple question: <strong>What if ordering custom patches could be easy, affordable, and fun?</strong></p>\n\n      <ul class=\"octo-list\">\n        <li>Design online</li>\n        <li>Choose realistic finishes</li>\n        <li>Add dimensional details</li>\n        <li>Print full-color artwork</li>\n        <li>Order only what you need</li>\n        <li>Skip setup fees</li>\n        <li>Apply in minutes</li>\n        <li>Create without limits</li>\n      </ul>\n    </div>\n\n    <div class=\"octo-card\">\n      <h2>Why the Octopus?</h2>\n      <p>The octopus is one of nature’s most adaptable creators. It changes, explores, and solves problems in remarkable ways.</p>\n      <p>That’s exactly what inspired our name.</p>\n      <p>Every project is different. Every customer has a different vision. Every patch tells a different story.</p>\n      <p>OctoPatches gives you the flexibility to create patches that fit your brand, your style, and your imagination, without being boxed into one material, one look, or one way of doing things.</p>\n    </div>\n\n    <div class=\"octo-final\">\n      <h2>Welcome to a New Generation of Custom Patches.</h2>\n      <p>No unnecessary minimums. No setup fees. No confusing ordering process.</p>\n      <p>Just creative freedom, realistic faux finishes, vibrant full-color printing, dimensional details, and patches you’ll be proud to wear.</p>\n      <p><strong>Because creating a great patch should be just as enjoyable as showing it off.</strong></p>\n    </div>\n\n  </div>\n</section>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_gRHAKw"
+  ]
+}

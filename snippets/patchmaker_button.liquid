@@ -1,0 +1,88 @@
+{%- assign patch_maker_url = 'https://pm.octopatches.com' -%}
+{%- assign sso_secret = '84e309e6e7c52f8289354dd9961ba4261cb3c4a839470fa7fe15c2c80cf96a35' -%}
+
+{%- assign logged_out_text = logged_out_text | default: 'Log in and start designing' -%}
+{%- assign logged_in_text = logged_in_text | default: 'Start designing or edit your saved designs' -%}
+{%- assign next = next | default: '/my/designs' -%}
+{%- assign style = style | default: 'primary' -%}
+{%- assign alignment = alignment | default: 'center' -%}
+
+{%- if customer -%}
+  {%- assign now_ts = 'now' | date: '%s' | plus: 0 -%}
+  {%- assign exp_ts = now_ts | plus: 3600 -%}
+  {%- capture sso_body -%}{"email":{{ customer.email | downcase | json }},"exp":{{ exp_ts }},"id":"{{ customer.id }}"}{%- endcapture -%}
+
+  {%- assign sso_body_b64 = sso_body
+    | base64_encode
+    | replace: '+', '-'
+    | replace: '/', '_'
+    | replace: '=', '' -%}
+
+  {%- assign sso_sig_hex = sso_body | hmac_sha256: sso_secret -%}
+  {%- assign sso_token = sso_body_b64 | append: '.' | append: sso_sig_hex -%}
+  {%- assign sso_next_encoded = next | url_encode -%}
+
+  {%- assign patchmaker_href = patch_maker_url
+    | append: '/sso?token='
+    | append: sso_token
+    | append: '&next='
+    | append: sso_next_encoded -%}
+
+  {%- assign button_text = logged_in_text -%}
+{%- else -%}
+  {%- comment -%}
+    Route logged-out clicks through a dedicated /pages/sso Shopify
+    Page. That page carries `next` in its URL, and Shopify's login
+    redirects the customer BACK to that page after auth. Once
+    signed in, the same patchmaker_button snippet on that page
+    fires the IF branch, mints the token, and redirects to
+    patchmaker with the correct `next`.
+  {%- endcomment -%}
+  {%- assign next_encoded = next | url_encode -%}
+  {%- assign sso_return = shop.url
+    | append: '/pages/sso?next='
+    | append: next_encoded -%}
+  {%- assign sso_return_encoded = sso_return | url_encode -%}
+  {%- assign patchmaker_href = routes.account_login_url
+    | append: '?return_url='
+    | append: sso_return_encoded -%}
+  {%- assign button_text = logged_out_text -%}
+{%- endif -%}
+
+<div class="patchmaker-button-wrap patchmaker-button-wrap--{{ alignment }}">
+  <a class="patchmaker-button patchmaker-button--{{ style }}" href="{{ patchmaker_href }}">
+    {{ button_text }}
+  </a>
+</div>
+
+<style>
+  .patchmaker-button-wrap { margin: 1rem 0; }
+  .patchmaker-button-wrap--left { text-align: left; }
+  .patchmaker-button-wrap--center { text-align: center; }
+  .patchmaker-button-wrap--right { text-align: right; }
+
+  .patchmaker-button {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .patchmaker-button--primary {
+  background: #ff6a13;
+  color: #111111 !important;
+}
+
+.patchmaker-button--secondary {
+  background: #ffffff;
+  color: #ff6a13 !important;
+}
+
+  .patchmaker-button--outline {
+    background: transparent;
+    color: inherit !important;
+    border: 1px solid currentColor;
+  }
+</style>

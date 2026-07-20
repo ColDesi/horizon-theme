@@ -1,6 +1,20 @@
 
 
-{% if section.blocks.size > 1 %}
+{% liquid
+  assign visible_block_count = 0
+
+  for block in section.blocks
+    if block.type == '_guest-announcement'
+      unless customer
+        assign visible_block_count = visible_block_count | plus: 1
+      endunless
+    else
+      assign visible_block_count = visible_block_count | plus: 1
+    endif
+  endfor
+%}
+
+{% if visible_block_count > 1 %}
   <script
     src="{{ 'announcement-bar.js' | asset_url }}"
     type="module"
@@ -16,13 +30,14 @@
   style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;{% if section.settings.divider_color != blank %} --color-border: {{ section.settings.divider_color }};{% endif %}"
 >
   {% liquid
-    assign autoplay = false
-    assign show_arrows = false
-    if section.blocks.size > 1
-      assign autoplay = true
-      assign show_arrows = true
-    endif
-  %}
+  assign autoplay = false
+  assign show_arrows = false
+
+  if visible_block_count > 1
+    assign autoplay = true
+    assign show_arrows = true
+  endif
+%}
 
   <announcement-bar-component
     class="announcement-bar__slider"
@@ -129,10 +144,13 @@
 {
   "name": "t:names.announcement_bar",
   "blocks": [
-    {
-      "type": "_announcement"
-    }
-  ],
+  {
+    "type": "_announcement"
+  },
+  {
+    "type": "octo-guest-announcement"
+  }
+],
   "enabled_on": {
     "groups": ["header"]
   },

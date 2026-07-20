@@ -14,8 +14,19 @@
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
       "blocks": {
+        "octo_guest_announcement_jrQwHB": {
+          "type": "octo-guest-announcement",
+          "name": "Guest account message",
+          "settings": {
+            "heading": "First time here?",
+            "text": "Create a free account to start designing and save your projects.",
+            "link_label": "Start →"
+          },
+          "blocks": {}
+        },
         "announcement_BxgCk9": {
           "type": "_announcement",
+          "disabled": true,
           "settings": {
             "text": "Welcome to our store",
             "link": "",
@@ -30,6 +41,7 @@
         }
       },
       "block_order": [
+        "octo_guest_announcement_jrQwHB",
         "announcement_BxgCk9"
       ],
       "name": "t:names.announcement_bar",

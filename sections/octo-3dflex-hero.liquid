@@ -1,0 +1,357 @@
+<section
+  class="flex-hero"
+  style="
+    --desktop-height: {{ section.settings.desktop_height }}px;
+    --mobile-height: {{ section.settings.mobile_height }}px;
+    --logo-width: {{ section.settings.logo_width }}px;
+    --mobile-logo-width: {{ section.settings.mobile_logo_width }}px;
+  "
+>
+  <div class="flex-hero__bg">
+    {% if section.settings.bg_image != blank %}
+      <picture>
+        {% if section.settings.mobile_image != blank %}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ section.settings.mobile_image | image_url: width: 1000 }}">
+        {% endif %}
+
+        <img
+          class="flex-hero__image"
+          src="{{ section.settings.bg_image | image_url: width: 2400 }}"
+          alt="OctoPatches hero background"
+          loading="eager">
+      </picture>
+    {% endif %}
+  </div>
+
+  <div class="flex-hero__content">
+   <div class="flex-hero__text">
+  <div class="flex-hero__eyebrow">{{ section.settings.eyebrow }}</div>
+  <div class="flex-hero__title">{{ section.settings.title }}</div>
+  <div class="flex-hero__line"></div>
+  <div class="flex-hero__subtitle">{{ section.settings.subtitle | newline_to_br }}</div>
+</div>
+
+<div class="flex-hero__bottom">
+      {% if section.settings.logo != blank %}
+        <img
+          class="flex-hero__logo"
+          src="{{ section.settings.logo | image_url: width: 1400 }}"
+          alt="{{ section.settings.logo_alt | escape }}"
+        >
+      {% endif %}
+
+      <div class="flex-hero__cta">
+  {% render 'patchmaker_button',
+  logged_out_text: 'Start Designing → ',
+  logged_in_text: 'Start Designing →',
+  next: '/my/designs'
+%}
+</div>
+    </div>
+  </div>
+</section>
+
+<style>
+.flex-hero {
+  position: relative;
+  width: 100%;
+  min-height: var(--desktop-height);
+  overflow: hidden;
+  background: #050510;
+}
+
+.flex-hero__bg,
+.flex-hero__bg picture,
+.flex-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flex-hero__image {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.flex-hero__content {
+  position: relative;
+  z-index: 2;
+  min-height: var(--desktop-height);
+}
+
+.flex-hero__text {
+  position: absolute;
+  left: clamp(28px, 4vw, 64px);
+  top: 58px;
+  max-width: 430px;
+}
+
+.flex-hero__eyebrow,
+.flex-hero__title {
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: .88;
+  letter-spacing: -2px;
+  text-shadow: 0 4px 14px rgba(0,0,0,.75);
+}
+
+.flex-hero__eyebrow {
+  color: #fff;
+  font-size: clamp(34px, 4vw, 66px);
+}
+
+.flex-hero__title {
+  font-size: clamp(42px, 5vw, 78px);
+  background: linear-gradient(
+  180deg,
+  #3FA2FF 0%,
+  #0B78FF 45%,
+  #005BEA 100%
+
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.flex-hero__line {
+  width: clamp(200px, 24vw, 350px);
+  height: 4px;
+  margin: 18px 0 22px;
+  background: linear-gradient(90deg, #005BEA, #3FA2FF, #00D4FF);
+}
+
+.flex-hero__subtitle {
+  color: #fff;
+  font-weight: 600;
+  font-size: clamp(20px, 1.8vw, 30px);
+  line-height: 1.2;
+  text-shadow: 0 3px 10px rgba(0,0,0,.8);
+}
+
+.flex-hero__bottom {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  width: min(92%, 680px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.flex-hero__logo {
+  width: min(var(--logo-width), 90vw);
+  height: auto;
+  display: block;
+}
+
+.flex-hero__cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 749px) {
+  .flex-hero {
+    min-height: var(--mobile-height);
+  }
+
+  .flex-hero__content {
+    min-height: var(--mobile-height);
+  }
+
+  .flex-hero__image {
+    object-position: center top;
+  }
+
+  .flex-hero__text {
+    left: 20px;
+    top: 32px;
+    max-width: 290px;
+  }
+
+  .flex-hero__eyebrow {
+    font-size: 38px;
+  }
+
+  .flex-hero__title {
+    font-size: 46px;
+  }
+
+  .flex-hero__line {
+    width: 220px;
+    margin: 14px 0 16px;
+  }
+
+  .flex-hero__subtitle {
+    font-size: 22px;
+  }
+
+  .flex-hero__bottom {
+    bottom: 24px;
+    gap: 14px;
+  }
+
+  .flex-hero__logo {
+    width: min(var(--mobile-logo-width), 88vw);
+  }
+
+  .flex-hero__cta {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+
+/* Patchmaker button styling */
+
+/* Hero Patchmaker Button */
+
+.flex-hero .patchmaker-button-wrap {
+  margin: 0;
+}
+
+.flex-hero .patchmaker-button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 320px;
+  min-height: 64px;
+
+  padding: 20px 42px !important;
+
+  border-radius: 999px !important;
+
+  background: linear-gradient(
+  180deg,
+  #33A8FF 0%,
+  #0B78FF 55%,
+  #005BEA 100%
+) !important;
+
+  color: #fff !important;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  text-decoration: none !important;
+
+  border: 1px solid rgba(255,255,255,.15) !important;
+
+  box-shadow:
+  0 10px 30px rgba(0,91,234,.35),
+  inset 0 1px 0 rgba(255,255,255,.25);
+
+  transition: all .22s ease;
+}
+
+.flex-hero .patchmaker-button:hover {
+  transform: translateY(-3px) scale(1.02);
+
+  box-shadow:
+  0 18px 42px rgba(0,91,234,.45),
+  inset 0 1px 0 rgba(255,255,255,.35);
+}
+
+.flex-hero .patchmaker-button:active {
+  transform: translateY(0);
+}
+
+
+</style>
+
+{% schema %}
+{
+  "name": "OctoPatches Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Desktop background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "OctoPatches logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alt text",
+      "default": "OctoPatches"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Top headline",
+      "default": "Custom"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main headline",
+      "default": "Patches"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Any Look. Any Feel.\nLimitless Possibilities."
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Desktop hero height",
+      "min": 500,
+      "max": 850,
+      "step": 25,
+      "default": 675
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Mobile hero height",
+      "min": 550,
+      "max": 950,
+      "step": 25,
+      "default": 750
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Desktop logo width",
+      "min": 300,
+      "max": 850,
+      "step": 25,
+      "default": 575
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "label": "Mobile logo width",
+      "min": 220,
+      "max": 500,
+      "step": 20,
+      "default": 320
+    }
+  ],
+  "presets": [
+    {
+      "name": "3D Flex Hero"
+    }
+  ]
+}
+{% endschema %}

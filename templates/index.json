@@ -9,11 +9,74 @@
  */
 {
   "sections": {
+    "octo_multi_hero_home_tYKnYy": {
+      "type": "octo-multi-hero-home",
+      "name": "Octo Multi Home Hero",
+      "settings": {
+        "desktop_hero": "shopify://shop_images/home-hero-multi-1500x400v6_89bf9d82-f872-41bc-bf5f-364c94662866.png",
+        "mobile_hero": "shopify://shop_images/Home-Hero-M-v3-OctoPatches_Website_Homepage_Image_1023_x_1537_px_1.png",
+        "hero_height": 400,
+        "hero_image_x": 15,
+        "hero_image_y": 45,
+        "hero_alt": "OctoPatches custom patch examples",
+        "hero_title_line_1": "Premium Patches.",
+        "hero_title_line_2": "Endless Possibilities.",
+        "hero_text": "Choose the patch style below.",
+        "hero_copy_position": "left",
+        "hero_text_align": "left",
+        "hero_copy_width": 440,
+        "hero_heading_size": 58,
+        "hero_subheading_size": 28,
+        "hero_heading_color": "#ffffff",
+        "hero_accent_color": "#ff6a13",
+        "hero_subheading_color": "#ffffff",
+        "card_copy_position": "left",
+        "card_text_align": "left",
+        "card_copy_width": 46,
+        "card_heading_size": 42,
+        "card_subheading_size": 18,
+        "card_heading_color": "#ffffff",
+        "card_text_color": "#ffffff",
+        "custom_image": "shopify://shop_images/Build_a_patch_card_v2_720x350_1f730e47-cafd-4fe0-8c9d-9e1754404b5d.png",
+        "custom_gradient_overlay": true,
+        "custom_title": "PreShaped Patches",
+        "custom_text": "Choose from a list of faux materials, shapes and borders, then add your art.",
+        "custom_bullet_1": "50+ Faux Materials",
+        "custom_bullet_2": "Custom Shapes & Borders",
+        "custom_bullet_3": "Add Your Logo or Artwork",
+        "flex_image": "shopify://shop_images/3d_flex720x350_v2.png",
+        "flex_gradient_overlay": true,
+        "flex_title": "3D Flex Patches",
+        "flex_text": "Upload your logo and turn it into a bold 3D Flex patch.",
+        "flex_bullet_1": "More design flexibility",
+        "flex_bullet_2": "Layered raised effects",
+        "flex_bullet_3": "Unlimited full-color creativity"
+      }
+    },
+    "octopatches_hero_EDMTg3": {
+      "type": "octopatches-hero",
+      "disabled": true,
+      "name": "OctoPatches Hero",
+      "settings": {
+        "bg_image": "shopify://shop_images/Home-Hero-DT-v1-OctoPatches_Website_Homepage_Image_1815_x_867_px_1.png",
+        "mobile_image": "shopify://shop_images/Home-Hero-M-v2-OctoPatches_Website_Homepage_Image_1023_x_1537_px_1.png",
+        "logo": "shopify://shop_images/OctoPatches_Logo_-_No_Tag_-_No_Icon_-_WO_3000_x_600_px.png",
+        "logo_alt": "OctoPatches",
+        "eyebrow": "Custom",
+        "title": "Patches",
+        "subtitle": "Any Look. Any Feel.\nLimitless Possibilities.",
+        "desktop_height": 850,
+        "mobile_height": 575,
+        "logo_width": 575,
+        "mobile_logo_width": 320
+      }
+    },
     "custom_liquid_wFiMC7": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<section class=\"op-hero\">\n  <div class=\"op-hero__inner\">\n\n    <div class=\"op-copy\">\n      <div class=\"op-eyebrow\">CUSTOM</div>\n      <div class=\"op-title\">PATCHES</div>\n      <div class=\"op-line\"></div>\n\n      <div class=\"op-subtitle\">\n        Any Look. Any Feel.<br>\n        Limitless Possibilities.\n      </div>\n    </div>\n\n    <div class=\"op-center\">\n      <div class=\"op-logo\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0834/8562/2516/files/OctoPatches_Logo_3000_x_600_px.png?v=1783020054\" alt=\"OctoPatches\">\n      </div>\n\n      <div class=\"op-cta\">\n        {%- render 'design_button',\n          product: product,\n          variant: product.selected_or_first_available_variant -%}\n\n        {%- render 'sso_link',\n          label: 'Open saved patch designs',\n          next: '/my/designs'\n        -%}\n      </div>\n    </div>\n\n  </div>\n</section>\n\n<style>\n.op-hero {\n  position: relative;\n  width: 100%;\n  min-height: 675px;\n  overflow: hidden;\n  background-image: url('https://cdn.shopify.com/s/files/1/0834/8562/2516/files/OctoPatches_Website_Homepage_Image_2100x750_v.4.png?v=1783019673');\n  background-size: cover;\n  background-position: center top;\n  background-repeat: no-repeat;\n}\n\n.op-hero__inner {\n  position: relative;\n  width: 100%;\n  min-height: 675px;\n}\n\n.op-copy {\n  position: absolute;\n  left: clamp(28px, 4vw, 64px);\n  top: 58px;\n  z-index: 3;\n}\n\n.op-eyebrow,\n.op-title {\n  font-weight: 900;\n  text-transform: uppercase;\n  line-height: .88;\n  letter-spacing: -2px;\n  text-shadow: 0 4px 12px rgba(0,0,0,.65);\n}\n\n.op-eyebrow {\n  color: #ffffff;\n  font-size: clamp(34px, 4.1vw, 66px);\n}\n\n.op-title {\n  font-size: clamp(42px, 5vw, 78px);\n  background: linear-gradient(90deg, #7b3cff, #d84ca8, #ff8840, #56d8d8);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n\n.op-line {\n  width: clamp(210px, 24vw, 360px);\n  height: 4px;\n  margin: 20px 0 26px;\n  background: linear-gradient(90deg, #7b3cff, #d84ca8, #ff8840, #56d8d8);\n}\n\n.op-subtitle {\n  color: #ffffff;\n  font-weight: 600;\n  font-size: clamp(20px, 1.9vw, 30px);\n  line-height: 1.2;\n  text-shadow: 0 3px 10px rgba(0,0,0,.75);\n}\n\n.op-center {\n  position: absolute;\n  left: 50%;\n  bottom: 34px;\n  transform: translateX(-50%);\n  z-index: 10;\n  width: min(90%, 620px);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 18px;\n}\n\n.op-logo img {\n  width: clamp(360px, 32vw, 600px);\n  height: auto;\n  display: block;\n}\n\n.op-cta {\n  display: flex;\n  gap: 14px;\n  align-items: center;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n\n/* Tablet */\n@media (max-width: 990px) {\n  .op-hero,\n  .op-hero__inner {\n    min-height: 600px;\n  }\n\n  .op-copy {\n    left: 24px;\n    top: 44px;\n  }\n\n  .op-center {\n    bottom: 28px;\n  }\n\n  .op-logo img {\n    width: 420px;\n  }\n}\n\n/* Mobile */\n@media (max-width: 749px) {\n  .op-hero,\n  .op-hero__inner {\n    min-height: 620px;\n    background-position: 58% top;\n  }\n\n  .op-copy {\n    left: 20px;\n    top: 34px;\n    max-width: 290px;\n  }\n\n  .op-eyebrow {\n    font-size: 38px;\n  }\n\n  .op-title {\n    font-size: 46px;\n  }\n\n  .op-line {\n    width: 220px;\n    margin: 14px 0 16px;\n  }\n\n  .op-subtitle {\n    font-size: 22px;\n  }\n\n  .op-center {\n    width: 92%;\n    bottom: 24px;\n  }\n\n  .op-logo img {\n    width: 310px;\n  }\n}\n</style>",
+        "custom_liquid": "<section class=\"op-hero\">\n  <div class=\"op-hero__inner\">\n\n    <div class=\"op-copy\">\n      <div class=\"op-eyebrow\">CUSTOM</div>\n      <div class=\"op-title\">PATCHES</div>\n      <div class=\"op-line\"></div>\n\n      <div class=\"op-subtitle\">\n        Any Look. Any Feel.<br>\n        Limitless Possibilities.\n      </div>\n    </div>\n\n    <div class=\"op-center\">\n      <div class=\"op-logo\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0834/8562/2516/files/OctoPatches_Logo_3000_x_600_px.png?v=1783020054\" alt=\"OctoPatches\">\n      </div>\n\n      <div class=\"op-cta\">\n        {%- render 'design_button',\n          product: product,\n          variant: product.selected_or_first_available_variant -%}\n\n        {%- render 'sso_link',\n          label: 'Open saved patch designs',\n          next: '/my/designs'\n        -%}\n      </div>\n    </div>\n\n  </div>\n</section>\n\n<style>\n.op-hero {\n  position: relative;\n  width: 100%;\n  min-height: 675px;\n  overflow: hidden;\n  background-image: url('https://cdn.shopify.com/s/files/1/0834/8562/2516/files/OctoPatches_Website_Homepage_Image_2100x750_v.5.png?v=1783019673');\n  background-size: cover;\n  background-position: center top;\n  background-repeat: no-repeat;\n}\n\n.op-hero__inner {\n  position: relative;\n  width: 100%;\n  min-height: 675px;\n}\n\n.op-copy {\n  position: absolute;\n  left: clamp(28px, 4vw, 64px);\n  top: 58px;\n  z-index: 3;\n}\n\n.op-eyebrow,\n.op-title {\n  font-weight: 900;\n  text-transform: uppercase;\n  line-height: .88;\n  letter-spacing: -2px;\n  text-shadow: 0 4px 12px rgba(0,0,0,.65);\n}\n\n.op-eyebrow {\n  color: #ffffff;\n  font-size: clamp(34px, 4.1vw, 66px);\n}\n\n.op-title {\n  font-size: clamp(42px, 5vw, 78px);\n  background: linear-gradient(90deg, #7b3cff, #d84ca8, #ff8840, #56d8d8);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n\n.op-line {\n  width: clamp(210px, 24vw, 360px);\n  height: 4px;\n  margin: 20px 0 26px;\n  background: linear-gradient(90deg, #7b3cff, #d84ca8, #ff8840, #56d8d8);\n}\n\n.op-subtitle {\n  color: #ffffff;\n  font-weight: 600;\n  font-size: clamp(20px, 1.9vw, 30px);\n  line-height: 1.2;\n  text-shadow: 0 3px 10px rgba(0,0,0,.75);\n}\n\n.op-center {\n  position: absolute;\n  left: 50%;\n  bottom: 34px;\n  transform: translateX(-50%);\n  z-index: 10;\n  width: min(90%, 620px);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 18px;\n}\n\n.op-logo img {\n  width: clamp(360px, 32vw, 600px);\n  height: auto;\n  display: block;\n}\n\n.op-cta {\n  display: flex;\n  gap: 14px;\n  align-items: center;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n\n/* Tablet */\n@media (max-width: 990px) {\n  .op-hero,\n  .op-hero__inner {\n    min-height: 600px;\n  }\n\n  .op-copy {\n    left: 24px;\n    top: 44px;\n  }\n\n  .op-center {\n    bottom: 28px;\n  }\n\n  .op-logo img {\n    width: 420px;\n  }\n}\n\n/* Mobile */\n@media (max-width: 749px) {\n  .op-hero,\n  .op-hero__inner {\n    min-height: 620px;\n    background-position: 58% top;\n  }\n\n  .op-copy {\n    left: 20px;\n    top: 34px;\n    max-width: 290px;\n  }\n\n  .op-eyebrow {\n    font-size: 38px;\n  }\n\n  .op-title {\n    font-size: 46px;\n  }\n\n  .op-line {\n    width: 220px;\n    margin: 14px 0 16px;\n  }\n\n  .op-subtitle {\n    font-size: 22px;\n  }\n\n  .op-center {\n    width: 92%;\n    bottom: 24px;\n  }\n\n  .op-logo img {\n    width: 310px;\n  }\n}\n</style>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
@@ -124,10 +187,10 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/OctoPatches_Website_Homepage_Image_2100x750_v.2.png",
+        "image_1": "shopify://shop_images/OctoPatches_Website_Homepage_Image_675_x_575_px.png",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
+        "custom_mobile_media": true,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
         "link": "",
@@ -141,7 +204,7 @@
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 12,
         "section_width": "page-width",
-        "section_height": "medium",
+        "section_height": "full-screen",
         "section_height_custom": 50,
         "background_color": "rgba(0,0,0,0)",
         "toggle_overlay": false,
@@ -642,8 +705,8 @@
         "border_opacity": 100,
         "border_color": "",
         "border_radius": 0,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 20,
+        "padding-block-end": 20
       }
     },
     "section_XCfpxM": {
@@ -1134,208 +1197,8 @@
         "border_opacity": 100,
         "border_color": "",
         "border_radius": 0,
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
-    "product_list_fa6P9H": {
-      "type": "product-list",
-      "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 4,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
-        }
-      },
-      "disabled": true,
-      "name": "Featured collection",
-      "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 20,
+        "padding-block-end": 20
       }
     },
     "section_baxn6k": {
@@ -1432,7 +1295,7 @@
             "text_zcDdTc": {
               "type": "text",
               "settings": {
-                "text": "<p>Design patches for hats, apparel, bags, uniforms, and more. If it can handle heat, chances are an OctoPatch can go on it.</p>",
+                "text": "<p>Design patches for hats, apparel, bags, uniforms, and more. </p>",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -1485,7 +1348,7 @@
         "image_QkF63T",
         "group_7LMBEA"
       ],
-      "name": "t:names.image_with_text",
+      "name": "One patch endless",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -1499,7 +1362,7 @@
         "section_height": "",
         "section_height_custom": 50,
         "background_media": "none",
-        "background_color": "#ffffff",
+        "background_color": "#302d2d",
         "video_position": "cover",
         "background_image_position": "cover",
         "toggle_overlay": false,
@@ -1513,6 +1376,171 @@
         "border_radius": 0,
         "padding-block-start": 40,
         "padding-block-end": 40
+      }
+    },
+    "octo_comparison_XeRjmm": {
+      "type": "octo-comparison",
+      "name": "Octo comparison",
+      "settings": {
+        "eyebrow": "Two ways to create your patch",
+        "heading": "Build it & Bring it to life",
+        "intro": "<p>Choose a traditional patch look with faux materials, or turn your artwork into a  textured patch.</p>",
+        "patch_label": "Custom Patches",
+        "patch_heading": "Build your patch",
+        "patch_description": "<p>Choose the material style, shape, border, and finish to make it your own.</p>",
+        "patch_point_1": "Choose faux materials and textures",
+        "patch_point_2": "Select shape, border, and edge style",
+        "patch_point_3": "Create multiple styles from one logo",
+        "patch_point_4": "New shapes and background styles always updating",
+        "patch_image": "shopify://shop_images/patches_with_wildcat_826ab628-3390-4af1-b1b8-a53a446129f4.png",
+        "flex_label": "3D Flex Patches",
+        "flex_heading": "Turn art into a patch",
+        "flex_description": "<p>Upload your logo and create a dimensional patch that follows the artwork's shape.</p>",
+        "flex_point_1": "Patch follows the artwork's shape",
+        "flex_point_2": "Choose which elements are raised",
+        "flex_point_3": "Full-color gradients and fine details",
+        "flex_point_4": "Clear, matte, and layered effects",
+        "flex_image": "shopify://shop_images/3D_Flex_with_wildcat_c0bd4dec-3644-48fc-82e9-4b8e921755b2.png",
+        "cta_heading": "Not sure which style fits your project?",
+        "cta_subtext": "Compare both options side by side.",
+        "cta_text": "Compare Patch Styles",
+        "cta_link": "shopify://pages/compare-patch-styles",
+        "section_bg": "#000000",
+        "card_bg": "#0d0d0d",
+        "card_border": "#343434",
+        "text_color": "#ffffff",
+        "muted_color": "#d1d1d1",
+        "patch_accent": "#ff6a00",
+        "flex_accent": "#168bff",
+        "max_width": 1600,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "section_njAbqM": {
+      "type": "section",
+      "blocks": {
+        "text_Dyc3Er": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>One Logo. Endless Styles.  </h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_WByLLU": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Mix shapes, materials, finishes, and edge styles. Create a matching collection or make every patch unique, all while earning volume discounts.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h6",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image_FVEgaT": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "image": "shopify://shop_images/various_patches.png",
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_Dyc3Er",
+        "text_WByLLU",
+        "image_FVEgaT"
+      ],
+      "disabled": true,
+      "name": "Various Patches",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 18,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 25,
+        "padding-block-end": 25
+      }
+    },
+    "octo_patchmaker_cta_buttons_8UJ7wY": {
+      "type": "octo-patchmaker-cta-buttons",
+      "name": "Patchmaker CTA Buttons",
+      "settings": {
+        "patch_logged_out_text": "Design Patches",
+        "patch_logged_in_text": "Design Patches",
+        "flex_logged_out_text": "Design 3D Flex",
+        "flex_logged_in_text": "Design 3D Flex"
       }
     },
     "section_8NEcQk": {
@@ -1574,7 +1602,7 @@
         "text_jALWXD",
         "image_HCKFPq"
       ],
-      "name": "t:names.rich_text_section",
+      "name": "3 Steps",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -1623,11 +1651,672 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<section class=\"octo-compare\">\n  <div class=\"octo-compare__inner\">\n    <div class=\"octo-compare__header\">\n      <h2>Why OctoPatches?</h2>\n      <p>Traditional patches are fine. OctoPatches are built for more color, more texture, and way less hassle.</p>\n    </div>\n\n    <div class=\"octo-compare__grid\">\n      <div class=\"octo-compare__card octo-compare__card--traditional\">\n        <h3>Traditional Patches</h3>\n\n        <div class=\"octo-compare__row\">\n          <span>Limited materials</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Often sewing required</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Limited color detail</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Setup fees and minimums</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Expensive!</span>\n        </div>\n      </div>\n\n      <div class=\"octo-compare__card octo-compare__card--octo\">\n        <h3>OctoPatches</h3>\n\n        <div class=\"octo-compare__row\">\n          <span>Realistic textures like leather, camo, canvas, wood, and more</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Heat apply in seconds</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Full-color graphics with bold detail</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>No minimums. Order one or thousands.</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Design online and preview before you buy</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n<style>\n  .octo-compare {\n    background: #111315;\n    color: #ffffff;\n    padding: 70px 20px;\n  }\n\n  .octo-compare__inner {\n    max-width: 1180px;\n    margin: 0 auto;\n  }\n\n  .octo-compare__header {\n    text-align: center;\n    margin-bottom: 38px;\n  }\n\n  .octo-compare__header h2 {\n    margin: 0 0 12px;\n    font-size: clamp(34px, 5vw, 58px);\n    line-height: 1.05;\n    font-weight: 800;\n    color: #ffffff;\n  }\n\n  .octo-compare__header p {\n    margin: 0 auto;\n    max-width: 720px;\n    font-size: 18px;\n    line-height: 1.5;\n    color: #d7d7d7;\n  }\n\n  .octo-compare__grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 22px;\n  }\n\n  .octo-compare__card {\n    border: 1px solid rgba(255,255,255,.14);\n    border-radius: 18px;\n    padding: 28px;\n    background: #171a1d;\n  }\n\n  .octo-compare__card--octo {\n    border-color: #1683ff;\n    box-shadow: 0 0 0 1px rgba(22,131,255,.35), 0 20px 60px rgba(0,0,0,.3);\n  }\n\n  .octo-compare__card h3 {\n    margin: 0 0 22px;\n    font-size: 28px;\n    color: #ffffff;\n  }\n\n  .octo-compare__row {\n    padding: 16px 0;\n    border-top: 1px solid rgba(255,255,255,.12);\n    font-size: 17px;\n    line-height: 1.4;\n    color: #eeeeee;\n  }\n\n  .octo-compare__row:before {\n    content: \"•\";\n    color: #1683ff;\n    font-weight: 900;\n    margin-right: 10px;\n  }\n\n  .octo-compare__card--traditional .octo-compare__row:before {\n    color: #777;\n  }\n\n  @media screen and (max-width: 749px) {\n    .octo-compare {\n      padding: 48px 16px;\n    }\n\n    .octo-compare__grid {\n      grid-template-columns: 1fr;\n    }\n\n    .octo-compare__card {\n      padding: 22px;\n    }\n\n    .octo-compare__card h3 {\n      font-size: 24px;\n    }\n\n    .octo-compare__row {\n      font-size: 15px;\n    }\n  }\n</style>",
+        "custom_liquid": "<section class=\"octo-compare\">\n  <div class=\"octo-compare__inner\">\n    <div class=\"octo-compare__header\">\n      <h2>Why OctoPatches?</h2>\n      <p>Traditional patches are fine. OctoPatches are built for more color, more texture, and way less hassle.</p>\n    </div>\n\n    <div class=\"octo-compare__grid\">\n      <div class=\"octo-compare__card octo-compare__card--traditional\">\n        <h3>Traditional Patches</h3>\n\n        <div class=\"octo-compare__row\">\n          <span>Limited materials</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Often sewing required</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Limited color detail</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Setup fees and minimums</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Expensive!</span>\n        </div>\n      </div>\n\n      <div class=\"octo-compare__card octo-compare__card--octo\">\n        <h3>OctoPatches</h3>\n\n        <div class=\"octo-compare__row\">\n          <span>Realistic faux textures like leather, camo, wood, and more</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Heat apply in seconds (No Sewing needed!)</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Full-color graphics with bold detail</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>No minimums. Order one or thousands.</span>\n        </div>\n        <div class=\"octo-compare__row\">\n          <span>Design online and preview before you buy</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n<style>\n  .octo-compare {\n    background: #111315;\n    color: #ffffff;\n    padding: 70px 20px;\n  }\n\n  .octo-compare__inner {\n    max-width: 1180px;\n    margin: 0 auto;\n  }\n\n  .octo-compare__header {\n    text-align: center;\n    margin-bottom: 38px;\n  }\n\n  .octo-compare__header h2 {\n    margin: 0 0 12px;\n    font-size: clamp(34px, 5vw, 58px);\n    line-height: 1.05;\n    font-weight: 800;\n    color: #ffffff;\n  }\n\n  .octo-compare__header p {\n    margin: 0 auto;\n    max-width: 720px;\n    font-size: 18px;\n    line-height: 1.5;\n    color: #d7d7d7;\n  }\n\n  .octo-compare__grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 22px;\n  }\n\n  .octo-compare__card {\n    border: 1px solid rgba(255,255,255,.14);\n    border-radius: 18px;\n    padding: 28px;\n    background: #171a1d;\n  }\n\n  .octo-compare__card--octo {\n    border-color: #1683ff;\n    box-shadow: 0 0 0 1px rgba(22,131,255,.35), 0 20px 60px rgba(0,0,0,.3);\n  }\n\n  .octo-compare__card h3 {\n    margin: 0 0 22px;\n    font-size: 28px;\n    color: #ffffff;\n  }\n\n  .octo-compare__row {\n    padding: 16px 0;\n    border-top: 1px solid rgba(255,255,255,.12);\n    font-size: 17px;\n    line-height: 1.4;\n    color: #eeeeee;\n  }\n\n  .octo-compare__row:before {\n    content: \"•\";\n    color: #1683ff;\n    font-weight: 900;\n    margin-right: 10px;\n  }\n\n  .octo-compare__card--traditional .octo-compare__row:before {\n    color: #777;\n  }\n\n  @media screen and (max-width: 749px) {\n    .octo-compare {\n      padding: 48px 16px;\n    }\n\n    .octo-compare__grid {\n      grid-template-columns: 1fr;\n    }\n\n    .octo-compare__card {\n      padding: 22px;\n    }\n\n    .octo-compare__card h3 {\n      font-size: 24px;\n    }\n\n    .octo-compare__row {\n      font-size: 15px;\n    }\n  }\n</style>",
         "background_color": "",
         "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "octo_patchmaker_cta_buttons_nUpN7F": {
+      "type": "octo-patchmaker-cta-buttons",
+      "name": "Patchmaker CTA Buttons",
+      "settings": {
+        "patch_logged_out_text": "Design Patches",
+        "patch_logged_in_text": "Design Patches",
+        "flex_logged_out_text": "Design 3D Flex",
+        "flex_logged_in_text": "Design 3D Flex"
+      }
+    },
+    "section_3HzbXW": {
+      "type": "section",
+      "blocks": {
+        "text_LhKzqc": {
+          "type": "text",
+          "name": "t:names.heading",
+          "disabled": true,
+          "settings": {
+            "text": "<h2>Patch Decorating in 3 Easy Steps</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image_UTzfP4": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "image": "shopify://shop_images/3_steps_with_3d_Flex.png",
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "divider_mNQ4wE": {
+          "type": "_divider",
+          "name": "t:names.divider",
+          "disabled": true,
+          "settings": {
+            "thickness": 1,
+            "corner_radius": "square",
+            "divider_color": "",
+            "width_percent": 100,
+            "padding-block-start": 0,
+            "padding-block-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_LhKzqc",
+        "image_UTzfP4",
+        "divider_mNQ4wE"
+      ],
+      "name": "3D Flex 3 Steps",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 18,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 25,
+        "padding-block-end": 25
+      }
+    },
+    "divider_brqF3p": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "background_color": "",
+        "divider_color": "",
+        "section_width": "full-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    },
+    "octo_content_builder_UqYP9R": {
+      "type": "octo-content-builder",
+      "blocks": {
+        "heading_T8APDe": {
+          "type": "heading",
+          "settings": {
+            "text": "Create without Limits in 3D Flex",
+            "heading_tag": "h2",
+            "font_size": 48,
+            "color": "#ffffff",
+            "alignment": "center"
+          }
+        },
+        "paragraph_P8DnLV": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Design any shape, any style, and any level of dimension. Choose exactly which areas are raised and finish with clear or matte effects.</p>",
+            "font_size": 24,
+            "color": "#dddddd",
+            "alignment": "center"
+          }
+        },
+        "image_PF9A3Q": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3D_Flex_various_images.png",
+            "full_width": true,
+            "image_width": 1150,
+            "border_radius": 16,
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_T8APDe",
+        "paragraph_P8DnLV",
+        "image_PF9A3Q"
+      ],
+      "disabled": true,
+      "name": "Octo Content Builder",
+      "settings": {
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "content_width": 1000,
+        "text_alignment": "center",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "patch_randomizer_hBA73E": {
+      "type": "patch-randomizer",
+      "blocks": {
+        "logo_BYqAgw": {
+          "type": "logo",
+          "name": "Dino",
+          "settings": {
+            "image": "shopify://shop_images/Dino_Park.png",
+            "name": "Dino Park",
+            "logo_scale": 76,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "logo_dbHQQB": {
+          "type": "logo",
+          "name": "Car Club",
+          "settings": {
+            "image": "shopify://shop_images/car_club.png",
+            "name": "Car Club",
+            "logo_scale": 50,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "logo_brmXyA": {
+          "type": "logo",
+          "name": "Latin Dance",
+          "settings": {
+            "image": "shopify://shop_images/Latin_dance_d9370f3e-657f-4ffb-91b0-bc6686cb58b5.png",
+            "name": "Latin Dance",
+            "logo_scale": 50,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "patch_hqjVyJ": {
+          "type": "patch",
+          "name": "Alum Buckle",
+          "settings": {
+            "image": "shopify://shop_images/aluminum_buckle.png",
+            "name": "Aluminum Buckle"
+          }
+        },
+        "logo_eHDtjy": {
+          "type": "logo",
+          "name": "Pet Sitting",
+          "settings": {
+            "image": "shopify://shop_images/spartans2.png",
+            "name": "Spartans",
+            "logo_scale": 50,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "logo_amr64M": {
+          "type": "logo",
+          "name": "Eagle",
+          "settings": {
+            "image": "shopify://shop_images/eagle_america-2440x1464-bd6df6b.png",
+            "name": "Eagle USA",
+            "logo_scale": 66,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "logo_FPBdbi": {
+          "type": "logo",
+          "name": "USA Force",
+          "settings": {
+            "image": "shopify://shop_images/usa_force2.png",
+            "name": "USA Force",
+            "logo_scale": 40,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "logo_3nV6pQ": {
+          "type": "logo",
+          "name": "Daily",
+          "settings": {
+            "image": "shopify://shop_images/daily_wear.png",
+            "name": "Daily Wear",
+            "logo_scale": 50,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "logo_CW3Mty": {
+          "type": "logo",
+          "name": "Tiger Team",
+          "settings": {
+            "image": "shopify://shop_images/team_tiger.png",
+            "name": "Tiger Team",
+            "logo_scale": 50,
+            "logo_x": 50,
+            "logo_y": 50
+          }
+        },
+        "patch_FryR8c": {
+          "type": "patch",
+          "name": "Burlap Square",
+          "settings": {
+            "image": "shopify://shop_images/dark_wood_rec.png",
+            "name": "Dark Wood"
+          }
+        },
+        "patch_yeLY3R": {
+          "type": "patch",
+          "name": "Leather Circle",
+          "settings": {
+            "image": "shopify://shop_images/leather_circle_printed_no_bk_1b29786e-868e-4c27-be47-0374d5c45b1b.png",
+            "name": "Leather Circle"
+          }
+        },
+        "patch_EA83YK": {
+          "type": "patch",
+          "name": "Gator",
+          "settings": {
+            "image": "shopify://shop_images/gator_square.png",
+            "name": "Gator"
+          }
+        },
+        "patch_AbApx6": {
+          "type": "patch",
+          "name": "camo",
+          "settings": {
+            "image": "shopify://shop_images/camo_rec.png",
+            "name": "Camo Rectangle"
+          }
+        }
+      },
+      "block_order": [
+        "logo_BYqAgw",
+        "logo_dbHQQB",
+        "logo_brmXyA",
+        "patch_hqjVyJ",
+        "logo_eHDtjy",
+        "logo_amr64M",
+        "logo_FPBdbi",
+        "logo_3nV6pQ",
+        "logo_CW3Mty",
+        "patch_FryR8c",
+        "patch_yeLY3R",
+        "patch_EA83YK",
+        "patch_AbApx6"
+      ],
+      "name": "Patch inspiration toy",
+      "settings": {
+        "eyebrow": "Patch Inspiration",
+        "heading": "Get Inspired to Design",
+        "description": "<p>Our patch builder can create an infinite number of unique combinations. Here's a fun way to explore a few before you start designing.</p>",
+        "preview_label": "Fresh patch idea",
+        "button_text": "Inspire Me Again",
+        "loading_button_text": "Making Another...",
+        "helper_text": "Keep clicking until inspiration strikes!",
+        "show_labels": true,
+        "preview_size": 420,
+        "logo_size": 38,
+        "logo_horizontal_position": 50,
+        "logo_vertical_position": 50,
+        "logo_delay": 400,
+        "show_shadow": true,
+        "show_shine": true,
+        "enable_auto_play": false,
+        "auto_play_delay": 8,
+        "background_color": "#101114",
+        "card_background": "#181a1f",
+        "card_border_color": "#2a2d34",
+        "heading_color": "#ffffff",
+        "text_color": "#eeeeee",
+        "muted_text_color": "#a7aab1",
+        "accent_color": "#f58220",
+        "button_color": "#f58220",
+        "button_text_color": "#111111",
+        "card_radius": 16,
+        "button_radius": 8,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "divider_qHAFbH": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "background_color": "",
+        "divider_color": "",
+        "section_width": "full-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    },
+    "octo_patchmaker_cta_buttons_XimicU": {
+      "type": "octo-patchmaker-cta-buttons",
+      "name": "Patchmaker CTA Buttons",
+      "settings": {
+        "patch_logged_out_text": "Design Patches",
+        "patch_logged_in_text": "Design Patches",
+        "flex_logged_out_text": "Design 3D Flex",
+        "flex_logged_in_text": "Design 3D Flex"
+      }
+    },
+    "octo_carousel_aQkbyt": {
+      "type": "octo-carousel",
+      "blocks": {
+        "card_jzkzff": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/LakeFreemanSailClub.png",
+            "type_logo": "shopify://shop_images/OctoPatches_Logo_GS_2.png",
+            "category": "Unique Textures",
+            "title": "Tote Bags",
+            "text": "Create patches with unique textures like wood or metal."
+          }
+        },
+        "card_xkKTLi": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/3D_Brewing_Co_Logo_on_Hat.png",
+            "type_logo": "shopify://shop_images/3DFlexPatches_Logo_GS.png",
+            "category": "Detailed Caps",
+            "title": "Casual Logo Caps",
+            "text": "Insert detail that embroidery or even traditional DTF transfers cannot create on a cap."
+          }
+        },
+        "card_HyRcJG": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/SalsbberyGarenCenter_5b45be4a-c353-4753-8210-89cac3c1c959.png",
+            "type_logo": "shopify://shop_images/OctoPatches_Logo_GS_2.png",
+            "category": "Casual Apparel",
+            "title": "Carhart Jacket",
+            "text": "Take casual apparel to the next level by using left chest logos that are"
+          }
+        },
+        "card_889mP4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/3D_Lacrosse_Logo_on_Sports_Bag.png",
+            "type_logo": "shopify://shop_images/3DFlexPatches_Logo_GS.png",
+            "category": "Sport & Spirit",
+            "title": "Sports bags",
+            "text": "Decorate team gear with logos and styles that are easier than embroidery look better than prints."
+          }
+        },
+        "card_jLhGUc": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/WhiteRabbit.png",
+            "type_logo": "shopify://shop_images/OctoPatches_Logo_GS_2.png",
+            "category": "Casual Apparel",
+            "title": "Visor Caps",
+            "text": "Create a premium look on visors with an easy-to-apply process."
+          }
+        },
+        "card_HJLdRf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/3D_Hiking_Logo_on_Backpack.png",
+            "type_logo": "shopify://shop_images/3DFlexPatches_Logo_GS.png",
+            "category": "Outdoor Gear",
+            "title": "Backpacks",
+            "text": "Elevate the look of outdoor branded gear and apparel."
+          }
+        },
+        "card_QM6BkN": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Boar_Fig.png",
+            "type_logo": "shopify://shop_images/OctoPatches_Logo_GS_2.png",
+            "category": "WorkWear",
+            "title": "Chef Jackets",
+            "text": "Logos for premium workwear and uniforms."
+          }
+        }
+      },
+      "block_order": [
+        "card_jzkzff",
+        "card_xkKTLi",
+        "card_HyRcJG",
+        "card_889mP4",
+        "card_jLhGUc",
+        "card_HJLdRf",
+        "card_QM6BkN"
+      ],
+      "name": "Octo image carousel",
+      "settings": {
+        "eyebrow": "Endless Possibilities",
+        "heading": "Elevate Brands And Design with Patches",
+        "subheading": "Patches have been avoided in custom decorating due to their limits and application struggled. OctoPatches make it easier than ever to impress your clients.",
+        "cards_desktop": 4,
+        "image_height": 360,
+        "logo_width": 150,
+        "card_radius": 24
+      }
+    },
+    "octo_patchmaker_cta_buttons_MR8nL3": {
+      "type": "octo-patchmaker-cta-buttons",
+      "name": "Patchmaker CTA Buttons",
+      "settings": {
+        "patch_logged_out_text": "Log in to Design Patches",
+        "patch_logged_in_text": "Design Patches",
+        "flex_logged_out_text": "Log in to Design 3D Flex",
+        "flex_logged_in_text": "Design 3D Flex"
+      }
+    },
+    "divider_8Grjh6": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "background_color": "",
+        "divider_color": "",
+        "section_width": "full-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    },
+    "octo_faq_qeK47g": {
+      "type": "octo-faq",
+      "blocks": {
+        "faq_U4zPj7": {
+          "type": "faq",
+          "settings": {
+            "question": "What are OctoPatches?",
+            "answer": "<p>OctoPatches and 3D Flex are premium heat-applied patches that combine vibrant full-color printing with an easy online designer. Create your own custom designs and even utilize realistic textured materials like leather, canvas, camouflage, wood, brushed metal, and more.</p>"
+          }
+        },
+        "faq_HDgjwi": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between a Custom Patch and a 3D Flex Patch?",
+            "answer": "<p>Both are premium, heat-applied, durable, and made for real-world use. The difference is what you are designing: the patch itself, or the artwork that becomes the patch. Learn more on our <a href=\"/pages/compare-patch-styles\" title=\"Compare Patch Styles\">comparison page.</a></p><p><strong>Custom Patch</strong> - Traditional patch look with your choice of material look, border and shape. </p><p><strong>3D Flex</strong> - Use art / logos to make patches and control design height with matte/gloss effects.</p>"
+          }
+        },
+        "faq_78q79P": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I print a full color image on any of these materials?",
+            "answer": "<p>Our unique process allows for creating your logo or art on faux materials. These can be  raised, sunken or textured. They also can be all black, all white or full color. The process revolutionizes patches.</p>"
+          }
+        },
+        "faq_QKQNLt": {
+          "type": "faq",
+          "settings": {
+            "question": "What can I apply them to?",
+            "answer": "<p>OctoPatches adhere to most heat-safe materials including hats, cotton, polyester, performance fabrics, jackets, tote bags, backpacks, and more.</p>"
+          }
+        },
+        "faq_9kBptt": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I apply my patch?",
+            "answer": "<p>Simply apply your patch with a heat press using our recommended time, temperature, and pressure settings. No sewing required. 320degrees F for 15 seconds.<br/><br/></p>"
+          }
+        },
+        "faq_UDQ7Qw": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer bulk discounts?",
+            "answer": "<p>Yes. Check the product pricing page for volume discounts. The more you order, the more you save.</p>"
+          }
+        },
+        "faq_weJcqr": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I order different designs to reach volume pricing?",
+            "answer": "<p>Yes. You can mix and match different patch designs, sizes, and materials to qualify for volume discounts.</p>"
+          }
+        },
+        "faq_7fD89B": {
+          "type": "faq",
+          "settings": {
+            "question": "What materials are available?",
+            "answer": "<p>Choose from a growing library of textures including:</p><ul><li>Leather</li><li>Canvas</li><li>Denim</li><li>Camo</li><li>Buffalo Plaid</li><li>Carbon Fiber</li><li>Wood</li><li>Brushed Aluminum</li><li>Pebbled Leather</li><li>Alligator</li><li>And many more.</li></ul>"
+          }
+        },
+        "faq_Qk9QKt": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I get tax exempt?",
+            "answer": "<p>Email your tax certificate to care@octopatches.com. Allow for 2-4 business days for this to be processed. OctoPatches does NOT refund taxes paid. If you pay taxes, and are exempt, contact your tax advisor. </p>"
+          }
+        },
+        "faq_x4xVay": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I make any shape?",
+            "answer": "<p>Yes! Choose from many popular shapes or upload your own.</p>"
+          }
+        },
+        "faq_cWMegc": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I upload my own logo?",
+            "answer": "<p>Absolutely. Upload your logo, artwork, or design directly into our online designer.</p>"
+          }
+        },
+        "faq_dAYmbk": {
+          "type": "faq",
+          "settings": {
+            "question": "Is there a minimum order?",
+            "answer": "<p>No. Order one patch or thousands.</p>"
+          }
+        },
+        "faq_knRPKz": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to sew them on?",
+            "answer": "<p>No. They are designed to be heat applied.</p>"
+          }
+        },
+        "faq_z766Ke": {
+          "type": "faq",
+          "settings": {
+            "question": "Are they washable?",
+            "answer": "<p>Yes. When applied correctly, OctoPatches are made to withstand regular wear and washing.</p>"
+          }
+        },
+        "faq_T9x8fA": {
+          "type": "faq",
+          "settings": {
+            "question": "Are these real materials like leather or wood?",
+            "answer": "<p>OctoPatch proprietary technology creates a faux look for all of the materials. Users say that these look so good, they cannot believe its not real.</p>"
+          }
+        },
+        "faq_QRyMJH": {
+          "type": "faq",
+          "settings": {
+            "question": "Why the Octopus?",
+            "answer": "<p><strong>The octopus is nature's master of adaptability.</strong> It can change color, texture, and shape to fit almost any environment. OctoPatches are built with that same philosophy. Instead of being limited to one material or one style, you can create patches in countless combinations of shapes, finishes, textures, and materials, all in a single order.</p>"
+          }
+        },
+        "faq_kmVWeD": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I place an international order (outside the USA) ?",
+            "answer": "<p>Email care@octopatches.com to place your order. This will be automated in the online store soon, we are working on making the international experience as best as possible. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_U4zPj7",
+        "faq_HDgjwi",
+        "faq_78q79P",
+        "faq_QKQNLt",
+        "faq_9kBptt",
+        "faq_UDQ7Qw",
+        "faq_weJcqr",
+        "faq_7fD89B",
+        "faq_Qk9QKt",
+        "faq_x4xVay",
+        "faq_cWMegc",
+        "faq_dAYmbk",
+        "faq_knRPKz",
+        "faq_z766Ke",
+        "faq_T9x8fA",
+        "faq_QRyMJH",
+        "faq_kmVWeD"
+      ],
+      "name": "Octo FAQ Premium",
+      "settings": {
+        "eyebrow": "FAQS",
+        "heading": "Frequently asked questions",
+        "subheading": "Everything you need to know about OctoPatches.",
+        "first_open": true,
+        "max_width": 1500,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "bg_color": "#05070a",
+        "card_color": "#10141a",
+        "text_color": "#ffffff",
+        "muted_color": "#c9cdd3",
+        "accent_color": "#ff6a13"
       }
     },
     "section_fFDyYw": {
@@ -1689,7 +2378,8 @@
         "text_93CzWz",
         "image_ET6JHT"
       ],
-      "name": "t:names.rich_text_section",
+      "disabled": true,
+      "name": "one patch endless poss",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -1718,650 +2408,33 @@
         "padding-block-start": 25,
         "padding-block-end": 25
       }
-    },
-    "section_V6iQar": {
-      "type": "section",
-      "blocks": {
-        "text_W9Wtx8": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Frequently asked questions</h2>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "h3",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "accordion_UwywpA": {
-          "type": "accordion",
-          "name": "t:names.accordion",
-          "settings": {
-            "icon": "caret",
-            "dividers": true,
-            "divider_color": "",
-            "type_preset": "h5",
-            "background_color": "",
-            "text_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "accordion_row_fHHMQ6": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "What are OctoPatches?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_c4dYRT": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>OctoPatches are premium heat-applied patches that combine vibrant full-color printing with realistic textured materials like leather, canvas, camouflage, wood, brushed metal, and more.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_c4dYRT"
-              ]
-            },
-            "accordion_row_BWGm8R": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "How do I apply my patch?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_8HLHFL": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Simply apply your patch with a heat press using our recommended time, temperature, and pressure settings. No sewing required.  320degrees F for 15 seconds.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_8HLHFL"
-              ]
-            },
-            "accordion_row_VQRRbg": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "What can I apply them to?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_PaXcUt": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>OctoPatches adhere to most heat-safe materials including hats, cotton, polyester, performance fabrics, jackets, tote bags, backpacks, and more.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_PaXcUt"
-              ]
-            },
-            "accordion_row_39CWFT": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Are they washable?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_pxCEUz": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Yes. When applied correctly, OctoPatches are made to withstand regular wear and washing.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_pxCEUz"
-              ]
-            },
-            "accordion_row_6F3Mzy": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Do I need to sew them on?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_dHFUAW": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>No. They are designed to be heat applied.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_dHFUAW"
-              ]
-            },
-            "accordion_row_UUKRBF": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Is there a minimum order?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_cprM9U": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>No. Order one patch or thousands.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_cprM9U"
-              ]
-            },
-            "accordion_row_mWjPmi": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Can I upload my own logo?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_xcQiFz": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Absolutely. Upload your logo, artwork, or design directly into our online designer.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_xcQiFz"
-              ]
-            },
-            "accordion_row_PiF4af": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Can I make any shape?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_n9HHYG": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Yes! Choose from many popular shapes or upload your own.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_n9HHYG"
-              ]
-            },
-            "accordion_row_G49UET": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "What materials are available?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_JWPAcw": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Choose from a growing library of textures including:</p><ul><li>Leather</li><li>Canvas</li><li>Denim</li><li>Camo</li><li>Buffalo Plaid</li><li>Carbon Fiber</li><li>Wood</li><li>Brushed Aluminum</li><li>Pebbled Leather</li><li>Alligator</li><li>And many more.<br/></li></ul>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_JWPAcw"
-              ]
-            },
-            "accordion_row_nY7e47": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Can I order different designs to reach volume pricing?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_kLEPLV": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Yes. You can mix and match different patch designs, sizes, and materials to qualify for volume discounts.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_kLEPLV"
-              ]
-            },
-            "accordion_row_M8TTVR": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Do you offer bulk discounts?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_xCQetf": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Choose from a growing library of textures including:</p><ul><li>Leather</li><li>Canvas</li><li>Denim</li><li>Camo</li><li>Buffalo Plaid</li><li>Carbon Fiber</li><li>Wood</li><li>Brushed Aluminum</li><li>Pebbled Leather</li><li>Alligator</li><li>And many more.<br/></li></ul>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_xCQetf"
-              ]
-            },
-            "accordion_row_98haAH": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Are there discounts for ordering in bulk?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_gfMNFp": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Yes. The more you order, the more you save. Quantity discounts are automatically applied in your cart. Mix and match sizes, designs, etc.<br/><br/></p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_gfMNFp"
-              ]
-            },
-            "accordion_row_hxDt9q": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Are these real materials like leather or wood?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_Vrn683": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>OctoPatch proprietary technology creates a faux look for all of the materials. Users say that from a couple of feet away they cannot even tell its not the real deal!</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_Vrn683"
-              ]
-            }
-          },
-          "block_order": [
-            "accordion_row_fHHMQ6",
-            "accordion_row_BWGm8R",
-            "accordion_row_VQRRbg",
-            "accordion_row_39CWFT",
-            "accordion_row_6F3Mzy",
-            "accordion_row_UUKRBF",
-            "accordion_row_mWjPmi",
-            "accordion_row_PiF4af",
-            "accordion_row_G49UET",
-            "accordion_row_nY7e47",
-            "accordion_row_M8TTVR",
-            "accordion_row_98haAH",
-            "accordion_row_hxDt9q"
-          ]
-        }
-      },
-      "block_order": [
-        "text_W9Wtx8",
-        "accordion_UwywpA"
-      ],
-      "name": "t:names.faq_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
     }
   },
   "order": [
+    "octo_multi_hero_home_tYKnYy",
+    "octopatches_hero_EDMTg3",
     "custom_liquid_wFiMC7",
     "hero_jVaWmY",
     "section_Hn7TQH",
     "section_XCfpxM",
-    "product_list_fa6P9H",
     "section_baxn6k",
+    "octo_comparison_XeRjmm",
+    "section_njAbqM",
+    "octo_patchmaker_cta_buttons_8UJ7wY",
     "section_8NEcQk",
     "divider_GG9qcw",
     "custom_liquid_prUH6C",
-    "section_fFDyYw",
-    "section_V6iQar"
+    "octo_patchmaker_cta_buttons_nUpN7F",
+    "section_3HzbXW",
+    "divider_brqF3p",
+    "octo_content_builder_UqYP9R",
+    "patch_randomizer_hBA73E",
+    "divider_qHAFbH",
+    "octo_patchmaker_cta_buttons_XimicU",
+    "octo_carousel_aQkbyt",
+    "octo_patchmaker_cta_buttons_MR8nL3",
+    "divider_8Grjh6",
+    "octo_faq_qeK47g",
+    "section_fFDyYw"
   ]
 }

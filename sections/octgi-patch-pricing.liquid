@@ -1,0 +1,547 @@
+<section class="octo-pricing">
+  <div class="octo-pricing-wrap">
+    <div class="octo-section-head">
+      <h2>{{ section.settings.octo_pricing_heading }}</h2>
+      <p>{{ section.settings.octo_pricing_subheading }}</p>
+    </div>
+
+    <div class="octo-pricing-grid">
+      <div class="octo-card">
+        <h3>{{ section.settings.octo_size_heading }}</h3>
+
+        {% for variant in product.variants %}
+          <div class="octo-price-row">
+            <strong>{{ variant.title }}</strong>
+            <span>{{ variant.price | money }}</span>
+          </div>
+        {% endfor %}
+
+        <p class="octo-card-note">{{ section.settings.octo_size_note }}</p>
+
+        <div class="octo-benefits">
+          <div class="octo-benefit">✓ {{ section.settings.octo_benefit_1 }}</div>
+          <div class="octo-benefit">✓ {{ section.settings.octo_benefit_2 }}</div>
+          <div class="octo-benefit">✓ {{ section.settings.octo_benefit_3 }}</div>
+          <div class="octo-benefit">✓ {{ section.settings.octo_benefit_4 }}</div>
+        </div>
+      </div>
+
+      {% if product.variants.size > 0 %}
+        <div class="octo-card octo-volume-pricing" id="octo-volume-pricing-{{ section.id }}">
+          <h3>{{ section.settings.octo_discount_heading }}</h3>
+
+          <p>{{ section.settings.octo_discount_text }}</p>
+
+          <p class="pvp-example">{{ section.settings.octo_discount_example }}</p>
+
+          <div class="pvp-size-buttons" role="tablist">
+            {% for variant in product.variants %}
+              {% assign mnml_tiers = variant.metafields.mnml.volume_pricing_tiers.value %}
+
+{% if mnml_tiers == blank %}
+  {% assign mnml_tiers = product.metafields.mnml.volume_pricing_tiers.value %}
+{% endif %}
+
+<button
+  type="button"
+  class="pvp-size-button {% if forloop.first %}active{% endif %}"
+  data-price="{{ variant.price | divided_by: 100.0 }}"
+  data-title="{{ variant.title | escape }}"
+  data-variant-id="{{ variant.id }}"
+  data-tiers="{{ mnml_tiers | json | escape }}"
+>
+                {{ variant.title | split: ':' | first }}
+              </button>
+            {% endfor %}
+          </div>
+
+          <div class="pvp-selected-size">
+            Viewing discounts for:
+            <strong class="pvp-current-size">{{ product.variants.first.title }}</strong>
+          </div>
+
+          <div class="octo-table-wrap">
+            <table class="octo-pricing-table">
+              <thead>
+                <tr>
+                  <th>Total Qty</th>
+                  <th>Regular</th>
+                  <th>Discount</th>
+                  <th>You Pay</th>
+                  <th>Save Each</th>
+                </tr>
+              </thead>
+              <tbody class="pvp-table-body"></tbody>
+            </table>
+          </div>
+
+          <p class="pvp-note">{{ section.settings.octo_discount_note }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .octo-pricing {
+    background: #050505;
+    color: #fff;
+    padding: 72px 20px 96px;
+  }
+
+  .octo-pricing-wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .octo-pricing .octo-section-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 34px;
+  }
+
+  .octo-pricing .octo-section-head h2 {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1;
+    margin: 0 0 12px;
+    letter-spacing: -.035em;
+  }
+
+  .octo-pricing .octo-section-head p {
+    color: rgba(255,255,255,.68);
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .octo-pricing .octo-pricing-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .octo-pricing .octo-card {
+    background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 24px 70px rgba(0,0,0,.35);
+  }
+
+  .octo-pricing .octo-card h3 {
+    margin: 0 0 18px;
+    font-size: 26px;
+    line-height: 1.1;
+  }
+
+  .octo-pricing .octo-price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.11);
+    font-size: 15px;
+  }
+
+  .octo-pricing .octo-price-row span {
+    color: rgba(255,255,255,.86);
+    white-space: nowrap;
+  }
+
+  .octo-pricing .octo-card-note,
+  .octo-pricing .pvp-note,
+  .octo-pricing .pvp-example {
+    color: rgba(255,255,255,.58);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .octo-pricing .octo-card-note {
+    margin: 20px 0 0;
+  }
+
+  .octo-pricing .octo-volume-pricing > p {
+    color: rgba(255,255,255,.7);
+    line-height: 1.45;
+  }
+
+  .octo-pricing .pvp-size-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0;
+  }
+
+  .octo-pricing .pvp-size-button {
+    border: 1px solid rgba(255,255,255,.22);
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    border-radius: 999px;
+    padding: 8px 13px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .octo-pricing .pvp-size-button.active {
+    background: linear-gradient(135deg, #8d4dff, #ff7a2f);
+    border-color: transparent;
+  }
+
+  .octo-pricing .pvp-selected-size {
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,.72);
+  }
+
+  .octo-pricing .octo-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .octo-pricing .octo-pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 520px;
+  }
+
+  .octo-pricing .octo-pricing-table th,
+  .octo-pricing .octo-pricing-table td {
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    padding: 10px 6px;
+    text-align: right;
+  }
+
+  .octo-pricing .octo-pricing-table th:first-child,
+  .octo-pricing .octo-pricing-table td:first-child {
+    text-align: left;
+  }
+
+  .octo-pricing .octo-pricing-table th {
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: .03em;
+  }
+
+  .octo-pricing .octo-you-pay {
+    text-align: center;
+  }
+
+  .octo-pricing .octo-you-pay strong {
+    color: #ff8a35;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -.02em;
+  }
+
+  .octo-pricing .octo-pricing-table th:nth-child(4) {
+    color: #ff8a35;
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .octo-pricing .octo-benefits {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.10);
+  }
+
+  .octo-pricing .octo-benefit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: rgba(255,255,255,.88);
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .octo-pricing {
+      padding: 56px 16px 64px;
+    }
+
+    .octo-pricing .octo-pricing-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .octo-pricing .octo-card {
+      padding: 20px;
+    }
+
+    .octo-pricing .octo-pricing-table {
+      min-width: 0;
+      width: 100%;
+      table-layout: fixed;
+      font-size: 12px;
+    }
+
+    .octo-pricing .octo-pricing-table th,
+    .octo-pricing .octo-pricing-table td {
+      padding: 10px 3px;
+      white-space: nowrap;
+    }
+
+    .octo-pricing .octo-pricing-table th:nth-child(5),
+    .octo-pricing .octo-pricing-table td:nth-child(5) {
+      display: none;
+    }
+
+    .octo-pricing .octo-you-pay strong {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const containers = document.querySelectorAll('.octo-volume-pricing');
+
+    containers.forEach(function (container) {
+      const buttons = container.querySelectorAll('.pvp-size-button');
+      const tableBody = container.querySelector('.pvp-table-body');
+      const currentSize = container.querySelector('.pvp-current-size');
+
+      function money(value) {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: '{{ cart.currency.iso_code | default: shop.currency }}'
+        }).format(Number(value));
+      }
+
+      function getTiers(button) {
+        const rawTiers = button.dataset.tiers;
+
+        if (!rawTiers) {
+          return [];
+        }
+
+        try {
+          const pricingData = JSON.parse(rawTiers);
+
+          if (
+            pricingData &&
+            Array.isArray(pricingData.tiers)
+          ) {
+            return pricingData.tiers;
+          }
+
+          return [];
+        } catch (error) {
+          console.error('MNML pricing tiers could not be read:', error);
+          return [];
+        }
+      }
+
+      function showNoDiscounts() {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align:center; padding:20px;">
+              No volume discounts are currently available.
+            </td>
+          </tr>
+        `;
+      }
+
+      function renderTable(button) {
+        const regularPrice = parseFloat(button.dataset.price);
+        const title = button.dataset.title;
+        const tiers = getTiers(button);
+
+        currentSize.textContent = title;
+        tableBody.innerHTML = '';
+
+        if (!tiers.length) {
+          showNoDiscounts();
+          return;
+        }
+
+        tiers.forEach(function (tier) {
+          const quantity = Number(tier.qty);
+          const discountValue = Number(tier.price);
+          const discountType = tier.type;
+
+          let discountedPrice = regularPrice;
+          let savings = 0;
+          let discountLabel = '';
+
+          if (discountType === 'percentage') {
+            savings = regularPrice * (discountValue / 100);
+            discountedPrice = regularPrice - savings;
+            discountLabel = discountValue + '% off';
+          }
+
+          if (discountType === 'amount') {
+            savings = discountValue / 100;
+            discountedPrice = regularPrice - savings;
+            discountLabel = money(savings) + ' off';
+          }
+
+          discountedPrice = Math.max(0, discountedPrice);
+          savings = Math.max(0, regularPrice - discountedPrice);
+
+          const row = document.createElement('tr');
+
+          row.innerHTML = `
+            <td>${quantity}+</td>
+            <td>${money(regularPrice)}</td>
+            <td>${discountLabel}</td>
+            <td class="octo-you-pay">
+              <strong>${money(discountedPrice)}</strong>
+            </td>
+            <td>${money(savings)}</td>
+          `;
+
+          tableBody.appendChild(row);
+        });
+      }
+
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          buttons.forEach(function (otherButton) {
+            otherButton.classList.remove('active');
+          });
+
+          button.classList.add('active');
+          renderTable(button);
+        });
+      });
+
+      if (buttons.length > 0) {
+        renderTable(buttons[0]);
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Octo Patch Pricing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "octo_pricing_heading",
+      "label": "Pricing heading",
+      "default": "Simple Pricing. Bigger Discounts."
+    },
+    {
+      "type": "textarea",
+      "id": "octo_pricing_subheading",
+      "label": "Pricing subheading",
+      "default": "Custom Patches and 3D Flex share the same size-based pricing and volume discounts."
+    },
+    {
+      "type": "text",
+      "id": "octo_size_heading",
+      "label": "Size pricing heading",
+      "default": "Patch Size Pricing (starting price)"
+    },
+    {
+      "type": "textarea",
+      "id": "octo_size_note",
+      "label": "Size pricing note",
+      "default": "Choose your exact patch size in the builder. The correct price is applied when you add it to cart."
+    },
+    {
+      "type": "text",
+      "id": "octo_benefit_1",
+      "label": "Pricing benefit 1",
+      "default": "No setup fees"
+    },
+    {
+      "type": "text",
+      "id": "octo_benefit_2",
+      "label": "Pricing benefit 2",
+      "default": "Order 1 or 10,000+"
+    },
+    {
+      "type": "text",
+      "id": "octo_benefit_3",
+      "label": "Pricing benefit 3",
+      "default": "Mix sizes for volume pricing"
+    },
+    {
+      "type": "text",
+      "id": "octo_benefit_4",
+      "label": "Pricing benefit 4",
+      "default": "Heat apply in seconds"
+    },
+    {
+      "type": "text",
+      "id": "octo_discount_heading",
+      "label": "Discount heading",
+      "default": "Volume Patch Discounts"
+    },
+    {
+      "type": "textarea",
+      "id": "octo_discount_text",
+      "label": "Discount text",
+      "default": "Mix and match any patch sizes to earn volume discounts. Pricing below is per patch. Your discount is based on the total number of patches in your cart, regardless of size."
+    },
+    {
+      "type": "textarea",
+      "id": "octo_discount_example",
+      "label": "Discount example",
+      "default": "Example: 10 Small + 20 XL = 30 total patches, so you qualify for the 25+ discount tier."
+    },
+    {
+      "type": "textarea",
+      "id": "octo_discount_note",
+      "label": "Discount note",
+      "default": "Final pricing is applied automatically in cart and checkout."
+    },
+    {
+      "type": "header",
+      "content": "Discount percentages"
+    },
+    {
+      "type": "number",
+      "id": "octo_tier_1_discount",
+      "label": "10+ discount percent",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "octo_tier_2_discount",
+      "label": "25+ discount percent",
+      "default": 64
+    },
+    {
+      "type": "number",
+      "id": "octo_tier_3_discount",
+      "label": "50+ discount percent",
+      "default": 68
+    },
+    {
+      "type": "number",
+      "id": "octo_tier_4_discount",
+      "label": "100+ discount percent",
+      "default": 73
+    },
+    {
+      "type": "number",
+      "id": "octo_tier_5_discount",
+      "label": "500+ discount percent",
+      "default": 78
+    },
+    {
+      "type": "number",
+      "id": "octo_tier_6_discount",
+      "label": "1000+ discount percent",
+      "default": 81
+    },
+    {
+      "type": "number",
+      "id": "octo_tier_7_discount",
+      "label": "5000+ discount percent",
+      "default": 84
+    }
+  ],
+  "presets": [
+    {
+      "name": "Octo Patch Pricing"
+    }
+  ]
+}
+{% endschema %}

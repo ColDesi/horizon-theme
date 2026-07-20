@@ -1,0 +1,1494 @@
+{% comment %}
+  OctoPatches Patch Inspiration Toy
+
+  This section randomly combines:
+  - Blank patch images
+  - Transparent logo images
+
+  This is intentionally not the actual patch builder.
+  Place the custom OctoPatches CTA section directly beneath this section.
+
+  Recommended assets:
+  - 1200 x 1200 px
+  - Transparent PNG or WebP
+  - Patch and logo artwork centered on the same canvas size
+{% endcomment %}
+
+<section
+  id="patch-randomizer-{{ section.id }}"
+  class="patch-randomizer"
+  style="
+    --pr-background: {{ section.settings.background_color }};
+    --pr-card-background: {{ section.settings.card_background }};
+    --pr-card-border: {{ section.settings.card_border_color }};
+    --pr-heading: {{ section.settings.heading_color }};
+    --pr-text: {{ section.settings.text_color }};
+    --pr-muted: {{ section.settings.muted_text_color }};
+    --pr-accent: {{ section.settings.accent_color }};
+    --pr-button-background: {{ section.settings.button_color }};
+    --pr-button-text: {{ section.settings.button_text_color }};
+    --pr-preview-size: {{ section.settings.preview_size }}px;
+    --pr-logo-size: {{ section.settings.logo_size }}%;
+    --pr-logo-x: {{ section.settings.logo_horizontal_position }}%;
+    --pr-logo-y: {{ section.settings.logo_vertical_position }}%;
+    --pr-card-radius: {{ section.settings.card_radius }}px;
+    --pr-button-radius: {{ section.settings.button_radius }}px;
+  "
+>
+  <div class="patch-randomizer__container">
+
+    <header class="patch-randomizer__header">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="patch-randomizer__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="patch-randomizer__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="patch-randomizer__description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+    </header>
+
+    <div class="patch-randomizer__card">
+
+      {% if section.settings.preview_label != blank %}
+        <div class="patch-randomizer__preview-label">
+          <span class="patch-randomizer__preview-dot"></span>
+
+          <span>
+            {{ section.settings.preview_label }}
+          </span>
+        </div>
+      {% endif %}
+
+      <div
+        class="patch-randomizer__preview"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="patch-randomizer__stage">
+
+          <div class="patch-randomizer__glow"></div>
+
+          {% if section.settings.show_shadow %}
+            <div class="patch-randomizer__shadow"></div>
+          {% endif %}
+
+          <img
+            class="patch-randomizer__patch"
+            src=""
+            alt=""
+            width="1200"
+            height="1200"
+            loading="eager"
+          >
+
+          <img
+            class="patch-randomizer__logo"
+            src=""
+            alt=""
+            width="1200"
+            height="1200"
+            loading="eager"
+          >
+
+          {% if section.settings.show_shine %}
+            <div class="patch-randomizer__shine"></div>
+          {% endif %}
+
+          <div class="patch-randomizer__spark patch-randomizer__spark--one"></div>
+          <div class="patch-randomizer__spark patch-randomizer__spark--two"></div>
+          <div class="patch-randomizer__spark patch-randomizer__spark--three"></div>
+
+        </div>
+      </div>
+
+      {% if section.settings.show_labels %}
+        <div class="patch-randomizer__details">
+
+          <span class="patch-randomizer__detail">
+            <span class="patch-randomizer__detail-label">
+              Patch
+            </span>
+
+            <strong class="patch-randomizer__patch-name">
+              Loading...
+            </strong>
+          </span>
+
+          <span class="patch-randomizer__detail">
+            <span class="patch-randomizer__detail-label">
+              Design
+            </span>
+
+            <strong class="patch-randomizer__logo-name">
+              Loading...
+            </strong>
+          </span>
+
+        </div>
+      {% endif %}
+
+      <button
+        type="button"
+        class="patch-randomizer__button"
+        aria-label="{{ section.settings.button_text | escape }}"
+      >
+        <span
+          class="patch-randomizer__button-icon"
+          aria-hidden="true"
+        >
+          ↻
+        </span>
+
+        <span class="patch-randomizer__button-text">
+          {{ section.settings.button_text }}
+        </span>
+      </button>
+
+      {% if section.settings.helper_text != blank %}
+        <p class="patch-randomizer__helper">
+          {{ section.settings.helper_text }}
+        </p>
+      {% endif %}
+
+      <p
+        class="patch-randomizer__error"
+        role="alert"
+        hidden
+      >
+        Add at least one blank patch and one transparent logo.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #patch-randomizer-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    padding:
+      {{ section.settings.padding_top }}px
+      20px
+      {{ section.settings.padding_bottom }}px;
+    background: var(--pr-background);
+    color: var(--pr-text);
+  }
+
+  #patch-randomizer-{{ section.id }} *,
+  #patch-randomizer-{{ section.id }} *::before,
+  #patch-randomizer-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__container {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__header {
+    max-width: 760px;
+    margin: 0 auto 22px;
+    text-align: center;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__eyebrow {
+    margin: 0 0 7px;
+    color: var(--pr-accent);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__heading {
+    margin: 0;
+    color: var(--pr-heading);
+    font-size: clamp(30px, 4.5vw, 48px);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__description {
+    max-width: 680px;
+    margin: 10px auto 0;
+    color: var(--pr-muted);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__description p {
+    margin: 0;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__card {
+    position: relative;
+    width: 100%;
+    padding: 16px 24px 22px;
+    overflow: hidden;
+    border: 1px solid var(--pr-card-border);
+    border-radius: var(--pr-card-radius);
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.035),
+        transparent 45%
+      ),
+      var(--pr-card-background);
+    box-shadow:
+      0 18px 50px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    text-align: center;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__preview-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+    color: var(--pr-muted);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__preview-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pr-accent);
+    box-shadow:
+      0 0 0 5px color-mix(
+        in srgb,
+        var(--pr-accent) 14%,
+        transparent
+      ),
+      0 0 16px color-mix(
+        in srgb,
+        var(--pr-accent) 45%,
+        transparent
+      );
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__preview {
+    width: 100%;
+    max-width: var(--pr-preview-size);
+    margin: -2px auto -8px;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__glow {
+    position: absolute;
+    z-index: 0;
+    top: 17%;
+    right: 17%;
+    bottom: 17%;
+    left: 17%;
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        circle,
+        color-mix(
+          in srgb,
+          var(--pr-accent) 15%,
+          transparent
+        ),
+        transparent 68%
+      );
+    filter: blur(14px);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__shadow {
+    position: absolute;
+    z-index: 1;
+    right: 23%;
+    bottom: 10%;
+    left: 23%;
+    height: 7%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    filter: blur(18px);
+    opacity: 0;
+    transform: scaleX(0.75);
+    pointer-events: none;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__patch {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transform:
+      translateX(40px)
+      scale(0.96)
+      rotate(1deg);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__logo {
+    position: absolute;
+    z-index: 3;
+    top: var(--pr-logo-y);
+    left: var(--pr-logo-x);
+    width: calc(var(--pr-logo-size) + 20%);
+height: calc(var(--pr-logo-size) + 20%);
+    object-fit: contain;
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      scale(1.42);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__shine {
+    position: absolute;
+    z-index: 4;
+    top: 14%;
+    bottom: 14%;
+    left: -50%;
+    width: 25%;
+    opacity: 0;
+    transform: skewX(-18deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.08),
+      transparent
+    );
+    filter: blur(1px);
+    pointer-events: none;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__spark {
+    position: absolute;
+    z-index: 5;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pr-accent);
+    box-shadow: 0 0 12px var(--pr-accent);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__spark--one {
+    top: 29%;
+    right: 26%;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__spark--two {
+    top: 39%;
+    left: 24%;
+    width: 4px;
+    height: 4px;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__spark--three {
+    right: 28%;
+    bottom: 29%;
+    width: 4px;
+    height: 4px;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 9px;
+    min-height: 42px;
+    margin: 0 auto 14px;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid var(--pr-card-border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--pr-heading);
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__detail-label {
+    color: var(--pr-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__detail strong {
+    font-weight: 750;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__detail.is-changing {
+    animation:
+      patchDetailChange-{{ section.id }}
+      350ms
+      ease
+      forwards;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 250px;
+    min-height: 52px;
+    padding: 13px 25px;
+    border: 0;
+    border-radius: var(--pr-button-radius);
+    background: var(--pr-button-background);
+    color: var(--pr-button-text);
+    box-shadow:
+      0 9px 24px color-mix(
+        in srgb,
+        var(--pr-button-background) 25%,
+        transparent
+      );
+    font: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.2;
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      opacity 180ms ease;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 13px 30px color-mix(
+        in srgb,
+        var(--pr-button-background) 34%,
+        transparent
+      );
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button:focus-visible {
+    outline: 3px solid color-mix(
+      in srgb,
+      var(--pr-accent) 45%,
+      transparent
+    );
+    outline-offset: 4px;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button-icon {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 350ms ease;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button:hover .patch-randomizer__button-icon {
+    transform: rotate(110deg);
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__button.is-loading .patch-randomizer__button-icon {
+    animation:
+      patchButtonSpin-{{ section.id }}
+      700ms
+      linear
+      infinite;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__helper {
+    max-width: 520px;
+    margin: 10px auto 0;
+    color: var(--pr-muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__error {
+    margin: 12px 0 0;
+    color: #ff8c80;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__patch.is-entering {
+    animation:
+      patchSlideIn-{{ section.id }}
+      500ms
+      cubic-bezier(.2, .75, .25, 1)
+      forwards;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__logo.is-stamping {
+    animation:
+      patchLogoStamp-{{ section.id }}
+      550ms
+      cubic-bezier(.18, .85, .25, 1.15)
+      forwards;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__shadow.is-visible {
+    animation:
+      patchShadowIn-{{ section.id }}
+      480ms
+      ease
+      forwards;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__shine.is-moving {
+    animation:
+      patchShineSweep-{{ section.id }}
+      720ms
+      ease
+      forwards;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__spark.is-popping {
+    animation:
+      patchSparkPop-{{ section.id }}
+      480ms
+      ease-out
+      forwards;
+  }
+
+  #patch-randomizer-{{ section.id }} .patch-randomizer__stage.is-leaving {
+    animation:
+      patchLeave-{{ section.id }}
+      220ms
+      ease
+      forwards;
+  }
+
+  @keyframes patchSlideIn-{{ section.id }} {
+    0% {
+      opacity: 0;
+      transform:
+        translateX(40px)
+        scale(0.96)
+        rotate(1deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform:
+        translateX(0)
+        scale(1)
+        rotate(0);
+    }
+  }
+
+  @keyframes patchLogoStamp-{{ section.id }} {
+    0% {
+      opacity: 0;
+      transform:
+        translate(-50%, -50%)
+        scale(1.42);
+      filter: blur(3px);
+    }
+
+    52% {
+      opacity: 1;
+      transform:
+        translate(-50%, -50%)
+        scale(0.91);
+      filter: blur(0);
+    }
+
+    74% {
+      opacity: 1;
+      transform:
+        translate(-50%, -50%)
+        scale(1.045);
+    }
+
+    100% {
+      opacity: 1;
+      transform:
+        translate(-50%, -50%)
+        scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes patchShadowIn-{{ section.id }} {
+    0% {
+      opacity: 0;
+      transform: scaleX(0.75);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes patchShineSweep-{{ section.id }} {
+    0% {
+      left: -50%;
+      opacity: 0;
+    }
+
+    18% {
+      opacity: 1;
+    }
+
+    78% {
+      opacity: 1;
+    }
+
+    100% {
+      left: 125%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes patchSparkPop-{{ section.id }} {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    45% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+  }
+
+  @keyframes patchLeave-{{ section.id }} {
+    from {
+      opacity: 1;
+      transform:
+        translateX(0)
+        scale(1);
+    }
+
+    to {
+      opacity: 0;
+      transform:
+        translateX(-32px)
+        scale(0.98);
+    }
+  }
+
+  @keyframes patchDetailChange-{{ section.id }} {
+    0% {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes patchButtonSpin-{{ section.id }} {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #patch-randomizer-{{ section.id }} {
+      padding-right: 14px;
+      padding-left: 14px;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__header {
+      margin-bottom: 18px;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__heading {
+      font-size: clamp(28px, 9vw, 40px);
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__description {
+      font-size: 15px;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__card {
+      padding: 14px 12px 20px;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__preview {
+      margin-bottom: -4px;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__button {
+      width: 100%;
+      min-width: 0;
+      max-width: 350px;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__detail {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #patch-randomizer-{{ section.id }} *,
+    #patch-randomizer-{{ section.id }} *::before,
+    #patch-randomizer-{{ section.id }} *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__patch,
+    #patch-randomizer-{{ section.id }} .patch-randomizer__logo,
+    #patch-randomizer-{{ section.id }} .patch-randomizer__shadow {
+      opacity: 1;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__patch {
+      transform: none;
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__logo {
+      transform: translate(-50%, -50%);
+    }
+
+    #patch-randomizer-{{ section.id }} .patch-randomizer__shine,
+    #patch-randomizer-{{ section.id }} .patch-randomizer__spark {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.getElementById(
+      'patch-randomizer-{{ section.id }}'
+    );
+
+    if (!section) {
+      return;
+    }
+
+    if (
+      section.patchRandomizerCleanup &&
+      typeof section.patchRandomizerCleanup === 'function'
+    ) {
+      section.patchRandomizerCleanup();
+    }
+
+    const patches = [
+      {% for block in section.blocks %}
+        {% if block.type == 'patch' and block.settings.image != blank %}
+          {
+            src: {{ block.settings.image | image_url: width: 1600 | json }},
+            name: {{ block.settings.name | default: 'Patch style' | json }},
+            alt: {{ block.settings.image.alt | default: block.settings.name | default: 'Blank patch style' | json }}
+          },
+        {% endif %}
+      {% endfor %}
+    ];
+
+    const logos = [
+      {% for block in section.blocks %}
+        {% if block.type == 'logo' and block.settings.image != blank %}
+          {
+            src: {{ block.settings.image | image_url: width: 1200 | json }},
+            name: {{ block.settings.name | default: 'Logo design' | json }},
+            alt: {{ block.settings.image.alt | default: block.settings.name | default: 'Logo design' | json }}
+          },
+        {% endif %}
+      {% endfor %}
+    ];
+
+    const stage = section.querySelector(
+      '.patch-randomizer__stage'
+    );
+
+    const patchImage = section.querySelector(
+      '.patch-randomizer__patch'
+    );
+
+    const logoImage = section.querySelector(
+      '.patch-randomizer__logo'
+    );
+
+    const shadow = section.querySelector(
+      '.patch-randomizer__shadow'
+    );
+
+    const shine = section.querySelector(
+      '.patch-randomizer__shine'
+    );
+
+    const sparks = section.querySelectorAll(
+      '.patch-randomizer__spark'
+    );
+
+    const button = section.querySelector(
+      '.patch-randomizer__button'
+    );
+
+    const buttonText = section.querySelector(
+      '.patch-randomizer__button-text'
+    );
+
+    const patchName = section.querySelector(
+      '.patch-randomizer__patch-name'
+    );
+
+    const logoName = section.querySelector(
+      '.patch-randomizer__logo-name'
+    );
+
+    const detailElements = section.querySelectorAll(
+      '.patch-randomizer__detail'
+    );
+
+    const errorMessage = section.querySelector(
+      '.patch-randomizer__error'
+    );
+
+    const originalButtonText =
+      {{ section.settings.button_text | json }};
+
+    const loadingButtonText =
+      {{ section.settings.loading_button_text | json }};
+
+    const logoDelay =
+      {{ section.settings.logo_delay | json }};
+
+    const autoPlayEnabled =
+      {{ section.settings.enable_auto_play | json }};
+
+    const autoPlayDelay =
+      {{ section.settings.auto_play_delay | times: 1000 | json }};
+
+    let previousPatchIndex = -1;
+    let previousLogoIndex = -1;
+    let running = false;
+    let destroyed = false;
+    let autoPlayTimer = null;
+
+    function wait(milliseconds) {
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, milliseconds);
+      });
+    }
+
+    function preloadImage(src) {
+      return new Promise((resolve) => {
+        const image = new Image();
+
+        image.onload = resolve;
+        image.onerror = resolve;
+        image.src = src;
+      });
+    }
+
+    function getRandomIndex(length, previousIndex) {
+      if (length <= 1) {
+        return 0;
+      }
+
+      let nextIndex;
+
+      do {
+        nextIndex = Math.floor(
+          Math.random() * length
+        );
+      } while (nextIndex === previousIndex);
+
+      return nextIndex;
+    }
+
+    function resetAnimationClasses() {
+      stage.classList.remove('is-leaving');
+      patchImage.classList.remove('is-entering');
+      logoImage.classList.remove('is-stamping');
+
+      if (shadow) {
+        shadow.classList.remove('is-visible');
+      }
+
+      if (shine) {
+        shine.classList.remove('is-moving');
+      }
+
+      sparks.forEach((spark) => {
+        spark.classList.remove('is-popping');
+      });
+
+      detailElements.forEach((detail) => {
+        detail.classList.remove('is-changing');
+      });
+    }
+
+    function setLoadingState(isLoading) {
+      button.disabled = isLoading;
+      button.classList.toggle(
+        'is-loading',
+        isLoading
+      );
+
+      if (buttonText) {
+        buttonText.textContent = isLoading
+          ? loadingButtonText
+          : originalButtonText;
+      }
+    }
+
+    function updateLabels(patch, logo) {
+      if (patchName) {
+        patchName.textContent = patch.name;
+      }
+
+      if (logoName) {
+        logoName.textContent = logo.name;
+      }
+
+      detailElements.forEach((detail) => {
+        void detail.offsetWidth;
+        detail.classList.add('is-changing');
+      });
+    }
+
+    function clearAutoPlay() {
+      if (autoPlayTimer) {
+        window.clearTimeout(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    function scheduleAutoPlay() {
+      clearAutoPlay();
+
+      if (!autoPlayEnabled || destroyed) {
+        return;
+      }
+
+      autoPlayTimer = window.setTimeout(() => {
+        showAnotherPatch(false);
+      }, autoPlayDelay);
+    }
+
+    async function showAnotherPatch(isFirstLoad = false) {
+      if (running || destroyed) {
+        return;
+      }
+
+      clearAutoPlay();
+
+      if (!patches.length || !logos.length) {
+        errorMessage.hidden = false;
+        button.disabled = true;
+        return;
+      }
+
+      running = true;
+      errorMessage.hidden = true;
+      setLoadingState(true);
+
+      if (!isFirstLoad) {
+        stage.classList.add('is-leaving');
+        await wait(220);
+      }
+
+      resetAnimationClasses();
+
+      const patchIndex = getRandomIndex(
+        patches.length,
+        previousPatchIndex
+      );
+
+      const logoIndex = getRandomIndex(
+        logos.length,
+        previousLogoIndex
+      );
+
+      previousPatchIndex = patchIndex;
+      previousLogoIndex = logoIndex;
+
+      const selectedPatch = patches[patchIndex];
+      const selectedLogo = logos[logoIndex];
+
+      await Promise.all([
+        preloadImage(selectedPatch.src),
+        preloadImage(selectedLogo.src)
+      ]);
+
+      if (destroyed) {
+        return;
+      }
+
+      patchImage.src = selectedPatch.src;
+      patchImage.alt = selectedPatch.alt;
+
+      logoImage.src = selectedLogo.src;
+      logoImage.alt = selectedLogo.alt;
+
+      updateLabels(
+        selectedPatch,
+        selectedLogo
+      );
+
+      void stage.offsetWidth;
+
+      patchImage.classList.add('is-entering');
+
+      if (shadow) {
+        shadow.classList.add('is-visible');
+      }
+
+      await wait(logoDelay);
+
+      logoImage.classList.add('is-stamping');
+
+      await wait(240);
+
+      sparks.forEach((spark, index) => {
+        window.setTimeout(() => {
+          spark.classList.add('is-popping');
+        }, index * 65);
+      });
+
+      await wait(300);
+
+      if (shine) {
+        shine.classList.add('is-moving');
+      }
+
+      await wait(720);
+
+      running = false;
+      setLoadingState(false);
+      scheduleAutoPlay();
+    }
+
+    function handleButtonClick() {
+      showAnotherPatch(false);
+    }
+
+    function handleMouseEnter() {
+      clearAutoPlay();
+    }
+
+    function handleMouseLeave() {
+      scheduleAutoPlay();
+    }
+
+    button.addEventListener(
+      'click',
+      handleButtonClick
+    );
+
+    section.addEventListener(
+      'mouseenter',
+      handleMouseEnter
+    );
+
+    section.addEventListener(
+      'mouseleave',
+      handleMouseLeave
+    );
+
+    section.patchRandomizerCleanup = () => {
+      destroyed = true;
+      clearAutoPlay();
+
+      button.removeEventListener(
+        'click',
+        handleButtonClick
+      );
+
+      section.removeEventListener(
+        'mouseenter',
+        handleMouseEnter
+      );
+
+      section.removeEventListener(
+        'mouseleave',
+        handleMouseLeave
+      );
+    };
+
+    showAnotherPatch(true);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Patch inspiration toy",
+  "tag": "section",
+  "class": "section-patch-randomizer",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small heading",
+      "default": "Patch Inspiration"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover Your Next Favorite Patch"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Explore random combinations of materials, shapes and logos. This is just for inspiration. When something catches your eye, use the designer below to create your own.</p>"
+    },
+    {
+      "type": "text",
+      "id": "preview_label",
+      "label": "Preview label",
+      "default": "Fresh patch idea"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Show Me Another Patch"
+    },
+    {
+      "type": "text",
+      "id": "loading_button_text",
+      "label": "Loading button text",
+      "default": "Making Another..."
+    },
+    {
+      "type": "text",
+      "id": "helper_text",
+      "label": "Helper text",
+      "default": "Keep clicking until inspiration strikes. No commitment. No tiny design decisions yet."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_labels",
+      "label": "Show patch and design labels",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Preview sizing"
+    },
+    {
+      "type": "range",
+      "id": "preview_size",
+      "min": 280,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum preview size",
+      "default": 420
+    },
+    {
+  "type": "range",
+  "id": "logo_size",
+  "min": 20,
+  "max": 90,
+  "step": 1,
+  "unit": "%",
+  "label": "Logo size",
+  "default": 44,
+  "info": "Sets the maximum size for every logo."
+},
+    {
+      "type": "range",
+      "id": "logo_horizontal_position",
+      "min": 35,
+      "max": 65,
+      "step": 1,
+      "unit": "%",
+      "label": "Logo horizontal position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logo_vertical_position",
+      "min": 35,
+      "max": 65,
+      "step": 1,
+      "unit": "%",
+      "label": "Logo vertical position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logo_delay",
+      "min": 150,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "label": "Delay before logo appears",
+      "default": 400
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shadow",
+      "label": "Show patch shadow",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shine",
+      "label": "Show shine animation",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Automatic interaction"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_auto_play",
+      "label": "Automatically show new combinations",
+      "default": false,
+      "info": "The automatic rotation pauses while someone is hovering over the section."
+    },
+    {
+      "type": "range",
+      "id": "auto_play_delay",
+      "min": 4,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "label": "Seconds between combinations",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Dark mode colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#101114"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#181a1f"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#2a2d34"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#eeeeee"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Secondary text",
+      "default": "#a7aab1"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#f58220"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#f58220"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Shape and spacing"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Card corner radius",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Button corner radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 28
+    }
+  ],
+  "blocks": [
+    {
+      "type": "patch",
+      "name": "Blank patch",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Blank patch image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Patch name",
+          "default": "Leather Circle",
+          "info": "Example: Leather Circle, Denim Oval or Camo Rectangle."
+        }
+      ]
+    },
+{
+  "type": "logo",
+  "name": "Logo",
+  "limit": 8,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Transparent logo image"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Logo name",
+      "default": "Octopus",
+      "info": "Example: Octopus, Wolf, Mountain or Compass."
+    },
+    {
+      "type": "range",
+      "id": "logo_scale",
+      "min": 20,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Logo size",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logo_x",
+      "min": 30,
+      "max": 70,
+      "step": 1,
+      "unit": "%",
+      "label": "Horizontal position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logo_y",
+      "min": 30,
+      "max": 70,
+      "step": 1,
+      "unit": "%",
+      "label": "Vertical position",
+      "default": 50
+    }
+  ]
+}
+],
+"presets": [
+  {
+    "name": "Patch inspiration toy"
+  }
+]
+}
+{% endschema %}

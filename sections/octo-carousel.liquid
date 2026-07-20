@@ -1,0 +1,584 @@
+{% comment %}
+  OctoPatches Premium Showcase Carousel
+{% endcomment %}
+
+<section
+  class="octo-showcase"
+  style="
+    --cards-desktop: {{ section.settings.cards_desktop }};
+    --image-height: {{ section.settings.image_height }}px;
+    --logo-width: {{ section.settings.logo_width }}px;
+    --card-radius: {{ section.settings.card_radius }}px;
+  "
+>
+  <div class="octo-showcase__inner">
+
+    <div class="octo-showcase__heading">
+      {% if section.settings.eyebrow != blank %}
+        <p class="octo-showcase__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="octo-showcase__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="octo-showcase__wrap">
+      <button class="octo-showcase__arrow octo-showcase__arrow--left" type="button" aria-label="Scroll left">‹</button>
+
+      <div class="octo-showcase__track" id="OctoShowcase-{{ section.id }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'card' %}
+            <article class="octo-showcase__card" {{ block.shopify_attributes }}>
+              <div class="octo-showcase__image-wrap">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 1200 | image_tag:
+                    loading: 'lazy',
+                    class: 'octo-showcase__image'
+                  }}
+                {% endif %}
+              </div>
+
+              <div class="octo-showcase__content">
+                {% if block.settings.type_logo != blank %}
+                  <div class="octo-showcase__type-logo-wrap">
+                    {{ block.settings.type_logo | image_url: width: 500 | image_tag:
+                      loading: 'lazy',
+                      class: 'octo-showcase__type-logo'
+                    }}
+                  </div>
+                {% endif %}
+
+                {% if block.settings.category != blank %}
+                  <p class="octo-showcase__category">{{ block.settings.category }}</p>
+                {% endif %}
+
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+
+                {% if block.settings.text != blank %}
+                  <p class="octo-showcase__text">{{ block.settings.text }}</p>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+
+          {% if block.type == 'cta' %}
+            <article class="octo-showcase__card octo-showcase__card--cta" {{ block.shopify_attributes }}>
+              <div class="octo-showcase__cta">
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+
+                {% if block.settings.text != blank %}
+                  <p>{{ block.settings.text }}</p>
+                {% endif %}
+
+                {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                  <a href="{{ block.settings.button_link }}" class="octo-showcase__button">
+                    {{ block.settings.button_label }}
+                    <span>→</span>
+                  </a>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <button class="octo-showcase__arrow octo-showcase__arrow--right" type="button" aria-label="Scroll right">›</button>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .octo-showcase {
+    background:
+      radial-gradient(circle at top center, rgba(255,113,88,.10), transparent 34%),
+      linear-gradient(180deg, #050505 0%, #101010 100%);
+    color: #fff;
+    padding: 76px 20px;
+    overflow: hidden;
+  }
+
+  .octo-showcase__inner {
+    max-width: 1480px;
+    margin: 0 auto;
+  }
+
+  .octo-showcase__heading {
+    text-align: center;
+    margin-bottom: 42px;
+  }
+
+  .octo-showcase__eyebrow {
+    margin: 0 0 12px;
+    color: #ff7158;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  .octo-showcase__heading h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(38px, 5vw, 72px);
+    line-height: .95;
+    font-weight: 900;
+    letter-spacing: -.05em;
+  }
+
+  .octo-showcase__subheading {
+    max-width: 760px;
+    margin: 18px auto 0;
+    color: rgba(255,255,255,.72);
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .octo-showcase__wrap {
+    position: relative;
+  }
+
+  .octo-showcase__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - (24px * (var(--cards-desktop) - 1))) / var(--cards-desktop));
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    cursor: grab;
+    padding: 10px 4px 22px;
+  }
+
+  .octo-showcase__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .octo-showcase__track:active {
+    cursor: grabbing;
+  }
+
+  .octo-showcase__card {
+    min-width: 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+    border-radius: var(--card-radius);
+    background: #151515;
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 24px 60px rgba(0,0,0,.45);
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  }
+
+  .octo-showcase__card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,113,88,.65);
+    box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 24px rgba(255,113,88,.10);
+  }
+
+  .octo-showcase__image-wrap {
+    height: var(--image-height);
+    background: #0c0c0c;
+    overflow: hidden;
+  }
+
+  .octo-showcase__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .5s ease;
+  }
+
+  .octo-showcase__card:hover .octo-showcase__image {
+    transform: scale(1.055);
+  }
+
+  .octo-showcase__content {
+    min-height: 245px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .octo-showcase__type-logo-wrap {
+    min-height: 44px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .octo-showcase__type-logo {
+    width: var(--logo-width);
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .octo-showcase__category {
+    margin: 0 0 10px;
+    color: rgba(255,255,255,.60);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .octo-showcase__content h3,
+  .octo-showcase__cta h3 {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: clamp(25px, 1.7vw, 32px);
+    line-height: 1.02;
+    font-weight: 900;
+    letter-spacing: -.04em;
+    transition: color .22s ease;
+  }
+
+  .octo-showcase__card:hover h3 {
+    color: #ff7158;
+  }
+
+  .octo-showcase__text,
+  .octo-showcase__cta p {
+    margin: 0;
+    color: rgba(255,255,255,.72);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .octo-showcase__card--cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(var(--image-height) + 245px);
+    background:
+      radial-gradient(circle at top right, rgba(255,113,88,.22), transparent 36%),
+      linear-gradient(180deg, #1a1a1a 0%, #0b0b0b 100%);
+  }
+
+  .octo-showcase__cta {
+    padding: 36px;
+  }
+
+  .octo-showcase__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding: 15px 24px;
+    border-radius: 10px;
+    background: #ff7158;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: transform .18s ease, background .18s ease;
+  }
+
+  .octo-showcase__button:hover {
+    background: #ff5d43;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .octo-showcase__arrow {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 999px;
+    background: rgba(0,0,0,.72);
+    color: #fff;
+    font-size: 36px;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background .18s ease, border-color .18s ease, transform .18s ease;
+  }
+
+  .octo-showcase__arrow:hover {
+    background: #ff7158;
+    border-color: #ff7158;
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  .octo-showcase__arrow--left {
+    left: -18px;
+  }
+
+  .octo-showcase__arrow--right {
+    right: -18px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    .octo-showcase__track {
+      grid-auto-columns: calc((100% - 24px) / 2);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .octo-showcase {
+      padding: 54px 16px;
+    }
+
+    .octo-showcase__heading {
+      margin-bottom: 28px;
+    }
+
+    .octo-showcase__track {
+      grid-auto-columns: 88%;
+      gap: 18px;
+    }
+
+    .octo-showcase__image-wrap {
+      height: 320px;
+    }
+
+    .octo-showcase__content {
+      min-height: 225px;
+      padding: 24px;
+    }
+
+    .octo-showcase__arrow {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const track = document.querySelector('#OctoShowcase-{{ section.id }}');
+    if (!track) return;
+
+    const wrap = track.closest('.octo-showcase__wrap');
+    const prev = wrap.querySelector('.octo-showcase__arrow--left');
+    const next = wrap.querySelector('.octo-showcase__arrow--right');
+
+    function scrollAmount() {
+      const card = track.querySelector('.octo-showcase__card');
+      if (!card) return 400;
+      return card.offsetWidth + 24;
+    }
+
+    if (prev) {
+      prev.addEventListener('click', function () {
+        track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    if (next) {
+      next.addEventListener('click', function () {
+        track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    track.addEventListener('mousedown', function (e) {
+      isDown = true;
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', function () {
+      isDown = false;
+    });
+
+    track.addEventListener('mouseup', function () {
+      isDown = false;
+    });
+
+    track.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.4;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Octo showcase carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Endless Possibilities"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See What's Possible"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every patch starts with an idea. Here's what customers can create."
+    },
+    {
+      "type": "range",
+      "id": "cards_desktop",
+      "label": "Cards visible on desktop",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image height",
+      "min": 260,
+      "max": 520,
+      "step": 10,
+      "default": 360
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Product logo width",
+      "min": 80,
+      "max": 240,
+      "step": 10,
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 8,
+      "max": 36,
+      "step": 2,
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Showcase card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main image"
+        },
+        {
+          "type": "image_picker",
+          "id": "type_logo",
+          "label": "Product type logo"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Casual Apparel"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "USA Left Chest"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Left chest logos for premium polo shirts."
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "name": "CTA card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "CTA title",
+          "default": "What will you create?"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "CTA text",
+          "default": "Design one patch or one hundred. Mix styles, finishes, and ideas in a single order."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Start Designing"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Octo showcase carousel",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "category": "Casual Apparel",
+            "title": "USA Left Chest",
+            "text": "Left chest logos for premium polo shirts."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "category": "Restaurant & Hospitality",
+            "title": "Boar & Fig",
+            "text": "Elegant patches that bring your brand to the table."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "category": "Retail & Lifestyle",
+            "title": "Lake Freeman Sail Club",
+            "text": "Durable patches for timeless coastal style."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "category": "Premium Brands",
+            "title": "Iron & Thread",
+            "text": "High-end patches that represent quality and craftsmanship."
+          }
+        },
+        {
+          "type": "cta"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

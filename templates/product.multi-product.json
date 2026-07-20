@@ -12,64 +12,36 @@
     "octo_product_builder_landing_EikpBH": {
       "type": "octo-product-builder-landing",
       "blocks": {
-        "flex_feature_Naeqgf": {
-          "type": "flex_feature",
+        "feature_DaPF8F": {
+          "type": "feature",
           "settings": {
-            "feature_text": "Your artwork is the patch"
+            "octo_feature_text": "50+ faux materials"
           }
         },
-        "flex_feature_V87Dkf": {
-          "type": "flex_feature",
+        "feature_JLzqxA": {
+          "type": "feature",
           "settings": {
-            "feature_text": "Control raised and flat details"
+            "octo_feature_text": "Unlimited patch shapes"
           }
         },
-        "flex_feature_aNWVCB": {
-          "type": "flex_feature",
+        "feature_6adint": {
+          "type": "feature",
           "settings": {
-            "feature_text": "Add matte and gloss effects"
+            "octo_feature_text": "Simple & Powerful Designer"
           }
         },
-        "flex_feature_FjWE8B": {
-          "type": "flex_feature",
+        "feature_gGc7z6": {
+          "type": "feature",
           "settings": {
-            "feature_text": "Modern sculpted look"
-          }
-        },
-        "custom_patch_feature_FaEgR3": {
-          "type": "custom_patch_feature",
-          "settings": {
-            "feature_text": "50+ faux material options"
-          }
-        },
-        "custom_patch_feature_tMqaH9": {
-          "type": "custom_patch_feature",
-          "settings": {
-            "feature_text": "Choose the shape & border"
-          }
-        },
-        "custom_patch_feature_Xezp6Q": {
-          "type": "custom_patch_feature",
-          "settings": {
-            "feature_text": "Add your artwork"
-          }
-        },
-        "custom_patch_feature_6Tm33L": {
-          "type": "custom_patch_feature",
-          "settings": {
-            "feature_text": "Classic premium patch look"
+            "octo_feature_text": "No Stitching Required"
           }
         }
       },
       "block_order": [
-        "flex_feature_Naeqgf",
-        "flex_feature_V87Dkf",
-        "flex_feature_aNWVCB",
-        "flex_feature_FjWE8B",
-        "custom_patch_feature_FaEgR3",
-        "custom_patch_feature_tMqaH9",
-        "custom_patch_feature_Xezp6Q",
-        "custom_patch_feature_6Tm33L"
+        "feature_DaPF8F",
+        "feature_JLzqxA",
+        "feature_6adint",
+        "feature_gGc7z6"
       ],
       "name": "Octo Builder Landing",
       "settings": {
@@ -77,28 +49,12 @@
         "octo_heading": "Design Your Custom Patch",
         "octo_subheading": "You Design. We Produce. <br>Choose your material, pick a shape, upload your artwork, preview your patch, and order with confidence.",
         "octo_price_text": "As Low As $1.44 per patch",
-        "octo_note": "Same pricing • Same heat application • Mix any patches for volume discounts.",
-        "custom_patch_heading": "Custom Patches",
-        "flex_heading": "3D Flex",
-        "octo_hero_image": "shopify://shop_images/main_product_image.png"
-      }
-    },
-    "octo_patchmaker_cta_buttons_JjrHze": {
-      "type": "octo-patchmaker-cta-buttons",
-      "name": "Patchmaker CTA Buttons",
-      "settings": {
-        "patch_logged_out_text": "Design Patches",
-        "patch_logged_in_text": "Design Patches",
-        "flex_logged_out_text": "Design 3D Flex",
-        "flex_logged_in_text": "Design 3D Flex"
-      }
-    },
-    "octgi_patch_pricing_9khWY8": {
-      "type": "octgi-patch-pricing",
-      "name": "Octo Patch Pricing",
-      "settings": {
+        "octo_button_text": "Start Designing",
+        "octo_button_link": "",
+        "octo_note": "Volume discounts apply automatically in cart.",
+        "octo_hero_image": "shopify://shop_images/main_product_image.png",
         "octo_pricing_heading": "Simple Pricing. Bigger Discounts.",
-        "octo_pricing_subheading": "Custom Patches and 3D Flex share the same size-based pricing and volume discounts.",
+        "octo_pricing_subheading": "Patch pricing pulls directly from this product's variants. Update your variant prices and this table updates automatically.",
         "octo_size_heading": "Patch Size Pricing (starting price)",
         "octo_size_note": "Choose your exact patch size in the builder. The correct price is applied when you add it to cart.",
         "octo_benefit_1": "No setup fees",
@@ -106,7 +62,7 @@
         "octo_benefit_3": "Mix sizes for volume pricing",
         "octo_benefit_4": "Heat apply in seconds",
         "octo_discount_heading": "Volume Patch Discounts",
-        "octo_discount_text": "Mix and match any patch size & style to earn volume discounts. Pricing below is per patch.",
+        "octo_discount_text": "Mix and match any patch sizes to earn volume discounts. Pricing below is per patch. Your discount is based on the total number of patches in your cart, regardless of size.",
         "octo_discount_example": "Example: 10 Small + 20 XL = 30 total patches, so you qualify for the 25+ discount tier.",
         "octo_discount_note": "Final pricing is applied automatically in cart and checkout.",
         "octo_tier_1_discount": 50,
@@ -510,7 +466,6 @@
       "block_order": [
         "shop_shop_login_button_app_block_YXqg3C"
       ],
-      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -664,26 +619,13 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "octo_patchmaker_cta_buttons_Xmtdk9": {
-      "type": "octo-patchmaker-cta-buttons",
-      "name": "Patchmaker CTA Buttons",
-      "settings": {
-        "patch_logged_out_text": "Design Patches",
-        "patch_logged_in_text": "Design Patches",
-        "flex_logged_out_text": "Design 3D Flex",
-        "flex_logged_in_text": "Design 3D Flex"
-      }
     }
   },
   "order": [
     "octo_product_builder_landing_EikpBH",
-    "octo_patchmaker_cta_buttons_JjrHze",
-    "octgi_patch_pricing_9khWY8",
     "octo_builder_features_6aUz68",
     "octo_product_gallery_W7nJEc",
     "main",
-    "product_recommendations_qggXJq",
-    "octo_patchmaker_cta_buttons_Xmtdk9"
+    "product_recommendations_qggXJq"
   ]
 }

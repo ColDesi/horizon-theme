@@ -1,0 +1,533 @@
+<section
+  class="octo-content-builder"
+  style="
+    --octo-bg: {{ section.settings.background_color }};
+    --octo-text: {{ section.settings.text_color }};
+    --octo-width: {{ section.settings.content_width }}px;
+    --octo-padding-top: {{ section.settings.padding_top }}px;
+    --octo-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --octo-align: {{ section.settings.text_alignment }};
+  "
+>
+  <div class="octo-content-builder__inner">
+    {% for block in section.blocks %}
+      {% case block.type %}
+
+        {% when 'heading' %}
+          <{{ block.settings.heading_tag }}
+            class="octo-content-builder__heading"
+            style="
+              font-size: {{ block.settings.font_size }}px;
+              color: {{ block.settings.color }};
+              text-align: {{ block.settings.alignment }};
+            "
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.text }}
+          </{{ block.settings.heading_tag }}>
+
+        {% when 'paragraph' %}
+          <div
+            class="octo-content-builder__text"
+            style="
+              font-size: {{ block.settings.font_size }}px;
+              color: {{ block.settings.color }};
+              text-align: {{ block.settings.alignment }};
+            "
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.text }}
+          </div>
+
+        {% when 'image' %}
+  {% if block.settings.image != blank %}
+
+    {% if block.settings.full_width %}
+      <div
+        class="octo-content-builder__image-full"
+        {{ block.shopify_attributes }}
+      >
+        <img
+          src="{{ block.settings.image | image_url: width: 2400 }}"
+          alt="{{ block.settings.image.alt | escape }}"
+          loading="lazy"
+          style="border-radius: {{ block.settings.border_radius }}px;"
+        >
+      </div>
+
+    {% else %}
+      <div
+        class="octo-content-builder__image-wrap octo-content-builder__image-wrap--{{ block.settings.alignment }}"
+        {{ block.shopify_attributes }}
+      >
+        <img
+          src="{{ block.settings.image | image_url: width: 1600 }}"
+          alt="{{ block.settings.image.alt | escape }}"
+          loading="lazy"
+          style="
+            max-width: {{ block.settings.image_width }}px;
+            border-radius: {{ block.settings.border_radius }}px;
+          "
+        >
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+        {% when 'button' %}
+          {% if block.settings.button_text != blank %}
+            <div
+              class="octo-content-builder__button-wrap octo-content-builder__button-wrap--{{ block.settings.alignment }}"
+              {{ block.shopify_attributes }}
+            >
+              <a
+                href="{{ block.settings.button_link | default: '#' }}"
+                class="octo-content-builder__button octo-content-builder__button--{{ block.settings.button_style }}"
+                {% if block.settings.open_new_tab %}
+                  target="_blank" rel="noopener noreferrer"
+                {% endif %}
+              >
+                {{ block.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
+
+        {% when 'spacer' %}
+          <div style="height: {{ block.settings.height }}px;" {{ block.shopify_attributes }}></div>
+
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .octo-content-builder {
+    background: var(--octo-bg);
+    color: var(--octo-text);
+    padding-top: var(--octo-padding-top);
+    padding-bottom: var(--octo-padding-bottom);
+  }
+
+  .octo-content-builder__inner {
+    max-width: var(--octo-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: var(--octo-align);
+  }
+
+  .octo-content-builder__heading {
+    margin: 0 0 16px;
+    line-height: 1.05;
+    font-weight: 800;
+  }
+
+  .octo-content-builder__text {
+    margin: 0 0 18px;
+    line-height: 1.55;
+  }
+
+  .octo-content-builder__text p {
+    margin-top: 0;
+  }
+
+  .octo-content-builder__image-wrap {
+    margin: 24px 0;
+    display: flex;
+  }
+
+  .octo-content-builder__image-wrap--left {
+    justify-content: flex-start;
+  }
+
+  .octo-content-builder__image-wrap--center {
+    justify-content: center;
+  }
+
+  .octo-content-builder__image-wrap--right {
+    justify-content: flex-end;
+  }
+
+  .octo-content-builder__image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .octo-content-builder__button-wrap {
+    display: flex;
+    margin-top: 22px;
+  }
+
+  .octo-content-builder__button-wrap--left {
+    justify-content: flex-start;
+  }
+
+  .octo-content-builder__button-wrap--center {
+    justify-content: center;
+  }
+
+  .octo-content-builder__button-wrap--right {
+    justify-content: flex-end;
+  }
+
+  .octo-content-builder__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 28px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    line-height: 1;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .octo-content-builder__button--primary {
+    background: #f26a21;
+    color: #ffffff;
+    border-color: #f26a21;
+  }
+
+  .octo-content-builder__button--primary:hover {
+    background: #ffffff;
+    color: #f26a21;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .octo-content-builder__button--secondary {
+    background: #ffffff;
+    color: #111111;
+    border-color: #ffffff;
+  }
+
+  .octo-content-builder__button--secondary:hover {
+    background: #f26a21;
+    color: #ffffff;
+    border-color: #f26a21;
+    transform: translateY(-2px);
+  }
+
+  .octo-content-builder__button--outline {
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+
+  .octo-content-builder__button--outline:hover {
+    background: #ffffff;
+    color: #111111;
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .octo-content-builder__heading {
+      font-size: clamp(28px, 8vw, 42px) !important;
+    }
+
+    .octo-content-builder__text {
+      font-size: 16px !important;
+    }
+
+    .octo-content-builder__button {
+      width: 100%;
+    }
+  }
+
+
+
+
+.octo-content-builder__image-full {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.octo-content-builder__image-full img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+
+</style>
+
+{% schema %}
+{
+  "name": "Octo Content Builder",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Default text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 500,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1000
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Default alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading text",
+          "default": "Your Heading Here"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading type",
+          "default": "h2",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Font size",
+          "min": 24,
+          "max": 96,
+          "step": 2,
+          "unit": "px",
+          "default": 48
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Paragraph text",
+          "default": "<p>Add your text here.</p>"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Font size",
+          "min": 14,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Text color",
+          "default": "#dddddd"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+  "type": "image_picker",
+  "id": "image",
+  "label": "Image"
+},
+{
+  "type": "checkbox",
+  "id": "full_width",
+  "label": "Full width image",
+  "default": false
+},
+{
+  "type": "range",
+  "id": "image_width",
+  "label": "Image width",
+          "min": 100,
+          "max": 1400,
+          "step": 50,
+          "unit": "px",
+          "default": 700
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "label": "Rounded corners",
+          "min": 0,
+          "max": 40,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Start Designing"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "default": "primary",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "outline", "label": "Outline" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Button alignment",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": [
+        {
+          "type": "range",
+          "id": "height",
+          "label": "Spacer height",
+          "min": 8,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 32
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Octo Content Builder",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "paragraph"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

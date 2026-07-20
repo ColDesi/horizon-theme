@@ -4250,3 +4250,110 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
     margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
   }
 }
+
+/* Compare Patch Styles menu item */
+.header__menu-item[href="/pages/compare-patch-styles"],
+.header__menu-item[href="https://octopatches.com/pages/compare-patch-styles"],
+a[href="/pages/compare-patch-styles"] span,
+a[href="https://octopatches.com/pages/compare-patch-styles"] span {
+  color: #FF7A00 !important;
+  font-weight: 700 !important;
+}
+
+/* Hover */
+.header__menu-item[href="/pages/compare-patch-styles"]:hover,
+.header__menu-item[href="https://octopatches.com/pages/compare-patch-styles"]:hover,
+a[href="/pages/compare-patch-styles"]:hover span,
+a[href="https://octopatches.com/pages/compare-patch-styles"]:hover span {
+  color: #FFA347 !important;
+}
+
+
+.octo-button-block {
+  display: flex;
+}
+
+.octo-button-block--left {
+  justify-content: flex-start;
+}
+
+.octo-button-block--center {
+  justify-content: center;
+}
+
+.octo-button-block--right {
+  justify-content: flex-end;
+}
+
+.octo-button-block--full {
+  width: 100%;
+}
+
+.octo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 800;
+  line-height: 1;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.octo-button--small {
+  padding: 12px 20px;
+  font-size: 14px;
+}
+
+.octo-button--medium {
+  padding: 15px 26px;
+  font-size: 16px;
+}
+
+.octo-button--large {
+  padding: 18px 34px;
+  font-size: 18px;
+}
+
+.octo-button--full {
+  width: 100%;
+}
+
+.octo-button--primary {
+  background: #f26a21;
+  color: #ffffff;
+  border-color: #f26a21;
+}
+
+.octo-button--primary:hover {
+  background: #ffffff;
+  color: #f26a21;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.octo-button--secondary {
+  background: #ffffff;
+  color: #111111;
+  border-color: #ffffff;
+}
+
+.octo-button--secondary:hover {
+  background: #f26a21;
+  color: #ffffff;
+  border-color: #f26a21;
+  transform: translateY(-2px);
+}
+
+.octo-button--outline {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.octo-button--outline:hover {
+  background: #ffffff;
+  color: #111111;
+  transform: translateY(-2px);
+}

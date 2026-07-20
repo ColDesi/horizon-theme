@@ -1,0 +1,28 @@
+{% if block.settings.button_text != blank %}
+  <div
+    class="
+      octo-button-block
+      octo-button-block--{{ block.settings.button_alignment }}
+      {% if block.settings.full_width %}octo-button-block--full{% endif %}
+    "
+    style="
+      margin-top: {{ block.settings.margin_top }}px;
+      margin-bottom: {{ block.settings.margin_bottom }}px;
+    "
+  >
+    <a
+      href="{{ block.settings.button_link | default: '#' }}"
+      class="
+        octo-button
+        octo-button--{{ block.settings.button_style }}
+        octo-button--{{ block.settings.button_size }}
+        {% if block.settings.full_width %}octo-button--full{% endif %}
+      "
+      {% if block.settings.open_new_tab %}
+        target="_blank" rel="noopener noreferrer"
+      {% endif %}
+    >
+      {{ block.settings.button_text }}
+    </a>
+  </div>
+{% endif %}

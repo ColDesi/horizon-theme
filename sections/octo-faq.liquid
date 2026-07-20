@@ -1,0 +1,392 @@
+<section
+  class="octo-faq"
+  style="
+    --octo-bg: {{ section.settings.bg_color }};
+    --octo-card: {{ section.settings.card_color }};
+    --octo-text: {{ section.settings.text_color }};
+    --octo-muted: {{ section.settings.muted_color }};
+    --octo-accent: {{ section.settings.accent_color }};
+    --octo-max: {{ section.settings.max_width }}px;
+    --octo-pad-top: {{ section.settings.padding_top }}px;
+    --octo-pad-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="octo-faq__wrap">
+
+    <div class="octo-faq__header">
+      {% if section.settings.eyebrow != blank %}
+        <div class="octo-faq__eyebrow">{{ section.settings.eyebrow }}</div>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p>{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="octo-faq__list">
+      {% for block in section.blocks %}
+        <details class="octo-faq__item" {% if forloop.first and section.settings.first_open %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary>
+            <span class="octo-faq__plus"></span>
+            <span class="octo-faq__question">{{ block.settings.question }}</span>
+            <span class="octo-faq__chevron">⌄</span>
+          </summary>
+
+          <div class="octo-faq__answer">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .octo-faq {
+    background:
+      radial-gradient(circle at top center, color-mix(in srgb, var(--octo-accent) 14%, transparent), transparent 34%),
+      var(--octo-bg);
+    color: var(--octo-text);
+    padding: var(--octo-pad-top) 24px var(--octo-pad-bottom);
+  }
+
+  .octo-faq__wrap {
+    max-width: var(--octo-max);
+    margin: 0 auto;
+  }
+
+  .octo-faq__header {
+    text-align: center;
+    margin-bottom: 42px;
+  }
+
+  .octo-faq__eyebrow {
+    color: var(--octo-accent);
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .octo-faq h2 {
+    margin: 0;
+    color: var(--octo-text);
+    font-size: clamp(42px, 6vw, 86px);
+    line-height: .95;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+  }
+
+  .octo-faq__header p {
+    margin: 22px auto 0;
+    max-width: 850px;
+    color: var(--octo-muted);
+    font-size: clamp(18px, 2vw, 27px);
+    line-height: 1.35;
+  }
+
+  .octo-faq__list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .octo-faq__item {
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+
+  .octo-faq__item:hover {
+    border-color: color-mix(in srgb, var(--octo-accent) 55%, white 10%);
+    transform: translateY(-1px);
+  }
+
+  .octo-faq__item[open] {
+    border-color: var(--octo-accent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--octo-accent) 35%, transparent);
+  }
+
+  .octo-faq__item summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 34px 1fr 24px;
+    align-items: center;
+    gap: 18px;
+    padding: 25px 28px;
+  }
+
+  .octo-faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .octo-faq__question {
+    color: var(--octo-text);
+    font-size: clamp(19px, 1.6vw, 26px);
+    font-weight: 850;
+    line-height: 1.2;
+  }
+
+  .octo-faq__plus {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--octo-accent);
+    border-radius: 50%;
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .octo-faq__plus:before,
+  .octo-faq__plus:after {
+    content: "";
+    position: absolute;
+    background: var(--octo-accent);
+    left: 8px;
+    right: 8px;
+    top: 14px;
+    height: 3px;
+    border-radius: 99px;
+  }
+
+  .octo-faq__plus:after {
+    transform: rotate(90deg);
+  }
+
+  .octo-faq__item[open] .octo-faq__plus {
+    background: var(--octo-accent);
+  }
+
+  .octo-faq__item[open] .octo-faq__plus:before,
+  .octo-faq__item[open] .octo-faq__plus:after {
+    background: #05070a;
+  }
+
+  .octo-faq__item[open] .octo-faq__plus:after {
+    opacity: 0;
+  }
+
+  .octo-faq__chevron {
+    font-size: 30px;
+    color: var(--octo-text);
+    transition: transform .2s ease;
+  }
+
+  .octo-faq__item[open] .octo-faq__chevron {
+    transform: rotate(180deg);
+  }
+
+  .octo-faq__answer {
+    color: var(--octo-muted);
+    font-size: clamp(17px, 1.35vw, 23px);
+    line-height: 1.55;
+    max-width: 1100px;
+    padding: 0 72px 32px 80px;
+  }
+
+  .octo-faq__answer p {
+    margin-top: 0;
+  }
+
+  .octo-faq__answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .octo-faq {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .octo-faq__header {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .octo-faq__item summary {
+      grid-template-columns: 28px 1fr 18px;
+      gap: 12px;
+      padding: 20px 18px;
+    }
+
+    .octo-faq__plus {
+      width: 28px;
+      height: 28px;
+    }
+
+    .octo-faq__plus:before,
+    .octo-faq__plus:after {
+      top: 12px;
+      left: 7px;
+      right: 7px;
+    }
+
+    .octo-faq__answer {
+      padding: 0 20px 24px 58px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.octo-faq').forEach(function(section) {
+      const items = section.querySelectorAll('.octo-faq__item');
+
+      items.forEach(function(item) {
+        item.addEventListener('toggle', function() {
+          if (item.open) {
+            items.forEach(function(otherItem) {
+              if (otherItem !== item) {
+                otherItem.removeAttribute('open');
+              }
+            });
+          }
+        });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Octo FAQ Premium",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FAQS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Everything you need to know about OctoPatches."
+    },
+    {
+      "type": "checkbox",
+      "id": "first_open",
+      "label": "Open first question by default",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 900,
+      "max": 1700,
+      "step": 50,
+      "default": 1500
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 30,
+      "max": 140,
+      "step": 5,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 30,
+      "max": 140,
+      "step": 5,
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#05070A"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card color",
+      "default": "#10141A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Answer text color",
+      "default": "#C9CDD3"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#FF6A13"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What are OctoPatches?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>OctoPatches are premium custom patches made with fused layers of high-quality materials and vibrant printing. They’re built to last, easy to apply, and perfect for brands, teams, events, and personal projects.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Octo FAQ Premium",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What are OctoPatches?",
+            "answer": "<p>OctoPatches are premium custom patches made with fused layers of high-quality materials and vibrant printing. They’re built to last, easy to apply, and perfect for brands, teams, events, and personal projects.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I apply my patch?",
+            "answer": "<p>Most OctoPatches are heat applied using a heat press. Place the patch, cover it with parchment or a protective sheet, press using the recommended time, temperature, and pressure, then allow it to cool.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I order different designs to reach volume pricing?",
+            "answer": "<p>Yes. You can mix designs, shapes, materials, and finishes while still building toward volume discounts across your order.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,690 @@
+<section
+  class="octo-home"
+  style="
+    --hero-height: {{ section.settings.hero_height }}px;
+    --hero-image-x: {{ section.settings.hero_image_x }}%;
+    --hero-image-y: {{ section.settings.hero_image_y }}%;
+    --hero-copy-width: {{ section.settings.hero_copy_width }}px;
+    --hero-copy-position: {{ section.settings.hero_copy_position }};
+    --hero-text-align: {{ section.settings.hero_text_align }};
+    --hero-heading-size: {{ section.settings.hero_heading_size }}px;
+    --hero-subheading-size: {{ section.settings.hero_subheading_size }}px;
+    --hero-heading-color: {{ section.settings.hero_heading_color }};
+    --hero-accent-color: {{ section.settings.hero_accent_color }};
+    --hero-subheading-color: {{ section.settings.hero_subheading_color }};
+
+    --card-copy-width: {{ section.settings.card_copy_width }}%;
+    --card-text-align: {{ section.settings.card_text_align }};
+    --card-heading-size: {{ section.settings.card_heading_size }}px;
+    --card-subheading-size: {{ section.settings.card_subheading_size }}px;
+    --card-heading-color: {{ section.settings.card_heading_color }};
+    --card-text-color: {{ section.settings.card_text_color }};
+  "
+>
+  <div class="octo-home__hero">
+    {% if section.settings.desktop_hero != blank %}
+      <picture>
+        {% if section.settings.mobile_hero != blank %}
+          <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_hero | image_url: width: 900 }}">
+        {% endif %}
+        <img
+          src="{{ section.settings.desktop_hero | image_url: width: 2400 }}"
+          alt="{{ section.settings.hero_alt | escape }}"
+          class="octo-home__hero-img"
+          loading="eager">
+      </picture>
+    {% endif %}
+
+    <div class="octo-home__hero-copy octo-home__hero-copy--{{ section.settings.hero_copy_position }}">
+      <h1>
+        {{ section.settings.hero_title_line_1 }}
+        <span>{{ section.settings.hero_title_line_2 }}</span>
+      </h1>
+
+      {% if section.settings.hero_text != blank %}
+        <p>{{ section.settings.hero_text }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="octo-home__cards page-width">
+
+    <div
+      class="octo-home__card octo-home__card--orange {% if section.settings.custom_gradient_overlay %}has-overlay{% endif %}"
+    >
+      {% if section.settings.custom_image != blank %}
+        <img src="{{ section.settings.custom_image | image_url: width: 1200 }}" alt="{{ section.settings.custom_title | escape }}">
+      {% endif %}
+
+      <div class="octo-home__card-copy octo-home__card-copy--{{ section.settings.card_copy_position }}">
+        <h2>{{ section.settings.custom_title }}</h2>
+        <p>{{ section.settings.custom_text }}</p>
+
+        <ul>
+          <li>{{ section.settings.custom_bullet_1 }}</li>
+          <li>{{ section.settings.custom_bullet_2 }}</li>
+          <li>{{ section.settings.custom_bullet_3 }}</li>
+        </ul>
+
+        {% render 'patchmaker_button',
+          logged_out_text: 'Design Patches',
+          logged_in_text: 'Design Patches',
+          next: '/',
+          style: 'primary',
+          alignment: 'left'
+        %}
+      </div>
+    </div>
+
+    <div
+      class="octo-home__card octo-home__card--dark {% if section.settings.flex_gradient_overlay %}has-overlay{% endif %}"
+    >
+      {% if section.settings.flex_image != blank %}
+        <img src="{{ section.settings.flex_image | image_url: width: 1200 }}" alt="{{ section.settings.flex_title | escape }}">
+      {% endif %}
+
+      <div class="octo-home__card-copy octo-home__card-copy--{{ section.settings.card_copy_position }}">
+        <h2>{{ section.settings.flex_title }}</h2>
+        <p>{{ section.settings.flex_text }}</p>
+
+        <ul>
+          <li>{{ section.settings.flex_bullet_1 }}</li>
+          <li>{{ section.settings.flex_bullet_2 }}</li>
+          <li>{{ section.settings.flex_bullet_3 }}</li>
+        </ul>
+
+        {% render 'patchmaker_button',
+  logged_out_text: 'Design 3D Flex',
+  logged_in_text: 'Design 3D Flex',
+  next: '/flex',
+  style: 'secondary',
+  alignment: 'left'
+%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .octo-home {
+    background: #111111;
+    color: #ffffff;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .octo-home__hero {
+    position: relative;
+    height: var(--hero-height);
+    min-height: 0;
+    overflow: hidden;
+    background: #111111;
+  }
+
+  .octo-home__hero picture {
+    display: block;
+    height: 100%;
+  }
+
+  .octo-home__hero-img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: var(--hero-image-x) var(--hero-image-y);
+    display: block;
+  }
+
+  .octo-home__hero-copy {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: var(--hero-copy-width);
+    z-index: 2;
+    text-align: var(--hero-text-align);
+  }
+
+  .octo-home__hero-copy--left {
+    left: clamp(24px, 5vw, 90px);
+  }
+
+  .octo-home__hero-copy--center {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .octo-home__hero-copy--right {
+    right: clamp(24px, 5vw, 90px);
+  }
+
+  .octo-home__hero-copy h1 {
+    margin: 0;
+    font-size: clamp(34px, 5vw, var(--hero-heading-size));
+    line-height: .95;
+    font-weight: 800;
+    color: var(--hero-heading-color);
+    letter-spacing: -2px;
+  }
+
+  .octo-home__hero-copy h1 span {
+    display: block;
+    color: var(--hero-accent-color);
+  }
+
+  .octo-home__hero-copy p {
+    margin: 26px 0 0;
+    font-size: var(--hero-subheading-size);
+    line-height: 1.35;
+    color: var(--hero-subheading-color);
+  }
+
+  .octo-home__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  .octo-home__card {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    border-radius: 18px;
+    padding: 42px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s ease, box-shadow .2s ease;
+    background: #111111;
+  }
+
+  .octo-home__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  }
+
+  .octo-home__card--orange {
+    background: #ff6a13;
+  }
+
+  .octo-home__card--dark {
+    background: #111111;
+  }
+
+  .octo-home__card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .octo-home__card.has-overlay:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .octo-home__card--orange.has-overlay:before {
+    background: linear-gradient(
+      90deg,
+      rgba(17,17,17,.82) 0%,
+      rgba(17,17,17,.68) 42%,
+      rgba(17,17,17,.35) 62%,
+      rgba(17,17,17,0) 82%
+    );
+  }
+
+  .octo-home__card--dark.has-overlay:before {
+    background: linear-gradient(
+      90deg,
+      rgba(17,17,17,.82) 0%,
+      rgba(17,17,17,.68) 42%,
+      rgba(17,17,17,.35) 62%,
+      rgba(17,17,17,0) 82%
+    );
+  }
+
+  .octo-home__card-copy {
+    position: relative;
+    z-index: 3;
+    width: var(--card-copy-width);
+    max-width: var(--card-copy-width);
+    text-align: var(--card-text-align);
+  }
+
+  .octo-home__card-copy--left {
+    margin-right: auto;
+  }
+
+  .octo-home__card-copy--center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .octo-home__card-copy--right {
+    margin-left: auto;
+  }
+
+  .octo-home__card h2 {
+    margin: 0 0 16px;
+    font-size: var(--card-heading-size);
+    line-height: 1;
+    font-weight: 800;
+    color: var(--card-heading-color);
+  }
+
+  .octo-home__card p,
+  .octo-home__card li {
+    color: var(--card-text-color);
+  }
+
+  .octo-home__card p {
+    font-size: var(--card-subheading-size);
+    line-height: 1.35;
+    margin-bottom: 26px;
+  }
+
+  .octo-home__card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+
+  .octo-home__card li {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .octo-home__card li:before {
+    content: "✓";
+    margin-right: 10px;
+    font-weight: 800;
+  }
+
+  @media screen and (max-width: 749px) {
+    .octo-home__hero {
+      height: 520px;
+      min-height: 0;
+    }
+
+    .octo-home__hero-img {
+      height: 100%;
+      min-height: 0;
+    }
+
+    .octo-home__hero-copy,
+    .octo-home__hero-copy--left,
+    .octo-home__hero-copy--center,
+    .octo-home__hero-copy--right {
+      left: 22px;
+      right: 22px;
+      top: 38px;
+      transform: none;
+      max-width: none;
+      text-align: left;
+    }
+
+    .octo-home__hero-copy h1 {
+      font-size: 44px;
+      letter-spacing: -1px;
+    }
+
+    .octo-home__hero-copy p {
+      font-size: 17px;
+      max-width: 330px;
+    }
+
+    .octo-home__cards {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .octo-home__card {
+      min-height: 520px;
+      padding: 30px 24px;
+      align-items: flex-start;
+    }
+
+    .octo-home__card-copy,
+    .octo-home__card-copy--left,
+    .octo-home__card-copy--center,
+    .octo-home__card-copy--right {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+
+    .octo-home__card h2 {
+      font-size: 38px;
+    }
+
+    .octo-home__card p {
+      font-size: 16px;
+      max-width: 310px;
+    }
+
+    .octo-home__card.has-overlay:before {
+      background: linear-gradient(
+        180deg,
+        rgba(17,17,17,.88) 0%,
+        rgba(17,17,17,.62) 48%,
+        rgba(17,17,17,0) 100%
+      );
+    }
+
+    .octo-home__card--orange.has-overlay:before {
+      background: linear-gradient(
+        180deg,
+        rgba(17,17,17,.78) 0%,
+        rgba(17,17,17,.52) 48%,
+        rgba(17,17,17,0) 100%
+      );
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "OctoPatches Home Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_hero",
+      "label": "Desktop hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_hero",
+      "label": "Mobile hero image"
+    },
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Desktop Hero Height",
+      "min": 280,
+      "max": 600,
+      "step": 10,
+      "default": 340
+    },
+    {
+      "type": "range",
+      "id": "hero_image_x",
+      "label": "Hero Image Horizontal Position",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "hero_image_y",
+      "label": "Hero Image Vertical Position",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "text",
+      "id": "hero_alt",
+      "label": "Hero image alt text",
+      "default": "OctoPatches custom patch examples"
+    },
+    {
+      "type": "text",
+      "id": "hero_title_line_1",
+      "label": "Hero title line 1",
+      "default": "Premium Patches."
+    },
+    {
+      "type": "text",
+      "id": "hero_title_line_2",
+      "label": "Hero title line 2",
+      "default": "Endless Possibilities."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Hero subheading",
+      "default": "Reshaping how you design and produce patches."
+    },
+    {
+      "type": "select",
+      "id": "hero_copy_position",
+      "label": "Hero copy position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "hero_text_align",
+      "label": "Hero text alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "hero_copy_width",
+      "label": "Hero copy width",
+      "min": 300,
+      "max": 900,
+      "step": 20,
+      "default": 620
+    },
+    {
+      "type": "range",
+      "id": "hero_heading_size",
+      "label": "Hero heading size",
+      "min": 36,
+      "max": 100,
+      "step": 2,
+      "default": 76
+    },
+    {
+      "type": "range",
+      "id": "hero_subheading_size",
+      "label": "Hero subheading size",
+      "min": 14,
+      "max": 34,
+      "step": 1,
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "hero_heading_color",
+      "label": "Hero heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "hero_accent_color",
+      "label": "Hero accent line color",
+      "default": "#ff6a13"
+    },
+    {
+      "type": "color",
+      "id": "hero_subheading_color",
+      "label": "Hero subheading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Small Cards Style"
+    },
+    {
+      "type": "select",
+      "id": "card_copy_position",
+      "label": "Card copy position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "card_text_align",
+      "label": "Card text alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "card_copy_width",
+      "label": "Card copy width",
+      "min": 30,
+      "max": 100,
+      "step": 2,
+      "default": 46
+    },
+    {
+      "type": "range",
+      "id": "card_heading_size",
+      "label": "Card heading size",
+      "min": 26,
+      "max": 64,
+      "step": 2,
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "card_subheading_size",
+      "label": "Card subheading size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Custom Patches Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom patch image"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_gradient_overlay",
+      "label": "Show gradient overlay",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Custom title",
+      "default": "Build a Patch"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_text",
+      "label": "Custom text",
+      "default": "Choose your material, shape and border, then add your logo."
+    },
+    {
+      "type": "text",
+      "id": "custom_bullet_1",
+      "label": "Custom bullet 1",
+      "default": "50+ Premium Materials"
+    },
+    {
+      "type": "text",
+      "id": "custom_bullet_2",
+      "label": "Custom bullet 2",
+      "default": "Custom Shapes & Borders"
+    },
+    {
+      "type": "text",
+      "id": "custom_bullet_3",
+      "label": "Custom bullet 3",
+      "default": "Add Your Logo or Artwork"
+    },
+    {
+      "type": "header",
+      "content": "3D Flex Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "flex_image",
+      "label": "3D Flex image"
+    },
+    {
+      "type": "checkbox",
+      "id": "flex_gradient_overlay",
+      "label": "Show gradient overlay",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "flex_title",
+      "label": "3D Flex title",
+      "default": "Transform Your Logo"
+    },
+    {
+      "type": "textarea",
+      "id": "flex_text",
+      "label": "3D Flex text",
+      "default": "Upload your logo and turn it into a bold 3D Flex patch."
+    },
+    {
+      "type": "text",
+      "id": "flex_bullet_1",
+      "label": "3D Flex bullet 1",
+      "default": "Raised 3D Details"
+    },
+    {
+      "type": "text",
+      "id": "flex_bullet_2",
+      "label": "3D Flex bullet 2",
+      "default": "Unlimited Colors"
+    },
+    {
+      "type": "text",
+      "id": "flex_bullet_3",
+      "label": "3D Flex bullet 3",
+      "default": "Your Logo Becomes the Patch"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Octo Multi Home Hero"
+    }
+  ]
+}
+{% endschema %}
